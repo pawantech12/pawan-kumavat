@@ -95,7 +95,7 @@ export default function ContactPage() {
                 <CardTitle className="text-2xl">Follow Me</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex gap-4">
+                <div className="flex gap-4 flex-wrap">
                   {socialLinks.map((social, index) => (
                     <Button key={index} variant="outline" size="lg" asChild>
                       <Link
