@@ -7,8 +7,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: {
-    default: "John Doe - Full Stack Developer",
-    template: "%s | John Doe - Full Stack Developer",
+    default: "Pawan Kumavat - Full Stack Developer",
+    template: "%s | Pawan Kumavat - Full Stack Developer",
   },
   description:
     "Experienced Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies. Building scalable applications and beautiful user experiences.",
@@ -21,23 +21,23 @@ export const metadata = {
     "TypeScript",
     "Web Development",
   ],
-  authors: [{ name: "John Doe" }],
-  creator: "John Doe",
+  authors: [{ name: "Pawan Kumavat" }],
+  creator: "Pawan Kumavat",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://johndoe.dev",
-    title: "John Doe - Full Stack Developer",
+    title: "Pawan Kumavat - Full Stack Developer",
     description:
       "Experienced Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
-    siteName: "John Doe Portfolio",
+    siteName: "Pawan Kumavat Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "John Doe - Full Stack Developer",
+    title: "Pawan Kumavat - Full Stack Developer",
     description:
       "Experienced Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
-    creator: "@johndoe",
+    creator: "@pawantech12",
   },
   robots: {
     index: true,

@@ -6,7 +6,7 @@ import Image from "next/image";
 export const metadata = {
   title: "About",
   description:
-    "Learn more about John Doe, a passionate Full Stack Developer with expertise in modern web technologies.",
+    "Learn more about Pawan Kumavat, a passionate Full Stack Developer with expertise in modern web technologies.",
 };
 
 const experiences = [

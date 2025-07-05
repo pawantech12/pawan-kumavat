@@ -6,7 +6,7 @@ import ContactCTA from "@/components/contact-cta";
 export const metadata = {
   title: "Home",
   description:
-    "Welcome to John Doe's portfolio. Full Stack Developer specializing in modern web technologies.",
+    "Welcome to Pawan Kumavat's portfolio. Full Stack Developer specializing in modern web technologies.",
 };
 
 export default function HomePage() {
