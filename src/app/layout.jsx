@@ -26,7 +26,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://johndoe.dev",
+    url: "https://pawan-kumavat.vercel.app/",
     title: "Pawan Kumavat - Full Stack Developer",
     description:
       "Experienced Full Stack Developer specializing in React, Next.js, Node.js, and modern web technologies.",
@@ -61,6 +61,11 @@ export default function RootLayout({ children }) {
           <main>{children}</main>
           <Footer />
         </div>
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "b1a61aee86074d59a23b3d051cdf2d3d"}'
+        ></script>
       </body>
     </html>
   );
