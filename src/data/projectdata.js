@@ -1,5 +1,32 @@
 const projects = [
   {
+    id: 26,
+    title: "CloudFlow – SaaS Landing Website",
+    image: "/portfolio26.webp",
+    description:
+      "CloudFlow is a fully responsive and modern SaaS landing page built using Next.js, TailwindCSS, and shadcn/ui. It provides a sleek and accessible interface tailored for SaaS startups and tech platforms, with essential pages and UX enhancements.",
+    github: "https://github.com/pawantech12/cloudflow-saas-landing",
+    demo: "https://cloudflow-saas-landing.vercel.app/",
+  },
+  {
+    id: 25,
+    title: "BrandForge – Responsive Brand Agency Website",
+    image: "/portfolio25.webp",
+    description:
+      "A modern and fully responsive Brand Agency website built using Next.js, TailwindCSS, shadcn/ui, and Framer Motion. The website showcases the agency's services, portfolio, testimonials, and team with smooth animations and clean UI.",
+    github: "https://github.com/pawantech12/brandforge-agency-website",
+    demo: "https://brandforge-agency-website.vercel.app/",
+  },
+  {
+    id: 24,
+    title: "DigitalAgency – Modern Digital Agency Website",
+    image: "/portfolio24.webp",
+    description:
+      "DigitalAgency is a fully responsive and modern frontend website built using Next.js, TailwindCSS, and ShadCN UI. Designed for a digital agency, this project showcases a clean design system, structured pages, and a complete dashboard interface tailored for agency operations.",
+    github: "https://github.com/pawantech12/digitalagency-site",
+    demo: "https://digitalagency-site.vercel.app/",
+  },
+  {
     id: 23,
     title: "Podcastify – Modern Podcast Website",
     image: "/portfolio23.webp",
