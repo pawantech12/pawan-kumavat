@@ -30,14 +30,16 @@ export default function FeaturedProjects() {
             key={index}
             className="group hover:shadow-xl transition-all duration-300"
           >
-            <div className="overflow-hidden rounded-t-lg">
-              <Image
-                src={project.image || "/placeholder.svg"}
-                alt={project.title}
-                width={400}
-                height={250}
-                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
+            <div className="scroll-on-hover rounded-t-lg">
+              <div className="scroll-on-hover-inner">
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  width={400}
+                  height={0} // optional, Next.js will infer it
+                  className="w-full object-cover"
+                />
+              </div>
             </div>
             <CardHeader>
               <CardTitle className="text-2xl">{project.title}</CardTitle>
