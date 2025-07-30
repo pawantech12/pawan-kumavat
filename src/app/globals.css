@@ -36,6 +36,23 @@
   }
 }
 
+@layer utilities {
+  .scroll-on-hover {
+    overflow: hidden;
+    position: relative;
+    height: 16rem; /* Card height */
+  }
+
+  .scroll-on-hover-inner {
+    transform: translateY(0);
+    transition: transform 10s linear;
+  }
+
+  .scroll-on-hover:hover .scroll-on-hover-inner {
+    transform: translateY(calc(-100% + 16rem)); /* Scroll up */
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

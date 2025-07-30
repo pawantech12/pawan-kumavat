@@ -1,5 +1,24 @@
 const projects = [
   {
+    id: 28,
+    title: "Graphic Designer Portfolio",
+    image: "/portfolio28.webp",
+    description:
+      "A modern, attractive, and fully responsive single-page portfolio website designed specifically for graphic designers. Built using Next.js, TailwindCSS, and shadcn UI components, this portfolio showcases creative work, skills, services, and contact information with smooth navigation and an elegant design.",
+    github: "https://github.com/pawantech12/graphic-designer-portfolio",
+    demo: "https://graphic-designer-portfolio-one.vercel.app/",
+  },
+  {
+    id: 27,
+    title: "TalentBridge - Recruiter Agency Website",
+    image: "/portfolio27.webp",
+    description:
+      "TalentBridge is a modern, responsive web platform for recruitment agencies and job seekers. Designed to showcase company information, manage job listings with powerful filters, and publish industry insights via a blog, TalentBridge combines clean UI with performant technologies.",
+    github:
+      "https://github.com/pawantech12/talentbridge-recruiter-agency-website",
+    demo: "https://talentbridge-recruiter-agency-websi.vercel.app/",
+  },
+  {
     id: 26,
     title: "CloudFlow – SaaS Landing Website",
     image: "/portfolio26.webp",
