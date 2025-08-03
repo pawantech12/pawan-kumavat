@@ -4,8 +4,10 @@ import { Code2, Github, Linkedin, Mail, Heart } from "lucide-react";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
   { name: "Projects", href: "/projects" },
   { name: "Skills", href: "/skills" },
+  { name: "Testimonials", href: "/testimonials" },
   { name: "Contact", href: "/contact" },
 ];
 

@@ -2,12 +2,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, GraduationCap, Briefcase } from "lucide-react";
 import Image from "next/image";
+import { generateMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "About",
+export const metadata = generateMetadata({
+  title: "About | Pawan Kumavat - Full Stack Developer",
   description:
     "Learn more about Pawan Kumavat, a passionate Full Stack Developer with expertise in modern web technologies.",
-};
+  url: "https://pawan-kumavat.vercel.app/about",
+});
 
 const experiences = [
   {

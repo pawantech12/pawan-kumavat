@@ -10,8 +10,10 @@ import { Menu, Code2, Github, Linkedin, Mail } from "lucide-react";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
   { name: "Projects", href: "/projects" },
   { name: "Skills", href: "/skills" },
+  { name: "Testimonials", href: "/testimonials" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -29,7 +31,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="max-[956px]:hidden flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -44,7 +46,7 @@ export default function Navigation() {
           </nav>
 
           {/* Social Links */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="max-[956px]:hidden flex items-center space-x-4">
             <Button variant="ghost" size="sm" asChild>
               <Link
                 href="https://github.com/pawantech12"
@@ -72,7 +74,7 @@ export default function Navigation() {
 
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="min-[956px]:hidden">
               <Button variant="ghost" size="sm">
                 <Menu className="h-5 w-5" />
               </Button>

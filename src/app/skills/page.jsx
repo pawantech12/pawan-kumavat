@@ -4,12 +4,14 @@ import { Download } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import allSkills from "@/data/skillsdata";
+import { generateMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Skills",
+export const metadata = generateMetadata({
+  title: "Skills | Pawan Kumavat - Full Stack Developer",
   description:
     "Explore Pawan Kumavat's technical skills and expertise in web development, including frontend, backend, and DevOps technologies.",
-};
+  url: "https://pawan-kumavat.vercel.app/skills",
+});
 
 const certifications = [
   {
