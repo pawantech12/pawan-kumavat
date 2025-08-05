@@ -47,9 +47,11 @@ export default function HeroSection() {
               />
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
-              I craft exceptional digital experiences with modern technologies.
-              Specializing in React, Next.js, Node.js, and cloud solutions to
-              build scalable applications that make a difference.
+              I&apos;m a passionate full stack web developer specializing in
+              building fast, scalable, and responsive web applications using
+              React, Next.js, Node.js, MongoDB, TailwindCSS, and modern
+              JavaScript frameworks. I help businesses grow by creating
+              SEO-friendly and performance-optimized websites.
             </p>
           </div>
 
