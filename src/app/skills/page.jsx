@@ -106,10 +106,16 @@ const certifications = [
 
 export default function SkillsPage() {
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main
+      className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
+      aria-label="Skills and Certifications Page of Pawan Kumavat"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center space-y-4 mb-16">
+        <header
+          className="text-center space-y-4 mb-16"
+          aria-label="Skills Page Header"
+        >
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
             Skills & Technologies
           </h1>
@@ -117,17 +123,24 @@ export default function SkillsPage() {
             I work with a wide range of technologies and tools to build modern,
             scalable applications. Here are the technologies I'm proficient in.
           </p>
-        </div>
+        </header>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 mb-16">
+        <section
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 mb-16"
+          aria-label="List of Technical Skills"
+        >
           {allSkills.map((skill, index) => (
             <Card
               key={index}
               className="hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer"
+              aria-label={`${skill.name} skill card`}
             >
               <CardContent className="flex flex-col items-center p-6">
-                <div className={`p-4 rounded-lg mb-4 ${skill.color}`}>
+                <div
+                  className={`p-4 rounded-lg mb-4 ${skill.color}`}
+                  aria-hidden="true"
+                >
                   {skill.icon}
                 </div>
                 <span className="font-medium text-gray-900 text-center text-sm">
@@ -136,75 +149,84 @@ export default function SkillsPage() {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </section>
 
         {/* Certifications */}
-        <Card className="overflow-hidden">
-          <CardContent className="p-0">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 text-center">
-              <h2 className="text-3xl font-bold mb-4">
-                Certifications & Achievements
-              </h2>
-              <p className="text-blue-100">
-                Professional certifications that validate my expertise and
-                commitment to continuous learning
-              </p>
-            </div>
-            <div className="p-8">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {certifications.map((cert, index) => (
-                  <div
-                    key={index}
-                    className={`group relative p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105 ${cert.color}`}
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="text-2xl">{cert.icon}</div>
-                      <div className="text-sm font-medium opacity-75">
-                        {cert.date}
-                      </div>
-                    </div>
-                    <h3 className="font-bold text-lg mb-2 leading-tight">
-                      {cert.name}
-                    </h3>
-                    <p className="text-sm opacity-80 mb-4">{cert.issuer}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-current rounded-full opacity-60"></div>
-                        <span className="text-xs font-medium opacity-75">
-                          Verified
-                        </span>
-                      </div>
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white/20"
-                        asChild
-                      >
-                        <Link
-                          href={cert.pdfLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          download={true}
-                        >
-                          <Download className="h-4 w-4 mr-1" />
-                          PDF
-                        </Link>
-                      </Button>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-xl pointer-events-none"></div>
-                  </div>
-                ))}
+        <section aria-label="Certifications and Achievements">
+          <Card className="overflow-hidden">
+            <CardContent className="p-0">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 text-center">
+                <h2 className="text-3xl font-bold mb-4">
+                  Certifications & Achievements
+                </h2>
+                <p className="text-blue-100">
+                  Professional certifications that validate my expertise and
+                  commitment to continuous learning
+                </p>
               </div>
-              <div className="mt-8 text-center">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-600">
-                  <Shield className="h-4 w-4" />
-                  All certifications are verified and up-to-date
+              <div className="p-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {certifications.map((cert, index) => (
+                    <div
+                      key={index}
+                      className={`group relative p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105 ${cert.color}`}
+                      aria-label={`Certificate: ${cert.name} by ${cert.issuer}`}
+                    >
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="text-2xl" aria-hidden="true">
+                          {cert.icon}
+                        </div>
+                        <div className="text-sm font-medium opacity-75">
+                          {cert.date}
+                        </div>
+                      </div>
+                      <h3 className="font-bold text-lg mb-2 leading-tight">
+                        {cert.name}
+                      </h3>
+                      <p className="text-sm opacity-80 mb-4">{cert.issuer}</p>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-current rounded-full opacity-60"></div>
+                          <span className="text-xs font-medium opacity-75">
+                            Verified
+                          </span>
+                        </div>
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white/20"
+                          asChild
+                        >
+                          <Link
+                            href={cert.pdfLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            download={true}
+                            aria-label={`Download ${cert.name} certificate PDF`}
+                          >
+                            <Download className="h-4 w-4 mr-1" />
+                            PDF
+                          </Link>
+                        </Button>
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-xl pointer-events-none"></div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-8 text-center">
+                  <div
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-600"
+                    aria-label="Certification verification note"
+                  >
+                    <Shield className="h-4 w-4" aria-hidden="true" />
+                    All certifications are verified and up-to-date
+                  </div>
                 </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

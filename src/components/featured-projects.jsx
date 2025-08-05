@@ -13,7 +13,10 @@ import projects from "@/data/projectdata";
 
 export default function FeaturedProjects() {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      className="container mx-auto px-4 sm:px-6 lg:px-8"
+      aria-label="Section showcasing recent featured web development projects"
+    >
       <div className="text-center space-y-4 mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
           My Projects
@@ -61,6 +64,7 @@ export default function FeaturedProjects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`View source code of ${project.title} on GitHub`}
                     >
                       <Github className="mr-2 h-4 w-4" />
                       Code
@@ -73,6 +77,7 @@ export default function FeaturedProjects() {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label={`View live demo of ${project.title}`}
                     >
                       <ExternalLink className="mr-2 h-4 w-4" />
                       Live Demo
@@ -87,7 +92,7 @@ export default function FeaturedProjects() {
 
       <div className="text-center">
         <Button size="lg" variant="outline" asChild>
-          <Link href="/projects">
+          <Link href="/projects" aria-label="View all web development projects">
             View All Projects
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>

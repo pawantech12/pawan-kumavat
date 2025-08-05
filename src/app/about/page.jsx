@@ -54,14 +54,17 @@ const education = [
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="max-w-4xl mx-auto space-y-12">
         {/* Hero Section */}
-        <div className="text-center space-y-6">
+        <section
+          aria-label="About Pawan Kumavat"
+          className="text-center space-y-6"
+        >
           <div className="relative w-32 h-32 mx-auto">
             <Image
               src="/profile.png"
-              alt="Pawan Kumavat"
+              alt="Pawan Kumavat - Full Stack Developer Profile Picture"
               width={128}
               height={128}
               className="rounded-full border-4 border-white shadow-lg"
@@ -78,107 +81,116 @@ export default function AboutPage() {
               intuitive designs.
             </p>
           </div>
-        </div>
+        </section>
 
         {/* Personal Info */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-blue-600" />
-              Personal Information
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Location</h3>
-                <p className="text-gray-600">Kalyan(W),Thane, Maharashtra</p>
+        <section aria-label="Personal Information">
+          <Card as="section">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <MapPin className="h-5 w-5 text-blue-600" />
+                Personal Information
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Location</h3>
+                  <p className="text-gray-600">Kalyan(W),Thane, Maharashtra</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">
+                    Experience
+                  </h3>
+                  <p className="text-gray-600">4+ Years</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">
+                    Specialization
+                  </h3>
+                  <p className="text-gray-600">Full Stack Development</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">
+                    Availability
+                  </h3>
+                  <Badge className="bg-green-100 text-green-800">
+                    Available for hire
+                  </Badge>
+                </div>
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Experience</h3>
-                <p className="text-gray-600">4+ Years</p>
+                <h3 className="font-semibold text-gray-900 mb-2">About</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  When I'm not coding, you can find me exploring new
+                  technologies, contributing to open-source projects, or
+                  enjoying the great outdoors. I believe in continuous learning
+                  and staying up-to-date with the latest industry trends and
+                  best practices.
+                </p>
               </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  Specialization
-                </h3>
-                <p className="text-gray-600">Full Stack Development</p>
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  Availability
-                </h3>
-                <Badge className="bg-green-100 text-green-800">
-                  Available for hire
-                </Badge>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold text-gray-900 mb-2">About</h3>
-              <p className="text-gray-600 leading-relaxed">
-                When I'm not coding, you can find me exploring new technologies,
-                contributing to open-source projects, or enjoying the great
-                outdoors. I believe in continuous learning and staying
-                up-to-date with the latest industry trends and best practices.
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </section>
 
         {/* Experience */}
-        <div>
+        <section aria-label="Work Experience">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-2">
             <Briefcase className="h-8 w-8 text-blue-600" />
             Work Experience
           </h2>
           <div className="space-y-6">
             {experiences.map((exp, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <CardTitle className="text-xl">{exp.title}</CardTitle>
-                    <Badge variant="outline" className="w-fit">
-                      <Calendar className="mr-1 h-3 w-3" />
-                      {exp.period}
-                    </Badge>
-                  </div>
-                  <p className="text-blue-600 font-medium">{exp.company}</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{exp.description}</p>
-                </CardContent>
-              </Card>
+              <article key={index}>
+                <Card as="div">
+                  <CardHeader>
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                      <CardTitle className="text-xl">{exp.title}</CardTitle>
+                      <Badge variant="outline" className="w-fit">
+                        <Calendar className="mr-1 h-3 w-3" />
+                        {exp.period}
+                      </Badge>
+                    </div>
+                    <p className="text-blue-600 font-medium">{exp.company}</p>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">{exp.description}</p>
+                  </CardContent>
+                </Card>
+              </article>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Education */}
-        <div>
+        <section aria-label="Education Background">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center gap-2">
             <GraduationCap className="h-8 w-8 text-blue-600" />
             Education
           </h2>
           <div className="space-y-6">
             {education.map((edu, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <CardTitle className="text-xl">{edu.degree}</CardTitle>
-                    <Badge variant="outline" className="w-fit">
-                      <Calendar className="mr-1 h-3 w-3" />
-                      {edu.period}
-                    </Badge>
-                  </div>
-                  <p className="text-blue-600 font-medium">{edu.school}</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{edu.description}</p>
-                </CardContent>
-              </Card>
+              <article key={index}>
+                <Card as="div">
+                  <CardHeader>
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                      <CardTitle className="text-xl">{edu.degree}</CardTitle>
+                      <Badge variant="outline" className="w-fit">
+                        <Calendar className="mr-1 h-3 w-3" />
+                        {edu.period}
+                      </Badge>
+                    </div>
+                    <p className="text-blue-600 font-medium">{edu.school}</p>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600">{edu.description}</p>
+                  </CardContent>
+                </Card>
+              </article>
             ))}
           </div>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

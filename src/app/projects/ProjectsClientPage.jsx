@@ -31,10 +31,17 @@ export default function ProjectsClientPage() {
   }, [searchTerm]);
 
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main
+      className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
+      role="main"
+      aria-label="Project showcase page"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center space-y-4 mb-12">
+        <header
+          aria-label="Projects introduction"
+          className="text-center space-y-4 mb-12"
+        >
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
             My Projects
           </h1>
@@ -43,23 +50,27 @@ export default function ProjectsClientPage() {
             in full-stack development, UI/UX design, and modern web
             technologies.
           </p>
-        </div>
+        </header>
 
         {/* Search Bar */}
-        <div className="relative mb-8">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+        <section aria-label="Search projects" className="relative mb-8">
+          <Search
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4"
+            aria-hidden="true"
+          />
           <Input
             type="text"
             placeholder="Search projects by name, description, or technology..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10 pr-4 py-2 w-full bg-white h-11"
+            aria-label="Search input"
           />
-        </div>
+        </section>
 
         {/* Search Results Info */}
         {searchTerm && (
-          <div className="text-center mb-8">
+          <div className="text-center mb-8" aria-live="polite">
             <p className="text-gray-600">
               Found {filteredProjects.length} project
               {filteredProjects.length !== 1 ? "s" : ""} matching "{searchTerm}"
@@ -69,7 +80,7 @@ export default function ProjectsClientPage() {
 
         {/* No Results */}
         {searchTerm && filteredProjects.length === 0 && (
-          <div className="text-center py-12">
+          <div className="text-center py-12" role="alert">
             <p className="text-gray-600 text-lg">
               No projects found matching your search.
             </p>
@@ -77,6 +88,7 @@ export default function ProjectsClientPage() {
               variant="outline"
               onClick={() => setSearchTerm("")}
               className="mt-4"
+              aria-label="Clear search and show all projects"
             >
               Clear Search
             </Button>
@@ -85,12 +97,14 @@ export default function ProjectsClientPage() {
 
         {/* Featured Projects */}
         {filteredProjects.length > 0 && (
-          <div className="mb-16">
+          <section aria-label="List of filtered projects" className="mb-16">
             <div className="grid lg:grid-cols-2 gap-8">
               {filteredProjects.map((project, index) => (
                 <Card
                   key={index}
                   className="group hover:shadow-xl transition-all duration-300"
+                  role="article"
+                  aria-labelledby={`project-title-${index}`}
                 >
                   <div className="scroll-on-hover rounded-t-lg">
                     <div className="scroll-on-hover-inner">
@@ -123,6 +137,7 @@ export default function ProjectsClientPage() {
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`View source code of ${project.title}`}
                           >
                             <Github className="mr-2 h-4 w-4" />
                             Code
@@ -135,6 +150,7 @@ export default function ProjectsClientPage() {
                             href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label={`View live demo of ${project.title}`}
                           >
                             <ExternalLink className="mr-2 h-4 w-4" />
                             Live Demo
@@ -146,9 +162,9 @@ export default function ProjectsClientPage() {
                 </Card>
               ))}
             </div>
-          </div>
+          </section>
         )}
       </div>
-    </div>
+    </main>
   );
 }

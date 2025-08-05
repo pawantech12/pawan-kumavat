@@ -5,8 +5,14 @@ import Link from "next/link";
 
 export default function ContactCTA() {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+    <section
+      className="container mx-auto px-4 sm:px-6 lg:px-8"
+      aria-label="Contact section - Let's Work Together"
+    >
+      <Card
+        className="bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+        aria-labelledby="contact-heading"
+      >
         <CardContent className="p-8 sm:p-12 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             Let's Work Together
@@ -17,7 +23,10 @@ export default function ContactCTA() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" asChild>
-              <Link href="/contact">
+              <Link
+                href="/contact"
+                aria-label="Go to contact page to discuss opportunities"
+              >
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Get In Touch
               </Link>
@@ -28,7 +37,10 @@ export default function ContactCTA() {
               className="border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
               asChild
             >
-              <Link href="mailto:pawankumavat042@gmail.com">
+              <Link
+                href="mailto:pawankumavat042@gmail.com"
+                aria-label="Send an email to pawankumavat042@gmail.com"
+              >
                 <Mail className="mr-2 h-4 w-4" />
                 Send Email
               </Link>

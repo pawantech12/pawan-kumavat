@@ -12,23 +12,40 @@ const navigation = [
 ];
 
 const socialLinks = [
-  { name: "GitHub", href: "https://github.com/pawantech12", icon: Github },
+  {
+    name: "GitHub",
+    href: "https://github.com/pawantech12",
+    icon: Github,
+    aria: "Visit my GitHub profile",
+    rel: "me",
+  },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/pawan-kumavat-11b105297/",
     icon: Linkedin,
+    aria: "Visit my LinkedIn profile",
+    rel: "me",
   },
-  { name: "Email", href: "mailto:pawankumavat042@gmail.com", icon: Mail },
+  {
+    name: "Email",
+    href: "mailto:pawankumavat042@gmail.com",
+    icon: Mail,
+    aria: "Send me an email",
+  },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t">
+    <footer className="bg-white border-t" aria-label="Site footer">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
+            <Link
+              href="/"
+              aria-label="Go to homepage"
+              className="flex items-center space-x-2 mb-4"
+            >
               <Code2 className="h-8 w-8 text-blue-600" />
               <span className="text-xl font-bold text-gray-900">Pawan.K</span>
             </Link>
@@ -44,7 +61,9 @@ export default function Footer() {
                     key={social.name}
                     href={social.href}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel={social.rel || "noopener noreferrer"}
+                    aria-label={social.aria}
+                    title={social.name}
                     className="text-gray-600 hover:text-blue-600 transition-colors"
                   >
                     <Icon className="h-5 w-5" />
@@ -55,7 +74,7 @@ export default function Footer() {
           </div>
 
           {/* Navigation */}
-          <div>
+          <nav aria-label="Footer navigation">
             <h3 className="font-semibold text-gray-900 mb-4">Navigation</h3>
             <ul className="space-y-2">
               {navigation.map((item) => (
@@ -63,13 +82,14 @@ export default function Footer() {
                   <Link
                     href={item.href}
                     className="text-gray-600 hover:text-blue-600 transition-colors"
+                    title={`Go to ${item.name} page`}
                   >
                     {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Contact */}
           <div>
@@ -79,11 +99,13 @@ export default function Footer() {
               <Link
                 href="mailto:pawankumavat042@gmail.com"
                 className="hover:text-blue-600 transition-colors block"
+                aria-label="Send email to pawankumavat042@gmail.com"
               >
                 pawankumavat042@gmail.com
               </Link>
               <Link
                 href="tel:+919619579304"
+                aria-label="Call +91 9619579304"
                 className="hover:text-blue-600 transition-colors block"
               >
                 +91 9619579304

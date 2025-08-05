@@ -26,7 +26,10 @@ const testimonials = [
 
 export default function TestimonialsSection() {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      className="container mx-auto px-4 sm:px-6 lg:px-8"
+      aria-label="Client Testimonials"
+    >
       <div className="text-center space-y-4 mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
           What Clients Say
@@ -42,23 +45,35 @@ export default function TestimonialsSection() {
           <Card
             key={index}
             className="relative hover:shadow-lg transition-shadow duration-300 h-full"
+            itemScope
+            itemType="https://schema.org/Review"
           >
             <CardContent className="p-6 flex flex-col h-full">
               <div className="absolute top-4 right-4 text-blue-200">
-                <Quote className="h-6 w-6" />
+                <Quote className="h-6 w-6" aria-hidden="true" />
               </div>
 
-              <p className="text-gray-600 my-4 leading-relaxed flex-grow">
+              <blockquote
+                className="text-gray-600 my-4 leading-relaxed flex-grow"
+                itemProp="reviewBody"
+              >
                 &quot;{testimonial.content}&quot;
-              </p>
+              </blockquote>
 
               <div className="space-y-3 mt-auto">
-                <div className="flex items-center gap-3">
+                <div
+                  className="flex items-center gap-3"
+                  itemScope
+                  itemProp="author"
+                  itemType="https://schema.org/Person"
+                >
                   <div>
-                    <h4 className="font-semibold text-gray-900">
+                    <h4 className="font-semibold text-gray-900" itemProp="name">
                       {testimonial.name}
                     </h4>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    <p className="text-sm text-gray-600" itemProp="jobTitle">
+                      {testimonial.role}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -69,9 +84,9 @@ export default function TestimonialsSection() {
 
       <div className="text-center">
         <Button size="lg" variant="outline" asChild>
-          <Link href="/testimonials">
+          <Link href="/testimonials" aria-label="Read all client testimonials">
             View All Testimonials
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </Link>
         </Button>
       </div>

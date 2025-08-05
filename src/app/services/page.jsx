@@ -252,27 +252,37 @@ const processSteps = [
 
 export default function ServicesPage() {
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="">
-        {/* Header */}
-        <div className="text-center space-y-4 mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
-            Services I Offer
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From concept to deployment, I provide comprehensive development
-            services to bring your ideas to life with modern technologies and
-            best practices.
-          </p>
-        </div>
+    <main
+      className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
+      aria-label="Services Page - Full Stack Development Offerings"
+    >
+      {/* Header */}
+      <header
+        className="text-center space-y-4 mb-16"
+        aria-label="Page Introduction"
+      >
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
+          Services I Offer
+        </h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          From concept to deployment, I provide comprehensive development
+          services to bring your ideas to life with modern technologies and best
+          practices.
+        </p>
+      </header>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {services.map((service, index) => (
-            <Card
-              key={index}
-              className="relative hover:shadow-lg transition-all duration-300 hover:scale-105"
-            >
+      {/* Services Grid */}
+      <section
+        aria-label="List of Web Development Services"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
+      >
+        {services.map((service, index) => (
+          <article
+            key={index}
+            className="relative hover:shadow-lg transition-all duration-300 hover:scale-105"
+            aria-label={`${service.title} - ${service.description}`}
+          >
+            <Card>
               {service.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                   <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
@@ -283,6 +293,7 @@ export default function ServicesPage() {
               <CardHeader className="text-center pb-4">
                 <div
                   className={`mx-auto w-16 h-16 rounded-lg flex items-center justify-center mb-4 ${service.color}`}
+                  aria-hidden="true"
                 >
                   {service.icon}
                 </div>
@@ -292,40 +303,53 @@ export default function ServicesPage() {
                 <p className="text-gray-600 text-center">
                   {service.description}
                 </p>
-                <div className="space-y-2">
+                <ul className="space-y-2 list-none">
                   {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    <li
+                      key={featureIndex}
+                      className="flex items-center gap-2"
+                      aria-label={`Feature: ${feature}`}
+                    >
+                      <CheckCircle
+                        className="h-4 w-4 text-green-500 flex-shrink-0"
+                        aria-hidden="true"
+                      />
                       <span className="text-sm text-gray-600">{feature}</span>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </CardContent>
             </Card>
-          ))}
-        </div>
+          </article>
+        ))}
+      </section>
 
-        {/* Process Section */}
-        <div className="mb-20">
-          <div className="text-center mb-12 space-y-4">
-            <h2 className="text-4xl font-bold text-gray-900 tracking-tight">
-              Development Process
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              A structured approach to building your application — from idea to
-              deployment — using your provided designs.
-            </p>
-          </div>
+      {/* Process Section */}
+      <section className="mb-20" aria-label="Development Process Overview">
+        <header className="text-center mb-12 space-y-4">
+          <h2 className="text-4xl font-bold text-gray-900 tracking-tight">
+            Development Process
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            A structured approach to building your application — from idea to
+            deployment — using your provided designs.
+          </p>
+        </header>
 
-          {/* Step Cards */}
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
-            {processSteps.map((step, index) => (
-              <Card
-                key={index}
-                className="text-center border-none bg-white shadow-md hover:shadow-xl transition-all duration-300"
-              >
+        {/* Step Cards */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+          {processSteps.map((step, index) => (
+            <article
+              key={index}
+              className="text-center border-none bg-white shadow-md hover:shadow-xl transition-all duration-300"
+              aria-label={`Step ${step.step}: ${step.title}`}
+            >
+              <Card>
                 <CardContent className="p-6">
-                  <div className="w-14 h-14 mb-4 mx-auto rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white flex items-center justify-center text-lg font-bold shadow-lg">
+                  <div
+                    className="w-14 h-14 mb-4 mx-auto rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white flex items-center justify-center text-lg font-bold shadow-lg"
+                    aria-hidden="true"
+                  >
                     {step.step}
                   </div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">
@@ -336,11 +360,13 @@ export default function ServicesPage() {
                   </p>
                 </CardContent>
               </Card>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
+      </section>
 
-        {/* CTA Section */}
+      {/* CTA Section */}
+      <section aria-label="Call to Action - Start a Project or View Work">
         <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
           <CardContent className="p-8 text-center">
             <h2 className="text-3xl font-bold mb-4">
@@ -352,7 +378,10 @@ export default function ServicesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" asChild>
-                <Link href="/contact">
+                <Link
+                  href="/contact"
+                  aria-label="Get a Free Consultation via Contact Page"
+                >
                   Get Free Consultation
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -363,12 +392,17 @@ export default function ServicesPage() {
                 className="border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
                 asChild
               >
-                <Link href="/projects">View My Work</Link>
+                <Link
+                  href="/projects"
+                  aria-label="View Web Development Projects"
+                >
+                  View My Work
+                </Link>
               </Button>
             </div>
           </CardContent>
         </Card>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

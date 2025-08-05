@@ -7,13 +7,13 @@ import TestimonialsSection from "@/components/testimonials-section";
 
 export default function HomePage() {
   return (
-    <div className="space-y-20">
+    <main className="space-y-20">
       <HeroSection />
       <ServicesSection />
       <FeaturedProjects />
       <SkillsPreview />
       <TestimonialsSection />
       <ContactCTA />
-    </div>
+    </main>
   );
 }

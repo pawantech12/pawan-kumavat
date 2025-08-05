@@ -53,10 +53,13 @@ const socialLinks = [
 export default function ContactPage() {
   return (
     <>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main
+        className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
+        aria-label="Contact page for Pawan Kumavat"
+      >
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center space-y-4 mb-16">
+          <header className="text-center space-y-4 mb-16">
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
               Get In Touch
             </h1>
@@ -65,14 +68,14 @@ export default function ContactPage() {
               Let's discuss how we can work together to bring your ideas to
               life.
             </p>
-          </div>
+          </header>
 
-          <div className="">
+          <section aria-labelledby="contact-information" className="">
             {/* Contact Information */}
             <div className="space-y-8">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-2xl">
+                  <CardTitle className="text-2xl" id="contact-information">
                     Contact Information
                   </CardTitle>
                 </CardHeader>
@@ -92,6 +95,7 @@ export default function ContactPage() {
                           <Link
                             href={info.href}
                             className="text-blue-600 hover:text-blue-800 transition-colors"
+                            aria-label={`Contact via ${info.label}`}
                           >
                             {info.value}
                           </Link>
@@ -115,6 +119,7 @@ export default function ContactPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-2"
+                          aria-label={`Follow on ${social.label}`}
                         >
                           {social.icon}
                           {social.label}
@@ -125,7 +130,10 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+              <Card
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+                aria-label="CTA to collaborate or contact"
+              >
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-2">
                     Let's Build Something Amazing
@@ -136,7 +144,10 @@ export default function ContactPage() {
                     to chat about technology, I'd love to hear from you.
                   </p>
                   <Button variant="secondary" asChild>
-                    <Link href="mailto:pawankumavat042@gmail.com">
+                    <Link
+                      href="mailto:pawankumavat042@gmail.com"
+                      aria-label="Send a quick email to Pawan Kumavat"
+                    >
                       <Mail className="mr-2 h-4 w-4" />
                       Quick Email
                     </Link>
@@ -144,9 +155,9 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
             </div>
-          </div>
+          </section>
         </div>
-      </div>
+      </main>
     </>
   );
 }

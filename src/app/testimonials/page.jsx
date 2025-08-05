@@ -64,29 +64,36 @@ const allTestimonials = [
 
 export default function TestimonialsPage() {
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div>
-        {/* Header */}
-        <div className="text-center space-y-4 mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
-            Client Testimonials
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Don&apos;t just take my word for it. Here&apos;s what clients and
-            colleagues have to say about working with me.
-          </p>
-        </div>
+    <main
+      className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
+      aria-label="Client testimonials and feedback about Pawan Kumavat"
+    >
+      {/* Header */}
+      <header className="text-center space-y-4 mb-16">
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
+          Client Testimonials
+        </h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Don&apos;t just take my word for it. Here&apos;s what clients and
+          colleagues have to say about working with me.
+        </p>
+      </header>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {allTestimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="relative hover:shadow-lg transition-shadow duration-300 h-full"
-            >
+      {/* Testimonials Grid */}
+      <section
+        aria-label="Testimonial Cards Section"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+      >
+        {allTestimonials.map((testimonial, index) => (
+          <article
+            key={index}
+            className="relative hover:shadow-lg transition-shadow duration-300 h-full"
+            aria-label={`Testimonial from ${testimonial.name}`}
+          >
+            <Card className="h-full">
               <CardContent className="p-6 flex flex-col h-full">
                 <div className="absolute top-4 right-4 text-blue-200">
-                  <Quote className="h-6 w-6" />
+                  <Quote className="h-6 w-6" aria-hidden="true" />
                 </div>
 
                 <p className="text-gray-600 my-4 leading-relaxed flex-grow">
@@ -107,10 +114,12 @@ export default function TestimonialsPage() {
                 </div>
               </CardContent>
             </Card>
-          ))}
-        </div>
+          </article>
+        ))}
+      </section>
 
-        {/* CTA Section */}
+      {/* CTA Section */}
+      <section aria-label="Call to action to contact Pawan Kumavat">
         <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
           <CardContent className="p-8 text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Work Together?</h2>
@@ -120,7 +129,12 @@ export default function TestimonialsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" asChild>
-                <Link href="/contact">Start Your Project</Link>
+                <Link
+                  href="/contact"
+                  aria-label="Start your project with Pawan Kumavat"
+                >
+                  Start Your Project
+                </Link>
               </Button>
               <Button
                 size="lg"
@@ -128,7 +142,10 @@ export default function TestimonialsPage() {
                 className="border-white text-white hover:bg-white hover:text-blue-600 bg-transparent"
                 asChild
               >
-                <Link href="mailto:john@example.com">
+                <Link
+                  href="mailto:john@example.com"
+                  aria-label="Send an email to Pawan Kumavat"
+                >
                   <Mail className="mr-2 h-4 w-4" />
                   Get In Touch
                 </Link>
@@ -136,7 +153,7 @@ export default function TestimonialsPage() {
             </div>
           </CardContent>
         </Card>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

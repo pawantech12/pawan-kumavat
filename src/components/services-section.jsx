@@ -55,7 +55,10 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      className="container mx-auto px-4 sm:px-6 lg:px-8"
+      aria-label="Professional Web Development Services Section"
+    >
       <div className="text-center space-y-4 mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
           Services I Offer
@@ -104,7 +107,10 @@ export default function ServicesSection() {
 
       <div className="text-center">
         <Button size="lg" variant="outline" asChild>
-          <Link href="/services">
+          <Link
+            href="/services"
+            aria-label="View all available web development services"
+          >
             View All Services
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>

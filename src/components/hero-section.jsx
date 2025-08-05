@@ -8,7 +8,10 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+    <section
+      className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16"
+      aria-label="Hero section introducing Pawan Kumavat, full stack web developer"
+    >
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-8">
           <div className="space-y-4">
@@ -80,6 +83,7 @@ export default function HeroSection() {
               href="https://github.com/pawantech12"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit my GitHub profile"
               className="text-gray-600 hover:text-blue-600 transition-colors"
             >
               <Github className="h-6 w-6" />
@@ -88,6 +92,7 @@ export default function HeroSection() {
               href="https://www.linkedin.com/in/pawan-kumavat-11b105297/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit my LinkedIn profile"
               className="text-gray-600 hover:text-blue-600 transition-colors"
             >
               <Linkedin className="h-6 w-6" />

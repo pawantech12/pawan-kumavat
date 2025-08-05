@@ -31,7 +31,10 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="max-[956px]:hidden flex items-center space-x-8">
+          <nav
+            className="max-[956px]:hidden flex items-center space-x-8"
+            aria-label="Primary navigation"
+          >
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -52,6 +55,7 @@ export default function Navigation() {
                 href="https://github.com/pawantech12"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit GitHub Profile"
               >
                 <Github className="h-4 w-4" />
               </Link>
@@ -61,12 +65,16 @@ export default function Navigation() {
                 href="https://www.linkedin.com/in/pawan-kumavat-11b105297/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit LinkedIn Profile"
               >
                 <Linkedin className="h-4 w-4" />
               </Link>
             </Button>
             <Button variant="ghost" size="sm" asChild>
-              <Link href="mailto:pawankumavat042@gmail.com">
+              <Link
+                href="mailto:pawankumavat042@gmail.com"
+                aria-label="Send an email to Pawan Kumavat"
+              >
                 <Mail className="h-4 w-4" />
               </Link>
             </Button>
@@ -75,12 +83,15 @@ export default function Navigation() {
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="min-[956px]:hidden">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" aria-label="Open mobile menu">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <nav className="flex flex-col space-y-4 mt-8">
+              <nav
+                className="flex flex-col space-y-4 mt-8"
+                aria-label="Mobile navigation"
+              >
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
@@ -99,6 +110,7 @@ export default function Navigation() {
                       href="https://github.com/pawantech12"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Visit GitHub Profile"
                     >
                       <Github className="h-4 w-4" />
                     </Link>
@@ -108,12 +120,16 @@ export default function Navigation() {
                       href="https://www.linkedin.com/in/pawan-kumavat-11b105297/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      aria-label="Visit LinkedIn Profile"
                     >
                       <Linkedin className="h-4 w-4" />
                     </Link>
                   </Button>
                   <Button variant="ghost" size="sm" asChild>
-                    <Link href="mailto:pawankumavat042@gmail.com">
+                    <Link
+                      href="mailto:pawankumavat042@gmail.com"
+                      aria-label="Send an email to Pawan Kumavat"
+                    >
                       <Mail className="h-4 w-4" />
                     </Link>
                   </Button>
