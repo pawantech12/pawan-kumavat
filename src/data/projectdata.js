@@ -1,5 +1,14 @@
 const projects = [
   {
+    id: 29,
+    title: "Bella Vista – Restaurant Landing Page",
+    image: "/portfolio29.webp",
+    description:
+      "Bella Vista is a modern, responsive, and fully accessible restaurant landing page built with Next.js, TailwindCSS, and shadcn/ui. It’s designed to offer a seamless user experience with elegant UI elements and intuitive navigation for potential customers looking to explore the restaurant, view the menu, and make reservations.",
+    github: "https://github.com/pawantech12/bellavista-restaurant-landing-page",
+    demo: "https://bellavista-restaurant-landing-page.vercel.app/",
+  },
+  {
     id: 28,
     title: "Graphic Designer Portfolio",
     image: "/portfolio28.webp",
