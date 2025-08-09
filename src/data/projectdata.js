@@ -1,5 +1,14 @@
 const projects = [
   {
+    id: 30,
+    title: "BrightSmile Dental Website",
+    image: "/portfolio30.webp",
+    description:
+      "BrightSmile A fully responsive and modern dental clinic website built with Next.js, TailwindCSS, and shadcn/ui, featuring Home, About, Services, and Contact pages with a clean, accessible, and user-friendly design.",
+    github: "https://github.com/pawantech12/brightsmile-dental-website",
+    demo: "https://brightsmile-dental-website-six.vercel.app/",
+  },
+  {
     id: 29,
     title: "Bella Vista – Restaurant Landing Page",
     image: "/portfolio29.webp",
