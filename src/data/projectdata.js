@@ -1,5 +1,14 @@
 const projects = [
   {
+    id: 31,
+    title: "Luxe Interior Designer Website",
+    image: "/portfolio31.webp",
+    description:
+      "A fully responsive and modern Interior Designer Website built using Next.js, Tailwind CSS, and Shadcn UI. Designed with a sleek and elegant layout, this website showcases services, projects, and client testimonials to deliver a premium brand experience for an interior design business.",
+    github: "https://github.com/pawantech12/luxe-interior-website",
+    demo: "https://luxe-interior-website.vercel.app/",
+  },
+  {
     id: 30,
     title: "BrightSmile Dental Website",
     image: "/portfolio30.webp",
