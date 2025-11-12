@@ -106,10 +106,15 @@ export default function ServicesSection() {
       </div>
 
       <div className="text-center">
-        <Button size="lg" variant="outline" asChild>
+        <Button
+          size="lg"
+          asChild
+          className="relative overflow-hidden rounded-lg px-8 py-4 border-2 border-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300 group"
+        >
           <Link
             href="/services"
             aria-label="View all available web development services"
+            className="relative z-10 flex items-center gap-2"
           >
             View All Services
             <ArrowRight className="ml-2 h-4 w-4" />

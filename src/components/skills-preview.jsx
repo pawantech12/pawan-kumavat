@@ -26,7 +26,7 @@ export default function SkillsPreview() {
         {allSkills.slice(0, 12).map((skill, index) => (
           <div
             key={index}
-            className="flex flex-col items-center p-4 bg-white rounded-lg border hover:shadow-lg transition-all duration-300 hover:scale-105"
+            className="group relative flex flex-col items-center p-4 pb-5 bg-white rounded-lg border hover:shadow-lg transition-all duration-300 hover:scale-105"
             aria-label={`Skill card for ${skill.name}`}
           >
             <div className={`p-3 rounded-lg mb-3 ${skill.color}`}>
@@ -35,13 +35,23 @@ export default function SkillsPreview() {
             <span className="text-sm font-medium text-gray-900 text-center">
               {skill.name}
             </span>
+            {/* Optional subtle gradient bottom line */}
+            <div className="absolute bottom-2 left-1/2 w-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 rounded-full transition-all duration-500 group-hover:w-3/4 -translate-x-1/2"></div>
           </div>
         ))}
       </div>
 
       <div className="text-center">
-        <Button size="lg" variant="outline" asChild>
-          <Link href="/skills" aria-label="View all developer skills">
+        <Button
+          size="lg"
+          asChild
+          className="relative overflow-hidden rounded-lg px-8 py-4 border-2 border-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300 group"
+        >
+          <Link
+            href="/skills"
+            aria-label="View all developer skills"
+            className="relative z-10 flex items-center gap-2"
+          >
             View All Skills
           </Link>
         </Button>

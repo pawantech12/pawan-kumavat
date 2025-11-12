@@ -133,7 +133,7 @@ export default function SkillsPage() {
           {allSkills.map((skill, index) => (
             <Card
               key={index}
-              className="hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer"
+              className="group relative hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer"
               aria-label={`${skill.name} skill card`}
             >
               <CardContent className="flex flex-col items-center p-6">
@@ -147,6 +147,8 @@ export default function SkillsPage() {
                   {skill.name}
                 </span>
               </CardContent>
+              {/* Optional subtle gradient bottom line */}
+              <div className="absolute bottom-3 left-1/2 w-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 rounded-full transition-all duration-500 group-hover:w-3/4 -translate-x-1/2"></div>
             </Card>
           ))}
         </section>
@@ -169,57 +171,76 @@ export default function SkillsPage() {
                   {certifications.map((cert, index) => (
                     <div
                       key={index}
-                      className={`group relative p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105 ${cert.color}`}
+                      className={`group relative p-6 rounded-2xl border-2 transition-all duration-300 hover:shadow-2xl hover:scale-105 ${cert.color} cursor-pointer`}
                       aria-label={`Certificate: ${cert.name} by ${cert.issuer}`}
                     >
+                      {/* Top: Icon and Date */}
                       <div className="flex items-start justify-between mb-4">
-                        <div className="text-2xl" aria-hidden="true">
-                          {cert.icon}
-                        </div>
-                        <div className="text-sm font-medium opacity-75">
+                        <div className="text-3xl">{cert.icon}</div>
+                        <div className="text-sm font-medium text-gray-700 dark:text-gray-300 opacity-75">
                           {cert.date}
                         </div>
                       </div>
-                      <h3 className="font-bold text-lg mb-2 leading-tight">
+
+                      {/* Certificate Title */}
+                      <h3 className="font-bold text-lg sm:text-xl mb-1 leading-snug text-gray-900 dark:text-white">
                         {cert.name}
                       </h3>
-                      <p className="text-sm opacity-80 mb-4">{cert.issuer}</p>
+
+                      {/* Issuer */}
+                      <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4">
+                        {cert.issuer}
+                      </p>
+
+                      {/* Verified + Download Button */}
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 bg-current rounded-full opacity-60"></div>
-                          <span className="text-xs font-medium opacity-75">
+                          <span className="text-xs sm:text-sm font-medium opacity-75">
                             Verified
                           </span>
                         </div>
+
                         <Button
                           size="sm"
-                          variant="ghost"
-                          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white/20"
+                          variant="outline"
+                          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-blue-600 hover:via-indigo-500 hover:to-purple-600 hover:text-white"
                           asChild
                         >
                           <Link
                             href={cert.pdfLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            download={true}
+                            download
                             aria-label={`Download ${cert.name} certificate PDF`}
                           >
-                            <Download className="h-4 w-4 mr-1" />
-                            PDF
+                            <Download className="h-4 w-4" />
+                            {cert.pdfLink.endsWith(".pdf")
+                              ? "PDF"
+                              : cert.pdfLink.endsWith(".webp")
+                              ? "Image"
+                              : cert.pdfLink.split(".").pop()?.toUpperCase() ||
+                                "File"}
                           </Link>
                         </Button>
                       </div>
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-xl pointer-events-none"></div>
+
+                      {/* Subtle Hover Glow */}
+                      <div className="absolute inset-0 rounded-2xl pointer-events-none group-hover:shadow-[0_0_40px_rgba(59,130,246,0.25)] transition-shadow duration-300"></div>
                     </div>
                   ))}
                 </div>
                 <div className="mt-8 text-center">
                   <div
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-full text-sm text-gray-600"
+                    className="inline-flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-800 dark:via-gray-900 dark:to-indigo-900 
+               text-sm text-gray-700 dark:text-gray-200 font-medium rounded-full shadow-sm hover:shadow-md transition-shadow duration-300"
                     aria-label="Certification verification note"
                   >
-                    <Shield className="h-4 w-4" aria-hidden="true" />
-                    All certifications are verified and up-to-date
+                    <Shield
+                      className="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0"
+                      aria-hidden="true"
+                    />
+                    <span>All certifications are verified and up-to-date</span>
                   </div>
                 </div>
               </div>

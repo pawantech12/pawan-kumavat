@@ -87,31 +87,54 @@ export default function TestimonialsPage() {
         {allTestimonials.map((testimonial, index) => (
           <article
             key={index}
-            className="relative hover:shadow-lg transition-shadow duration-300 h-full"
+            className="relative h-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm hover:shadow-2xl transition-shadow duration-500 overflow-hidden group"
             aria-label={`Testimonial from ${testimonial.name}`}
           >
             <Card className="h-full">
               <CardContent className="p-6 flex flex-col h-full">
+                {/* Quote Icon Accent */}
                 <div className="absolute top-4 right-4 text-blue-200">
                   <Quote className="h-6 w-6" aria-hidden="true" />
                 </div>
 
-                <p className="text-gray-600 my-4 leading-relaxed flex-grow">
+                {/* Testimonial Text */}
+                <blockquote
+                  className="text-gray-700 dark:text-gray-300 my-4 leading-relaxed flex-grow text-[15px] sm:text-base"
+                  itemProp="reviewBody"
+                >
                   &quot;{testimonial.content}&quot;
-                </p>
+                </blockquote>
 
-                <div className="space-y-3 mt-auto">
-                  <div className="flex items-center gap-3">
-                    <div>
-                      <h4 className="font-semibold text-gray-900">
+                {/* Author Info */}
+                <div className="mt-auto space-y-3 flex flex-col items-start">
+                  <div
+                    className="flex items-center gap-3"
+                    itemScope
+                    itemProp="author"
+                    itemType="https://schema.org/Person"
+                  >
+                    {/* Optional: Add author avatar */}
+                    {/* <Image src={testimonial.avatar} alt={testimonial.name} className="w-10 h-10 rounded-full" width={40} height={40} /> */}
+
+                    <div className="flex flex-col">
+                      <h4
+                        className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base"
+                        itemProp="name"
+                      >
                         {testimonial.name}
                       </h4>
-                      <p className="text-sm text-gray-600">
+                      <p
+                        className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm"
+                        itemProp="jobTitle"
+                      >
                         {testimonial.role}
                       </p>
                     </div>
                   </div>
                 </div>
+
+                {/* Subtle Bottom Accent */}
+                <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 group-hover:w-full transition-all duration-500"></div>
               </CardContent>
             </Card>
           </article>

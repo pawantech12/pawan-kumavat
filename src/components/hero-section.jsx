@@ -17,10 +17,12 @@ export default function HeroSection() {
           <div className="space-y-4">
             <Badge
               variant="secondary"
-              className="bg-blue-100 text-blue-800 hover:bg-blue-200"
+              className="relative inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 text-blue-700 font-semibold shadow-sm hover:shadow-md hover:from-blue-100 hover:via-indigo-100 hover:to-purple-100 transition-all duration-300"
             >
+              <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-5 rounded-full pointer-events-none"></span>
               Available for new opportunities
             </Badge>
+
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
               Hi, I'm{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
@@ -59,21 +61,34 @@ export default function HeroSection() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700">
-              <Link href="/projects">
-                View My Work
-                <ArrowRight className="ml-2 h-4 w-4" />
+            <Button
+              size="lg"
+              asChild
+              className="relative overflow-hidden rounded-lg px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300 group"
+            >
+              <Link
+                href="/projects"
+                className="relative z-10 flex items-center gap-2"
+              >
+                View My Work <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+
+            {/* Outline Button: Download Resume */}
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="relative rounded-lg px-10 py-5 border-2 border-blue-600 text-blue-600 font-semibold hover:border-blue-700 hover:text-blue-700 transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2"
+            >
               <Link
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 download={true}
+                className="flex items-center gap-2"
               >
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
+                <Download className="h-5 w-5" /> Download Resume
               </Link>
             </Button>
           </div>

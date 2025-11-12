@@ -31,70 +31,94 @@ export default function FeaturedProjects() {
         {projects.slice(0, 3).map((project, index) => (
           <Card
             key={index}
-            className="group hover:shadow-xl transition-all duration-300"
+            className="group relative overflow-hidden rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-500"
           >
-            <div className="scroll-on-hover rounded-t-lg">
+            {/* Image Section with hover zoom effect */}
+            <div className="relative overflow-hidden scroll-on-hover rounded-t-lg">
               <div className="scroll-on-hover-inner">
+                {" "}
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
                   width={400}
                   height={0} // optional, Next.js will infer it
                   className="w-full object-cover"
-                />
+                />{" "}
               </div>
+              {/* Top gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-t-3xl pointer-events-none" />
             </div>
-            <CardHeader>
-              <CardTitle className="text-2xl">{project.title}</CardTitle>
-              <CardDescription className="text-gray-600 text-base">
-                {project.description.length > 100
-                  ? project.description.slice(0, 100) + "..."
+
+            {/* Header */}
+            <CardHeader className="px-6 pt-6">
+              <CardTitle className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+                {project.title}
+              </CardTitle>
+              <CardDescription className="text-gray-600 dark:text-gray-300 text-base">
+                {project.description.length > 120
+                  ? project.description.slice(0, 120) + "..."
                   : project.description}
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+
+            {/* Content */}
+            <CardContent className="px-6 pb-6 space-y-4">
               <div className="flex gap-3">
                 {project.github && (
                   <Button
                     variant="outline"
                     asChild
-                    className="flex-1 bg-transparent"
+                    className="flex-1 border border-blue-500 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900 transition-all duration-300"
                   >
                     <Link
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`View source code of ${project.title} on GitHub`}
+                      className="flex items-center justify-center gap-2"
                     >
-                      <Github className="mr-2 h-4 w-4" />
+                      <Github className="h-4 w-4" />
                       Code
                     </Link>
                   </Button>
                 )}
                 {project.demo && (
-                  <Button asChild className="flex-1">
+                  <Button
+                    asChild
+                    className="flex-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                  >
                     <Link
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`View live demo of ${project.title}`}
                     >
-                      <ExternalLink className="mr-2 h-4 w-4" />
+                      <ExternalLink className="h-4 w-4" />
                       Live Demo
                     </Link>
                   </Button>
                 )}
               </div>
             </CardContent>
+
+            {/* Bottom Gradient Accent */}
+            <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 group-hover:w-full transition-all duration-500" />
           </Card>
         ))}
       </div>
 
       <div className="text-center">
-        <Button size="lg" variant="outline" asChild>
-          <Link href="/projects" aria-label="View all web development projects">
-            View All Projects
-            <ArrowRight className="ml-2 h-4 w-4" />
+        <Button
+          size="lg"
+          asChild
+          className="relative overflow-hidden rounded-lg px-8 py-4 border-2 border-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300 group"
+        >
+          <Link
+            href="/projects"
+            aria-label="View all web development projects"
+            className="relative z-10 flex items-center gap-2"
+          >
+            View All Projects <ArrowRight className="h-5 w-5" />
           </Link>
         </Button>
       </div>

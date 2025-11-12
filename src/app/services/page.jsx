@@ -279,10 +279,10 @@ export default function ServicesPage() {
         {services.map((service, index) => (
           <article
             key={index}
-            className="relative hover:shadow-lg transition-all duration-300 hover:scale-105"
+            className="relative hover:shadow-lg transition-all duration-300 hover:scale-105 rounded-xl overflow-hidden"
             aria-label={`${service.title} - ${service.description}`}
           >
-            <Card>
+            <Card className="h-full">
               {service.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                   <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
@@ -341,23 +341,31 @@ export default function ServicesPage() {
           {processSteps.map((step, index) => (
             <article
               key={index}
-              className="text-center border-none bg-white shadow-md hover:shadow-xl transition-all duration-300"
+              className="group relative text-center border-none bg-white dark:bg-slate-950 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
               aria-label={`Step ${step.step}: ${step.title}`}
             >
-              <Card>
-                <CardContent className="p-6">
+              <Card className="h-full rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+                <CardContent className="p-6 flex flex-col items-center">
+                  {/* Step Circle */}
                   <div
-                    className="w-14 h-14 mb-4 mx-auto rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white flex items-center justify-center text-lg font-bold shadow-lg"
+                    className="w-16 h-16 mb-4 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white flex items-center justify-center text-xl font-bold shadow-lg transition-transform duration-300 group-hover:scale-110"
                     aria-hidden="true"
                   >
                     {step.step}
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+
+                  {/* Title */}
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-2 transition-colors duration-300 group-hover:text-blue-600">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+
+                  {/* Description */}
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed text-center">
                     {step.description}
                   </p>
+
+                  {/* Subtle Gradient Accent Line */}
+                  <span className="block w-12 h-1 mt-4 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 opacity-80"></span>
                 </CardContent>
               </Card>
             </article>
