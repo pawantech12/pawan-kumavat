@@ -1,0 +1,14 @@
+import mongoose from "mongoose";
+
+const EducationSchema = new mongoose.Schema(
+  {
+    degree: { type: String, required: true },
+    school: { type: String, required: true },
+    period: { type: String, required: true },
+    description: { type: String, required: true },
+  },
+  { timestamps: true }
+);
+
+export default mongoose.models.Education ||
+  mongoose.model("Education", EducationSchema);

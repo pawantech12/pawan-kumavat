@@ -168,6 +168,7 @@ const projects = [
     image: "/portfolio13.webp",
     description:
       "PlaceToVisitIndia is a feature-rich travel guide website designed to help users explore India’s top destinations. Originally built with React, I successfully migrated its frontend to Next.js while ensuring seamless integration with the existing backend. The website includes a dynamic homepage with a hero slider, travel categories, latest blogs, trending destinations, and a virtual travel section with embedded YouTube videos. Users can explore detailed destination pages with photo galleries, FAQs, and related travel suggestions. The platform also features a blog system, contact page, about page, and policy pages, providing a comprehensive travel resource. This project highlights my expertise in Next.js, performance optimization, and frontend development. 🚀",
+    github: "",
     demo: "https://www.placestovisitindia.com/",
   },
   {
@@ -203,6 +204,7 @@ const projects = [
     image: "/portfolio1.webp",
     description:
       "I developed the frontend of an e-commerce website, focusing on mobile devices using ReactJS and TailwindCSS. The project involved integrating the Razorpay payment gateway to ensure seamless transaction processing. I designed and implemented a user-friendly interface, prioritizing a smooth and efficient user experience on mobile devices. After successfully completing the project, I deployed it on the Razorhost platform with the domain https://flip4sale.xyz. This experience showcases my ability to meet client requirements, work with payment integrations, and deliver high-quality frontend solutions.",
+    github: "",
     demo: "https://flip4sale.xyz",
   },
   {

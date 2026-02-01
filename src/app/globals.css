@@ -104,3 +104,17 @@ html {
 .btn-hover-lift:hover {
   transform: translateY(-2px);
 }
+@keyframes blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+.animate-blink {
+  animation: blink 1s step-start infinite;
+}

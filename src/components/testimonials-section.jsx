@@ -1,115 +1,176 @@
+"use client";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Star, Quote, ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-const testimonials = [
-  {
-    name: "Amit Sharma",
-    role: "Small Business Owner",
-    content:
-      "Pawan helped me take my local shop online with a well-designed and easy-to-use website. His attention to detail and ability to deliver a fast, mobile-friendly site exceeded my expectations. Highly recommend his work!",
-  },
-  {
-    name: "Neha Verma",
-    role: "Startup Founder",
-    content:
-      "I needed a functional and responsive website for my startup, and Pawan delivered exactly what I was looking for. His expertise in full-stack development and API integrations made the process smooth and efficient. A great developer to work with!",
-  },
-  {
-    name: "Rahul Singh",
-    role: "Freelance Photographer",
-    content:
-      "I wanted a portfolio website to showcase my photography work, and Pawan built a stunning and fast-loading site using Next.js and TailwindCSS. The layout and user experience are top-notch!",
-  },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
+import SectionLoader from "./section-loader";
 
 export default function TestimonialsSection() {
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get("/api/testimonials");
+
+        setTestimonials(res.data);
+      } catch (error) {
+        console.log("Errror while fetching testimonials data: ", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <section
       className="container mx-auto px-4 sm:px-6 lg:px-8"
       aria-label="Client Testimonials"
     >
-      <div className="text-center space-y-4 mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-          What Clients Say
+      <div className="text-center mb-12 space-y-6 relative">
+        {/* Subtle terminal glow */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-10 blur-3xl -z-10 rounded-lg"></div>
+
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 font-mono relative inline-block">
+          {/* Terminal cursor */}
+          <span className="before:content-['>_'] before:text-blue-500 animate-pulse mr-2"></span>
+          {/* Main title */}
+          What Clients
+          <span className="ml-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            Say
+          </span>
+          {/* Animated underline */}
+          <span className="absolute -bottom-1 max-sm:left-1/2 max-sm:-translate-x-1/2 right-0 w-2/5 h-[4px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
         </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Don&apos;t just take my word for it. Here&apos;s what some of my
-          clients have to say about working with me.
+
+        {/* Subtext / Description */}
+        <p className="relative text-lg font-mono text-gray-100 max-w-2xl mx-auto bg-gray-900/80 rounded-2xl p-5 border-l-4 border-blue-500 shadow-lg overflow-hidden">
+          {/* Top neon bar */}
+          <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 animate-[pulse_3s_ease-in-out_infinite] rounded-t-xl"></span>
+
+          {/* Terminal-style content */}
+          <span className="block before:content-['>_'] before:text-blue-400 before:mr-2">
+            Real feedback from clients who trusted me to build reliable,
+            high-performance web solutions.
+          </span>
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        {testimonials.map((testimonial, index) => (
-          <Card
-            key={index}
-            className="relative h-full rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 shadow-sm hover:shadow-2xl transition-shadow duration-500 overflow-hidden group"
-            itemScope
-            itemType="https://schema.org/Review"
-          >
-            <CardContent className="p-6 flex flex-col h-full">
-              {/* Quote Icon Accent */}
-              <div className="absolute top-4 right-4 text-blue-200">
-                <Quote className="h-6 w-6" aria-hidden="true" />
-              </div>
+      {loading ? (
+        <SectionLoader text="Loading Testimonials..." />
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {testimonials.slice(0, 3).map((testimonial, index) => (
+            <Card
+              key={index}
+              className="
+            relative h-full
+            rounded-2xl
+            bg-white
+            border border-gray-200
+            transition-all duration-400
+            hover:border-blue-500 hover:shadow-xl
+            overflow-hidden
+            group
+          "
+              itemScope
+              itemType="https://schema.org/Review"
+            >
+              <CardContent className="relative p-6 flex flex-col h-full font-mono">
+                {/* Terminal Header */}
+                <div className="absolute top-0 left-0 w-full h-8 bg-gray-100 border-b border-gray-200 flex items-center px-3 gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                  <span className="ml-3 text-xs text-gray-500 tracking-wide">
+                    review.log
+                  </span>
+                </div>
 
-              {/* Testimonial Text */}
-              <blockquote
-                className="text-gray-700 dark:text-gray-300 my-4 leading-relaxed flex-grow text-[15px] sm:text-base"
-                itemProp="reviewBody"
-              >
-                &quot;{testimonial.content}&quot;
-              </blockquote>
+                {/* Quote Icon */}
+                <div className="absolute top-10 right-4 text-blue-500/20">
+                  <Quote className="h-7 w-7" aria-hidden="true" />
+                </div>
 
-              {/* Author Info */}
-              <div className="mt-auto space-y-3 flex flex-col items-start">
+                {/* Review Content */}
+                <blockquote
+                  className="
+                mt-10
+                text-sm sm:text-base
+                text-gray-800
+                leading-relaxed
+                flex-grow
+              "
+                  itemProp="reviewBody"
+                >
+                  <span className="text-blue-500">{`> `}</span>
+                  {testimonial.content}
+                </blockquote>
+
+                {/* Author Section */}
                 <div
-                  className="flex items-center gap-3"
+                  className="mt-6 pt-4 border-t border-dashed border-gray-300"
                   itemScope
                   itemProp="author"
                   itemType="https://schema.org/Person"
                 >
-                  {/* Optional: Add author avatar */}
-                  {/* <Image src={testimonial.avatar} alt={testimonial.name} className="w-10 h-10 rounded-full" width={40} height={40} /> */}
-
-                  <div className="flex flex-col">
-                    <h4
-                      className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base"
-                      itemProp="name"
-                    >
-                      {testimonial.name}
-                    </h4>
-                    <p
-                      className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm"
-                      itemProp="jobTitle"
-                    >
-                      {testimonial.role}
-                    </p>
-                  </div>
+                  <h4
+                    className="text-sm sm:text-base font-semibold text-gray-900"
+                    itemProp="name"
+                  >
+                    {testimonial.name}
+                  </h4>
+                  <p
+                    className="text-xs sm:text-sm text-gray-500"
+                    itemProp="jobTitle"
+                  >
+                    {testimonial.role}
+                  </p>
                 </div>
-              </div>
 
-              {/* Subtle Bottom Accent */}
-              <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 group-hover:w-full transition-all duration-500"></div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+                {/* Bottom Status Bar */}
+                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gray-200">
+                  <div className="h-full w-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 group-hover:w-full transition-all duration-500"></div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
 
       <div className="text-center">
         <Button
           size="lg"
           asChild
-          className="relative overflow-hidden rounded-lg px-8 py-4 border-2 border-transparent bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300 group"
+          className="
+      relative overflow-hidden px-5 py-5 rounded-xl
+      font-mono font-semibold text-white
+      bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600
+      shadow-[0_10px_30px_rgba(99,102,241,0.35)]
+      hover:shadow-[0_15px_45px_rgba(99,102,241,0.55)]
+      transition-all duration-300
+      group
+    "
         >
           <Link
             href="/testimonials"
             aria-label="Read all client testimonials"
-            className="relative z-10 flex items-center gap-2"
+            className="relative z-10 flex items-center gap-3"
           >
-            View All Testimonials
-            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+            {/* Terminal prefix */}
+            <span className="text-green-300 font-mono animate-pulse">
+              {">_"}
+            </span>
+
+            <span className="tracking-wide">View All Testimonials</span>
+
+            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </Button>
       </div>

@@ -5,31 +5,71 @@ import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function HeroSection() {
+  const [stage, setStage] = useState("terminal");
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (stage === "terminal") {
+      const timer = setTimeout(() => setStage("loading"), 2000);
+      return () => clearTimeout(timer);
+    }
+
+    if (stage === "loading") {
+      const interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(interval);
+            setTimeout(() => setStage("profile"), 500);
+            return 100;
+          }
+          return prev + 1;
+        });
+      }, 20);
+      return () => clearInterval(interval);
+    }
+  }, [stage]);
   return (
     <section
       className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16"
       aria-label="Hero section introducing Pawan Kumavat, full stack web developer"
     >
       <div className="grid lg:grid-cols-2 gap-12 items-center">
+        {/* Text Column */}
         <div className="space-y-8">
           <div className="space-y-4">
+            {/* Developer-style Neon Terminal Badge */}
             <Badge
               variant="secondary"
-              className="relative inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 text-blue-700 font-semibold shadow-sm hover:shadow-md hover:from-blue-100 hover:via-indigo-100 hover:to-purple-100 transition-all duration-300"
+              className="relative inline-flex items-center px-5 py-2 rounded-xl font-mono text-sm text-white 
+             bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 
+             shadow-[0_0_10px_rgba(99,102,241,0.5)]"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-5 rounded-full pointer-events-none"></span>
-              Available for new opportunities
+              {/* Glowing animated background effect */}
+              <span
+                className="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 
+                   opacity-30 animate-[pulse_2s_ease-in-out_infinite] rounded-xl pointer-events-none"
+              ></span>
+              <span className="relative z-10">
+                $ Available for new opportunities
+              </span>
             </Badge>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+            {/* Heading */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight font-mono">
               Hi, I'm{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                 Pawan Kumavat
               </span>
+              <span className="inline-block animate-pulse ml-1 text-blue-600">
+                |
+              </span>
             </h1>
-            <h2 className="text-xl sm:text-2xl text-gray-600 font-medium">
+
+            {/* Typewriter Job Titles */}
+            <h2 className="text-xl sm:text-2xl text-gray-600 font-medium font-mono">
               <Typewriter
                 words={[
                   "Frontend Developer",
@@ -45,26 +85,56 @@ export default function HeroSection() {
                 ]}
                 loop={true}
                 cursor
-                cursorStyle="|"
+                cursorStyle="_"
                 typeSpeed={70}
                 deleteSpeed={50}
                 delaySpeed={1000}
               />
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
-              I&apos;m a passionate full stack web developer specializing in
-              building fast, scalable, and responsive web applications using
-              React, Next.js, Node.js, MongoDB, TailwindCSS, and modern
-              JavaScript frameworks. I help businesses grow by creating
-              SEO-friendly and performance-optimized websites.
+
+            {/* Description in code block style */}
+            <p className="relative text-gray-100 bg-gray-900/90 dark:bg-gray-800/90 rounded-xl p-6 font-mono max-w-2xl shadow-lg border-l-4 border-blue-500 overflow-hidden">
+              {/* Optional terminal header for dev-style vibe */}
+              <div className="flex items-center mb-4 space-x-2">
+                <span className="w-3 h-3 bg-red-500 rounded-full"></span>
+                <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
+                <span className="w-3 h-3 bg-green-500 rounded-full"></span>
+                <span className="ml-2 text-sm text-gray-400 font-mono">
+                  ~/projects/portfolio
+                </span>
+              </div>
+
+              {/* Terminal-style content */}
+              <code className="block leading-relaxed text-sm">
+                <span className="block before:content-['>_'] before:text-blue-400 before:mr-2">
+                  I'm a passionate full stack developer building fast, scalable,
+                  and responsive web apps.
+                </span>
+
+                <span className="block mt-2 before:content-['>_'] before:text-blue-400 before:mr-2">
+                  Tech stack:
+                  <span className="text-green-400 font-bold ml-1">
+                    React, Next.js, Node.js, MongoDB, TailwindCSS
+                  </span>
+                </span>
+
+                <span className="block mt-2 before:content-['>_'] before:text-blue-400 before:mr-2">
+                  I craft SEO-friendly, performance-optimized websites to help
+                  businesses grow.
+                </span>
+
+                {/* Optional blinking cursor for dynamic effect */}
+                <span className="inline-block w-1 h-5 bg-blue-400 animate-blink ml-1 align-bottom"></span>
+              </code>
             </p>
           </div>
 
+          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Button
               size="lg"
               asChild
-              className="relative overflow-hidden rounded-lg px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-white font-semibold shadow-sm hover:shadow-md transition-all duration-300 group"
+              className="relative overflow-hidden rounded-lg px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-white font-mono font-semibold shadow-sm hover:shadow-md transition-all duration-300 group"
             >
               <Link
                 href="/projects"
@@ -74,12 +144,11 @@ export default function HeroSection() {
               </Link>
             </Button>
 
-            {/* Outline Button: Download Resume */}
             <Button
               size="lg"
               variant="outline"
               asChild
-              className="relative rounded-lg px-10 py-5 border-2 border-blue-600 text-blue-600 font-semibold hover:border-blue-700 hover:text-blue-700 transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2"
+              className="relative rounded-lg px-10 py-5 border-2 border-blue-600 text-blue-600 font-mono font-semibold hover:border-blue-700 hover:text-blue-700 transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2"
             >
               <Link
                 href="/resume.pdf"
@@ -93,6 +162,7 @@ export default function HeroSection() {
             </Button>
           </div>
 
+          {/* Social Links */}
           <div className="flex items-center space-x-6">
             <Link
               href="https://github.com/pawantech12"
@@ -115,18 +185,46 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="relative">
-          <div className="relative w-full max-w-md mx-auto">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-3xl opacity-20"></div>
-            <Image
-              src="/profile.png"
-              alt="Pawan Kumavat - Full Stack Developer"
-              width={400}
-              height={400}
-              className="relative rounded-full border-4 border-white shadow-2xl"
-              priority
-            />
-          </div>
+        {/* Image Column */}
+        <div className="relative flex justify-center">
+          {stage === "terminal" && (
+            <div className="bg-black/90 border border-gray-700 rounded-md p-6 font-mono text-green-400 shadow-lg w-full max-w-md">
+              <p className="mb-2">➜ Starting Portfolio...</p>
+              <p className="text-white">pnpm run dev</p>
+            </div>
+          )}
+
+          {stage === "loading" && (
+            <div className="w-full max-w-md">
+              <p className="font-mono text-indigo-400 mb-2">
+                Loading portfolio...
+              </p>
+              <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden shadow-inner">
+                <div
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full transition-all duration-200"
+                  style={{ width: `${progress}%` }}
+                ></div>
+              </div>
+              <p className="font-mono text-gray-400 text-right mt-1">
+                {progress}%
+              </p>
+            </div>
+          )}
+
+          {stage === "profile" && (
+            <div className="relative w-full max-w-md mx-auto mt-8">
+              {/* Floating gradient glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-3xl opacity-25 animate-pulse-slow"></div>
+              <Image
+                src="/profile.png"
+                alt="Pawan Kumavat - Full Stack Developer"
+                width={400}
+                height={400}
+                className="relative rounded-full border-4 border-white shadow-2xl"
+                priority
+              />
+            </div>
+          )}
         </div>
       </div>
     </section>

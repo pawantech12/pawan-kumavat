@@ -12,79 +12,101 @@ const navigation = [
 ];
 
 const socialLinks = [
-  {
-    name: "GitHub",
-    href: "https://github.com/pawantech12",
-    icon: Github,
-    aria: "Visit my GitHub profile",
-    rel: "me",
-  },
+  { name: "GitHub", href: "https://github.com/pawantech12", icon: Github },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/pawan-kumavat-11b105297/",
     icon: Linkedin,
-    aria: "Visit my LinkedIn profile",
-    rel: "me",
   },
   {
     name: "Email",
     href: "mailto:pawankumavat042@gmail.com",
     icon: Mail,
-    aria: "Send me an email",
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t" aria-label="Site footer">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
+    <footer
+      className="border-t border-gray-200 bg-white mt-5"
+      aria-label="Developer footer"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main footer */}
+        <div className="grid gap-12 py-16 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-2">
             <Link
               href="/"
-              aria-label="Go to homepage"
-              className="flex items-center space-x-2 mb-4"
+              className="group inline-flex items-center gap-3 mb-5"
             >
-              <Code2 className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">Pawan.K</span>
+              <div
+                className="relative flex h-11 w-11 items-center justify-center rounded-xl
+                bg-gradient-to-br from-blue-600 to-indigo-600
+                shadow-[0_6px_20px_rgba(59,130,246,0.35)]
+                group-hover:scale-105 transition-transform"
+              >
+                <Code2 className="h-5 w-5 text-white" />
+                <span className="absolute bottom-1 right-1 h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+              </div>
+
+              <div className="flex items-center font-mono text-lg font-semibold">
+                <span className="text-gray-500">&gt;</span>
+                <span className="ml-1 text-gray-800">
+                  pawan<span className="text-blue-600">.dev</span>
+                </span>
+                <span className="ml-1 h-4 w-[2px] bg-blue-600 animate-pulse" />
+              </div>
             </Link>
-            <p className="text-gray-600 mb-4 max-w-md">
-              Full Stack Developer passionate about creating exceptional digital
-              experiences with modern technologies and clean, efficient code.
+
+            <p className="max-w-md text-gray-600 leading-relaxed">
+              Full-stack developer crafting scalable, maintainable and
+              production-ready web applications using modern technologies and
+              clean architecture.
             </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <Link
-                    key={social.name}
-                    href={social.href}
-                    target="_blank"
-                    rel={social.rel || "noopener noreferrer"}
-                    aria-label={social.aria}
-                    title={social.name}
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </Link>
-                );
-              })}
+
+            {/* Social links */}
+            <div className="mt-6 flex items-center gap-4">
+              {socialLinks.map(({ name, href, icon: Icon }) => (
+                <Link
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  aria-label={name}
+                  className="group relative"
+                >
+                  <span
+                    className="absolute inset-0 rounded-xl
+                    bg-gradient-to-r from-blue-600 to-indigo-600
+                    opacity-0 group-hover:opacity-10 transition"
+                  />
+                  <Icon className="h-5 w-5 text-gray-600 group-hover:text-blue-600 transition" />
+                </Link>
+              ))}
             </div>
+
+            {/* Status */}
+            <p className="mt-4 font-mono text-xs text-gray-400">
+              // status: open for freelance & collaborations
+            </p>
           </div>
 
           {/* Navigation */}
-          <nav aria-label="Footer navigation">
-            <h3 className="font-semibold text-gray-900 mb-4">Navigation</h3>
+          <nav className="font-mono">
+            <h3 className="mb-4 text-sm font-semibold text-gray-900">
+              $ navigation
+            </h3>
             <ul className="space-y-2">
               {navigation.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
-                    title={`Go to ${item.name} page`}
+                    className="group inline-flex items-center gap-1 text-gray-600 hover:text-blue-600 transition"
                   >
-                    {item.name}
+                    <span className="text-blue-500">$</span>
+                    <span className="group-hover:translate-x-0.5 transition-transform">
+                      {item.name}
+                    </span>
                   </Link>
                 </li>
               ))}
@@ -92,37 +114,38 @@ export default function Footer() {
           </nav>
 
           {/* Contact */}
-          <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Get In Touch</h3>
-            <div className="space-y-2 text-gray-600">
-              <p>Kalyan(W),Thane,Maharashtra</p>
+          <div className="font-mono">
+            <h3 className="mb-4 text-sm font-semibold text-gray-900">
+              $ contact
+            </h3>
+
+            <div className="space-y-2 text-sm text-gray-600">
+              <p>// Kalyan (W), Thane, MH</p>
+
               <Link
                 href="mailto:pawankumavat042@gmail.com"
-                className="hover:text-blue-600 transition-colors block"
-                aria-label="Send email to pawankumavat042@gmail.com"
+                className="hover:text-blue-600 transition block"
               >
                 pawankumavat042@gmail.com
               </Link>
+
               <Link
                 href="tel:+919619579304"
-                aria-label="Call +91 9619579304"
-                className="hover:text-blue-600 transition-colors block"
+                className="hover:text-blue-600 transition block"
               >
-                +91 9619579304
+                +91 96195 79304
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="border-t pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-600 text-sm">
-              © {new Date().getFullYear()} Pawan.K. All rights reserved.
-            </p>
-            <p className="text-gray-600 text-sm flex items-center mt-2 md:mt-0">
-              Made with <Heart className="h-4 w-4 text-red-500 mx-1" />
-            </p>
-          </div>
+        {/* Bottom bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 border-t border-gray-200 py-6 text-sm text-gray-500 font-mono">
+          <p>© {new Date().getFullYear()} pawan.dev — all rights reserved</p>
+
+          <p className="flex items-center gap-1">
+            built with <Heart className="h-4 w-4 text-red-500" /> & clean code
+          </p>
         </div>
       </div>
     </footer>
