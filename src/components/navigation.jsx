@@ -97,15 +97,6 @@ export default function Navigation() {
           }
         `}
                 >
-                  {/* CLI Cursor */}
-                  <span
-                    className={`text-blue-500 font-bold transition-all duration-300
-            ${active ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
-          `}
-                  >
-                    $
-                  </span>
-
                   {/* Command Text */}
                   <span className="relative font-semibold tracking-tight">
                     {item.name}
@@ -260,15 +251,6 @@ export default function Navigation() {
               }
             `}
                     >
-                      {/* CLI Cursor */}
-                      <span
-                        className={`font-bold text-blue-500 transition-opacity
-                ${active ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
-              `}
-                      >
-                        $
-                      </span>
-
                       {/* Command */}
                       <span className="font-semibold tracking-tight">
                         {item.name}

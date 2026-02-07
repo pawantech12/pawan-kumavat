@@ -94,7 +94,7 @@ export default function Footer() {
           {/* Navigation */}
           <nav className="font-mono">
             <h3 className="mb-4 text-sm font-semibold text-gray-900">
-              $ navigation
+              Navigation
             </h3>
             <ul className="space-y-2">
               {navigation.map((item) => (
@@ -103,7 +103,6 @@ export default function Footer() {
                     href={item.href}
                     className="group inline-flex items-center gap-1 text-gray-600 hover:text-blue-600 transition"
                   >
-                    <span className="text-blue-500">$</span>
                     <span className="group-hover:translate-x-0.5 transition-transform">
                       {item.name}
                     </span>
@@ -116,7 +115,7 @@ export default function Footer() {
           {/* Contact */}
           <div className="font-mono">
             <h3 className="mb-4 text-sm font-semibold text-gray-900">
-              $ contact
+              Contact
             </h3>
 
             <div className="space-y-2 text-sm text-gray-600">

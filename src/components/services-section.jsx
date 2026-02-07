@@ -1,59 +1,35 @@
+"use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import { Code, Server, Laptop } from "lucide-react";
-import Link from "next/link";
+import * as LucideIcons from "lucide-react";
 
-const services = [
-  {
-    id: 1,
-    title: "Front-End Development",
-    description:
-      "Crafting responsive and interactive user interfaces using HTML, CSS, and JavaScript, with a focus on modern frameworks like Bootstrap and TailwindCSS. Expertise in ReactJS for building dynamic single-page applications.",
-    icon: <Code className="h-6 w-6" />,
-    features: [
-      "Responsive Design",
-      "Modern Frameworks",
-      "ReactJS",
-      "Interactive UI",
-    ],
-    color: "bg-blue-100 text-blue-800",
-    popular: false,
-  },
-  {
-    id: 2,
-    title: "Back-End Development",
-    description:
-      "Developing robust server-side applications using Node.js and Express.js, alongside traditional technologies like PHP and MySQL. Skilled in creating RESTful APIs and managing databases.",
-    icon: <Server className="h-6 w-6" />,
-    features: [
-      "Node.js & Express",
-      "PHP & MySQL",
-      "RESTful APIs",
-      "Database Management",
-    ],
-    color: "bg-green-100 text-green-800",
-    popular: false,
-  },
-  {
-    id: 3,
-    title: "Full-Stack Development",
-    description:
-      "Offering comprehensive web solutions by handling both front-end and back-end development, leveraging the MERN stack for seamless integration and efficient development.",
-    icon: <Laptop className="h-6 w-6" />,
-    features: [
-      "MERN Stack",
-      "End-to-End Solutions",
-      "Seamless Integration",
-      "Efficient Development",
-    ],
-    color: "bg-purple-100 text-purple-800",
-    popular: true,
-  },
-];
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import SectionLoader from "./section-loader";
 
 export default function ServicesSection() {
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get("/api/services");
+
+        setServices(res.data);
+      } catch (error) {
+        console.log("Errror while fetching services data: ", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <section
       className="container mx-auto px-4 sm:px-6 lg:px-8"
@@ -85,33 +61,38 @@ export default function ServicesSection() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        {services.map((service, index) => (
-          <Card
-            key={index}
-            className="relative hover:shadow-lg transition-all duration-300 hover:scale-105"
-          >
-            {service.popular && (
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                <Badge
-                  className="relative inline-flex items-center px-4 py-1 rounded-full text-sm font-mono text-white
+      {loading ? (
+        <SectionLoader text="Loading Services..." />
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {services.slice(0, 3).map((service, index) => {
+            const Icon = LucideIcons[service.icon] || LucideIcons.HelpCircle;
+            return (
+              <Card
+                key={index}
+                className="relative hover:shadow-lg transition-all duration-300 hover:scale-105"
+              >
+                {service.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <Badge
+                      className="relative inline-flex items-center px-4 py-1 rounded-full text-sm font-mono text-white
                bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600
                
                before:absolute before:inset-0 before:rounded-full before:blur-xl before:opacity-30 before:bg-gradient-to-r before:from-blue-400 before:via-indigo-500 before:to-purple-500
                "
-                >
-                  <span className="relative z-10">Most Popular</span>
-                </Badge>
-              </div>
-            )}
-            <CardHeader className="text-center pb-4">
-              <div
-                className={`mx-auto w-16 h-16 rounded-lg flex items-center justify-center mb-4 ${service.color}`}
-              >
-                {service.icon}
-              </div>
-              <CardTitle
-                className="
+                    >
+                      <span className="relative z-10">Most Popular</span>
+                    </Badge>
+                  </div>
+                )}
+                <CardHeader className="text-center pb-4">
+                  <div
+                    className={`mx-auto w-16 h-16 rounded-lg flex items-center justify-center mb-4 ${service.color}`}
+                  >
+                    <Icon className="h-7 w-7" aria-hidden />
+                  </div>
+                  <CardTitle
+                    className="
     text-xl font-mono relative 
     before:content-['{'] after:content-['}'] 
     before:text-blue-500 after:text-blue-500 
@@ -120,39 +101,41 @@ export default function ServicesSection() {
     group-hover:before:animate-pulse group-hover:after:animate-pulse
     hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 text-neutral-600
   "
-              >
-                {service.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-gray-200 text-center font-mono text-sm sm:text-base relative bg-gray-900/80 dark:bg-gray-800/80 p-4 rounded-lg shadow-md border-l-4 border-blue-500 overflow-hidden">
-                <span className="text-blue-400 before:content-['>_'] before:mr-2"></span>
-                {service.description}
-              </p>
-
-              <div className="space-y-3">
-                {service.features.map((feature, featureIndex) => (
-                  <div
-                    key={featureIndex}
-                    className="flex items-center gap-1 group transition-all duration-300 hover:translate-x-2"
                   >
-                    {/* Glowing dev icon */}
-                    <span className="text-blue-500 font-mono animate-pulse">
-                      •
-                    </span>
+                    {service.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-gray-200 text-center font-mono text-sm sm:text-base relative bg-gray-900/80 dark:bg-gray-800/80 p-4 rounded-lg shadow-md border-l-4 border-blue-500 overflow-hidden">
+                    <span className="text-blue-400 before:content-['>_'] before:mr-2"></span>
+                    {service.description}
+                  </p>
 
-                    {/* Feature text in terminal/code style */}
-                    <span className="relative font-mono text-base text-gray-700 group-hover:text-blue-600 transition-colors">
-                      <span className="before:content-['>_'] before:text-blue-500 animate-pulse-slow"></span>
-                      {feature}
-                    </span>
+                  <div className="space-y-3">
+                    {service.features.map((feature, featureIndex) => (
+                      <div
+                        key={featureIndex}
+                        className="flex items-center gap-1 group transition-all duration-300 hover:translate-x-2"
+                      >
+                        {/* Glowing dev icon */}
+                        <span className="text-blue-500 font-mono animate-pulse">
+                          •
+                        </span>
+
+                        {/* Feature text in terminal/code style */}
+                        <span className="relative font-mono text-base text-gray-700 group-hover:text-blue-600 transition-colors">
+                          <span className="before:content-['>_'] before:text-blue-500 animate-pulse-slow"></span>
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+      )}
 
       <div className="text-center">
         <Button

@@ -93,7 +93,7 @@ export default function HeroSection() {
             </h2>
 
             {/* Description in code block style */}
-            <p className="relative text-gray-100 bg-gray-900/90 dark:bg-gray-800/90 rounded-xl p-6 font-mono max-w-2xl shadow-lg border-l-4 border-blue-500 overflow-hidden">
+            <div className="relative text-gray-100 bg-gray-900/90 dark:bg-gray-800/90 rounded-xl p-6 font-mono max-w-2xl shadow-lg border-l-4 border-blue-500 overflow-hidden">
               {/* Optional terminal header for dev-style vibe */}
               <div className="flex items-center mb-4 space-x-2">
                 <span className="w-3 h-3 bg-red-500 rounded-full"></span>
@@ -126,7 +126,7 @@ export default function HeroSection() {
                 {/* Optional blinking cursor for dynamic effect */}
                 <span className="inline-block w-1 h-5 bg-blue-400 animate-blink ml-1 align-bottom"></span>
               </code>
-            </p>
+            </div>
           </div>
 
           {/* Buttons */}
