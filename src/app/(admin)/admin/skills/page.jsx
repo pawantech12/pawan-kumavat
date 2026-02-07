@@ -61,7 +61,6 @@ import {
   Wrench,
 } from "lucide-react";
 
-import allSkills from "@/data/skillsdata";
 import axios from "axios";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";

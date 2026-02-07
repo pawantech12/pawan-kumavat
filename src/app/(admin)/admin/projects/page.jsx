@@ -39,7 +39,6 @@ import {
   Github,
   ImageIcon,
 } from "lucide-react";
-import projectsData from "@/data/projectdata";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import axios from "axios";
