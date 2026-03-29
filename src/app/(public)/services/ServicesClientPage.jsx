@@ -68,36 +68,34 @@ const ServicesClientPage = () => {
       aria-label="Services Page - Full Stack Development Offerings"
     >
       {/* Header */}
-      <header
-        className="text-center mb-16 space-y-6 relative"
-        aria-label="Page Introduction"
-      >
-        {/* Background subtle gradient glow */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-10 blur-3xl -z-10 rounded-xl"></div>
+      <div className="text-center mb-16 relative">
+        {/* Background Glow */}
+        <div className="absolute inset-0 flex justify-center -z-10">
+          <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+        </div>
 
-        {/* Main heading with terminal-style prefix and gradient accent */}
-        <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 font-mono relative inline-block">
-          {/* Terminal cursor */}
-          <span className="before:content-['>_'] before:text-blue-500 animate-pulse"></span>
+        {/* Small Label */}
+        <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
           Services
-          <span className="text-blue-600 ml-2">I Offer</span>
-          {/* Animated underline gradient */}
-          <span className="absolute -bottom-1 max-sm:left-1/2 max-sm:-translate-x-1/2 right-0 w-2/5 h-[4px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
-        </h1>
+        </span>
 
-        {/* Subtext / description in terminal/code style */}
-        <p className="relative text-lg text-gray-100 max-w-3xl mx-auto font-mono bg-gray-900/80 dark:bg-gray-800/70 rounded-2xl p-6 border-l-4 border-blue-500 shadow-lg overflow-hidden">
-          {/* Neon glow top bar */}
-          <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 animate-[pulse_3s_ease-in-out_infinite] rounded-t-xl"></span>
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-4xl  font-semibold text-gray-900 tracking-tight">
+          Services <span className="text-blue-600">I Offer</span>
+        </h2>
 
-          {/* Terminal-style content */}
-          <span className="block before:content-['>_'] before:text-blue-400 before:mr-2">
-            I provide end-to-end development services, from designing responsive
-            UIs to building scalable backends and deploying production-ready web
-            applications.
-          </span>
+        {/* Divider */}
+        <div className="flex justify-center mt-4">
+          <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+        </div>
+
+        {/* Description */}
+        <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          I provide end-to-end development services, from designing responsive
+          UIs to building scalable backends and deploying production-ready web
+          applications.
         </p>
-      </header>
+      </div>
 
       {/* Services Grid */}
       {loading ? (
@@ -112,67 +110,72 @@ const ServicesClientPage = () => {
             return (
               <Card
                 key={index}
-                className="relative hover:shadow-lg transition-all duration-300 hover:scale-105"
+                className="group relative overflow-hidden
+  border border-neutral-200/60
+  bg-white/70 backdrop-blur-xl
+  shadow-sm hover:shadow-xl
+  transition-all duration-500
+  hover:-translate-y-2"
               >
+                {/* Popular Badge */}
                 {service.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="absolute top-4 right-4 z-10">
                     <Badge
-                      className="relative inline-flex items-center px-4 py-1 rounded-full text-sm font-mono text-white
-                 bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600
-                 
-                 before:absolute before:inset-0 before:rounded-full before:blur-xl before:opacity-30 before:bg-gradient-to-r before:from-blue-400 before:via-indigo-500 before:to-purple-500
-                 "
+                      className="rounded-full px-3 py-1 text-xs font-medium
+        bg-gradient-to-r from-blue-600 to-indigo-600 text-white
+        shadow-md"
                     >
-                      <span className="relative z-10">Most Popular</span>
+                      Most Popular
                     </Badge>
                   </div>
                 )}
+
                 <CardHeader className="text-center pb-4">
+                  {/* Icon */}
                   <div
-                    className={`mx-auto w-16 h-16 rounded-lg flex items-center justify-center mb-4 ${service.color}`}
+                    className={`mx-auto w-16 h-16 rounded-xl flex items-center justify-center mb-4
+      shadow-sm group-hover:scale-110 transition-transform duration-300
+      ${service.color}`}
                   >
-                    <Icon className="h-8 w-8" aria-hidden />
+                    <Icon className="h-7 w-7" aria-hidden />
                   </div>
-                  <CardTitle
-                    className="
-      text-xl font-mono relative 
-      before:content-['{'] after:content-['}'] 
-      before:text-blue-500 after:text-blue-500 
-      before:mr-2 after:ml-2
-      transition-all duration-300 
-      group-hover:before:animate-pulse group-hover:after:animate-pulse
-      hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 text-neutral-600
-    "
-                  >
+
+                  {/* Title */}
+                  <CardTitle className="text-xl font-semibold text-neutral-900">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-gray-200 text-center font-mono text-sm sm:text-base relative bg-gray-900/80 dark:bg-gray-800/80 p-4 rounded-lg shadow-md border-l-4 border-blue-500 overflow-hidden">
-                    <span className="text-blue-400 before:content-['>_'] before:mr-2"></span>
+
+                <CardContent className="space-y-5">
+                  {/* Description */}
+                  <p className="text-neutral-600 text-center text-sm sm:text-base leading-relaxed">
                     {service.description}
                   </p>
 
-                  <div className="space-y-3">
+                  {/* Features */}
+                  <div className="space-y-3 pt-2">
                     {service.features.map((feature, featureIndex) => (
                       <div
                         key={featureIndex}
-                        className="flex items-center gap-1 group transition-all duration-300 hover:translate-x-2"
+                        className="flex items-start gap-3 text-sm text-neutral-700
+          transition-all duration-300 group-hover:translate-x-1"
                       >
-                        {/* Glowing dev icon */}
-                        <span className="text-blue-500 font-mono animate-pulse">
-                          •
-                        </span>
+                        {/* Check Icon */}
+                        <span className="mt-[6px] h-2 w-2 rounded-full bg-blue-600 flex-shrink-0"></span>
 
-                        {/* Feature text in terminal/code style */}
-                        <span className="relative font-mono text-base text-gray-700 group-hover:text-blue-600 transition-colors">
-                          <span className="before:content-['>_'] before:text-blue-500 animate-pulse-slow"></span>
-                          {feature}
-                        </span>
+                        {/* Feature Text */}
+                        <span>{feature}</span>
                       </div>
                     ))}
                   </div>
                 </CardContent>
+
+                {/* Bottom Gradient Hover Line */}
+                <div
+                  className="absolute bottom-0 left-0 h-[3px] w-0
+    bg-gradient-to-r from-blue-600 to-indigo-600
+    transition-all duration-500 group-hover:w-full"
+                />
               </Card>
             );
           })}
@@ -181,80 +184,84 @@ const ServicesClientPage = () => {
 
       {/* Process Section */}
       <section className="mb-20" aria-label="Development Process Overview">
-        <header className="text-center mb-12 space-y-6 relative">
-          {/* Terminal-style background glow */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-10 blur-3xl -z-10 rounded-lg"></div>
+        <div className="text-center mb-16 relative">
+          {/* Background Glow */}
+          <div className="absolute inset-0 flex justify-center -z-10">
+            <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+          </div>
 
-          {/* Main heading with terminal vibe */}
-          <h2 className="text-4xl  font-bold text-gray-900 font-mono relative inline-block">
-            {/* Terminal prefix */}
-            <span className="before:content-['>_'] before:text-blue-500 animate-pulse"></span>
+          {/* Small Label */}
+          <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
             Development Process
-            {/* Gradient accent */}
-            <span className="text-blue-600 ml-2">Workflow</span>
-            {/* Animated underline */}
-            <span className="absolute -bottom-1 right-0 w-2/5 h-[4px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full  animate-pulse"></span>
+          </span>
+
+          {/* Heading */}
+          <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
+            How I <span className="text-blue-600">Build</span> Applications
           </h2>
 
-          {/* Subtext in terminal/code block style */}
-          <p className="relative text-lg  text-gray-100 max-w-2xl mx-auto font-mono bg-gray-900/80 dark:bg-gray-800/70 rounded-2xl p-6 border-l-4 border-blue-500 shadow-lg overflow-hidden">
-            {/* Neon glow top bar */}
-            <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 animate-[pulse_3s_ease-in-out_infinite] rounded-t-xl"></span>
+          {/* Divider */}
+          <div className="flex justify-center mt-4">
+            <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full"></div>
+          </div>
 
-            {/* Terminal-style description */}
-            <span className="block before:content-['>_'] before:text-blue-400 before:mr-2">
-              I follow a structured approach to turn your ideas into fully
-              functional, production-ready applications — from analyzing your
-              designs to delivering scalable, maintainable code.
-            </span>
+          {/* Description */}
+          <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            I follow a structured workflow to turn ideas into production-ready
+            applications — from analyzing designs to building scalable,
+            maintainable code and delivering high-performance web solutions.
           </p>
-        </header>
+        </div>
 
         {/* Step Cards */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {processSteps.map((step, index) => (
             <article
               key={index}
-              className="group relative text-center bg-white dark:bg-slate-950 rounded-3xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-transparent hover:border-blue-500"
+              className="group relative rounded-3xl border border-neutral-200 bg-white 
+            shadow-sm hover:shadow-xl transition-all duration-500 
+            hover:-translate-y-2 overflow-hidden"
               aria-label={`Step ${step.step}: ${step.title}`}
             >
-              <Card className="h-full rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden relative">
-                <CardContent className="p-6 flex flex-col items-center relative">
-                  {/* Top neon gradient glow bar */}
-                  <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 animate-[pulse_2s_ease-in-out_infinite] rounded-t-xl" />
+              <Card className="h-full border-none bg-transparent shadow-none">
+                <CardContent className="p-8 flex flex-col items-center text-center relative">
+                  {/* subtle top accent line */}
+                  <span className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 opacity-70" />
 
-                  {/* Step circle with animated CLI effect */}
-                  <div className="relative w-20 h-20 mb-4 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white flex items-center justify-center text-2xl font-mono font-bold shadow-lg group-hover:scale-105 transition-transform duration-300">
-                    {/* Pulsing terminal cursor inside circle */}
-                    <span className="absolute top-1 left-1 w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg" />
+                  {/* Step Number Badge */}
+                  <div
+                    className="flex items-center justify-center w-16 h-16 mb-5
+                  rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600
+                  text-white text-xl font-semibold shadow-md
+                  transition-transform duration-300 group-hover:scale-105"
+                  >
                     {step.step}
-                    {/* Small rotating orbit dots */}
-                    <span className="absolute top-0 right-0 w-2 h-2 bg-blue-400 rounded-full animate-spin-slow"></span>
-                    <span className="absolute bottom-0 left-0 w-2 h-2 bg-purple-400 rounded-full animate-spin-slow animate-delay-150"></span>
                   </div>
 
-                  {/* Step title with terminal prefix */}
-                  <h3 className="text-lg sm:text-xl font-semibold font-mono text-gray-900 dark:text-white mb-3  transition-colors duration-300 group-hover:text-blue-500">
-                    <span className="text-indigo-400 animate-pulse mr-1">
-                      {">_"}
-                    </span>
+                  {/* Title */}
+                  <h3
+                    className="text-lg sm:text-xl font-semibold 
+                  text-neutral-900 mb-3
+                  transition-colors duration-300 
+                  group-hover:text-blue-600"
+                  >
                     {step.title}
                   </h3>
 
-                  {/* Description with terminal/code block vibe */}
-                  <p className="relative text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed text-center font-mono bg-gray-50 dark:bg-slate-900 rounded-lg p-5 shadow-inner w-full max-w-xs overflow-hidden">
-                    {/* Neon left border */}
-                    <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-blue-500 via-indigo-500 to-purple-500 rounded-l-md animate-[pulse_3s_ease-in-out_infinite]" />
-
+                  {/* Description */}
+                  <p
+                    className="text-sm sm:text-base text-neutral-600
+                  leading-relaxed max-w-xs"
+                  >
                     {step.description}
                   </p>
 
-                  {/* Gradient accent bottom line with hover scale effect */}
-                  <span className="block w-20 h-1 mt-5 rounded-full bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 opacity-90 transition-all duration-300 group-hover:scale-x-125 group-hover:opacity-100"></span>
-
-                  {/* Optional glowing background circles */}
-                  <span className="absolute -top-5 -left-5 w-12 h-12 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 opacity-20 rounded-full blur-2xl animate-pulse-slow pointer-events-none" />
-                  <span className="absolute -bottom-5 -right-5 w-16 h-16 bg-gradient-to-r from-purple-500 via-indigo-600 to-blue-500 opacity-20 rounded-full blur-3xl animate-pulse-slow pointer-events-none" />
+                  {/* Bottom accent */}
+                  <span
+                    className="mt-6 h-[3px] w-12 rounded-full
+                  bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600
+                  transition-all duration-300 group-hover:w-20"
+                  />
                 </CardContent>
               </Card>
             </article>
@@ -267,31 +274,26 @@ const ServicesClientPage = () => {
         aria-label="Call to Action - Start a Project or View Work"
         className="container mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <Card className="relative overflow-hidden rounded-2xl border border-gray-200 bg-gray-900 shadow-lg text-white">
-          <CardContent className="relative p-8 sm:p-12 text-center">
-            {/* Terminal hint */}
-            <div className="mb-4 text-sm font-mono text-green-400">
-              <span className="text-gray-500">
-                // init project collaboration
-              </span>
-              <br />
-              <span>{">_"} startProject()</span>
-            </div>
+        <Card className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-xl">
+          {/* Background Glow */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute left-1/2 -top-24 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
+            <div className="absolute right-0 bottom-0 h-[20rem] w-[20rem] rounded-full bg-indigo-500/10 blur-[100px]" />
+          </div>
 
+          <CardContent className="relative p-10 sm:p-14 text-center">
             {/* Heading */}
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6 font-mono relative inline-block">
-              Ready to Build Something Amazing?
-              <span className="text-blue-400 ml-2 animate-pulse">_dev</span>
-              {/* Animated underline */}
-              <span className="absolute -bottom-2 right-0 w-2/5 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full  animate-pulse"></span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-neutral-900 mb-6">
+              Ready to build something
+              <span className="text-blue-600"> amazing?</span>
             </h2>
 
             {/* Description */}
-            <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-10 font-mono bg-gray-800/70 rounded-2xl p-6 border-l-4 border-blue-500 shadow-inner">
-              Let&apos;s discuss your project requirements and create
-              production-ready, scalable web applications. Whether it’s a
-              startup idea or enterprise solution, I provide clean, maintainable
-              code and fast delivery.
+            <p className="text-neutral-600 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+              I help startups and businesses transform ideas into modern,
+              high-performance web applications. From scalable architectures to
+              clean user experiences, let's build a solution that drives real
+              results.
             </p>
 
             {/* CTA Buttons */}
@@ -300,24 +302,19 @@ const ServicesClientPage = () => {
               <Button
                 size="lg"
                 asChild
-                className="
-                relative overflow-hidden font-mono font-semibold
-                px-6 py-5 rounded-xl
-                bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600
-                shadow-[0_10px_30px_rgba(99,102,241,0.35)]
-                hover:shadow-[0_15px_45px_rgba(99,102,241,0.55)]
-                transition-all duration-300
-                group
-              "
+                className="group relative rounded-xl px-8 py-6
+          bg-blue-600 text-white font-medium
+          shadow-md hover:shadow-lg
+          hover:bg-blue-700
+          transition-all duration-300"
               >
                 <Link
                   href="/contact"
-                  aria-label="Start Project"
-                  className="relative z-10 flex items-center gap-3"
+                  aria-label="Start a Project"
+                  className="flex items-center gap-3"
                 >
-                  <span className="text-green-300 animate-pulse">{">_"}</span>
-                  <span>Start Project</span>
-                  <LucideIcons.ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  Start a Project
+                  <LucideIcons.ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
 
@@ -326,26 +323,24 @@ const ServicesClientPage = () => {
                 size="lg"
                 variant="outline"
                 asChild
-                className="
-                font-mono px-6 py-5 font-semibold rounded-xl
-                border-gray-500 text-gray-800
-                hover:border-blue-500 hover:text-blue-400
-                transition-all duration-300
-              "
+                className="rounded-xl px-8 py-6 font-medium
+          border-neutral-300
+          hover:border-blue-600 hover:text-blue-600
+          transition-all duration-300"
               >
                 <Link
                   href="/projects"
                   aria-label="View Projects"
                   className="flex items-center gap-2"
                 >
-                  View Work
+                  View My Work
                 </Link>
               </Button>
             </div>
 
-            {/* Footer hint */}
-            <p className="mt-8 text-xs font-mono text-gray-500">
-              status: available · response_time: fast
+            {/* Bottom Trust Line */}
+            <p className="mt-8 text-sm text-neutral-500">
+              Available for freelance projects · Fast communication · Clean code
             </p>
           </CardContent>
         </Card>

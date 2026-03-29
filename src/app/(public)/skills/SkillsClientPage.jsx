@@ -49,37 +49,34 @@ const SkillsClientPage = () => {
     >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <header
-          className="text-center mb-16 relative space-y-6"
-          aria-label="Skills Page Header"
-        >
-          {/* Background gradient glow */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-10 blur-3xl -z-10 rounded-lg"></div>
+        <div className="text-center mb-16 relative">
+          {/* Background Glow */}
+          <div className="absolute inset-0 flex justify-center -z-10">
+            <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+          </div>
 
-          {/* Main Title with terminal style */}
-          <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 font-mono relative inline-block">
-            {/* Terminal cursor */}
-            <span className="before:content-['>_'] before:text-blue-500 animate-pulse"></span>
-            Skills
-            {/* Gradient accent text */}
-            <span className="text-blue-600 ml-2">Showcase</span>
-            {/* Animated underline */}
-            <span className="absolute -bottom-1 max-sm:left-1/2 max-sm:-translate-x-1/2 right-0 w-2/5 h-[4px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
-          </h1>
+          {/* Small Label */}
+          <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
+            Tech Stack
+          </span>
 
-          {/* Subtext / Description in terminal-style block */}
-          <p className="relative text-lg text-gray-100 max-w-3xl mx-auto font-mono bg-gray-900/80 dark:bg-gray-800/70 rounded-2xl p-6 border-l-4 border-blue-500 shadow-lg overflow-hidden">
-            {/* Neon glow top bar */}
-            <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 animate-[pulse_3s_ease-in-out_infinite] rounded-t-xl"></span>
+          {/* Heading */}
+          <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
+            Skills & <span className="text-blue-600">Technologies</span>
+          </h2>
 
-            {/* Terminal-style content */}
-            <span className="block before:content-['>_'] before:text-blue-400 before:mr-2">
-              I work with a wide range of technologies and tools to build
-              modern, scalable applications. Here are the technologies I'm
-              proficient in.
-            </span>
+          {/* Divider */}
+          <div className="flex justify-center mt-4">
+            <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+          </div>
+
+          {/* Description */}
+          <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            I work with modern frameworks, tools, and technologies to build
+            scalable, high-performance web applications with clean architecture
+            and great user experience.
           </p>
-        </header>
+        </div>
 
         {/* Skills Grid */}
         {loading ? (
@@ -96,48 +93,62 @@ const SkillsClientPage = () => {
                   key={index}
                   aria-label={`Skill card for ${skill.name}`}
                   className="
-    group relative flex flex-col items-center
-    p-5 pt-10 pb-6 rounded-lg
-    bg-white
-    border border-gray-200
-    transition-all duration-200
-    hover:border-blue-500 hover:shadow-sm
-  "
+              group relative flex flex-col items-center
+              p-6 rounded-2xl
+              border border-neutral-200
+              bg-white/70 backdrop-blur-sm
+              transition-all duration-300
+              hover:-translate-y-1
+              hover:border-blue-400
+              hover:shadow-lg
+            "
                 >
-                  {/* Code editor top bar */}
-                  <div className="absolute top-0 left-0 w-full h-7 bg-gray-100 border-b border-gray-200 rounded-t-lg flex items-center px-3 gap-1.5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-400"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+                  {/* subtle gradient glow */}
+                  <div
+                    className="
+                absolute inset-0 rounded-2xl
+                bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-purple-500/5
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-300
+              "
+                  />
 
-                    {/* Dynamic filename */}
-                    <span className="ml-3 text-[11px] font-mono text-gray-500 truncate">
-                      {skill.name.toLowerCase().replace(/\s+/g, "-")}.config
-                    </span>
-                  </div>
-
-                  {/* Icon */}
-                  <div className={`p-3 rounded-md ${skill.color}`}>
-                    {Icon && <Icon className="h-7 w-7 " />}
+                  {/* Icon container */}
+                  <div
+                    className={`
+                  relative z-10
+                  flex items-center justify-center
+                  w-14 h-14 rounded-xl
+                  ${skill.color}
+                  shadow-sm
+                  transition-transform duration-300
+                  group-hover:scale-110
+                `}
+                  >
+                    <Icon className="h-7 w-7" aria-hidden />
                   </div>
 
                   {/* Skill name */}
-                  <span className="mt-3 text-sm font-mono font-semibold text-gray-900 text-center">
+                  <span
+                    className="
+                relative z-10
+                mt-4 text-sm font-semibold
+                text-neutral-800
+                tracking-tight
+              "
+                  >
                     {skill.name}
                   </span>
 
-                  {/* Status (inactive → active on hover) */}
-                  <span className="mt-1 text-xs font-mono text-gray-500">
-                    <span className="text-gray-400 group-hover:hidden">●</span>
-                    <span className="text-green-600 hidden group-hover:inline">
-                      ●
-                    </span>{" "}
-                    status:
-                    <span className="group-hover:hidden ml-1">inactive</span>
-                    <span className="hidden group-hover:inline ml-1 text-green-600">
-                      active
-                    </span>
-                  </span>
+                  {/* subtle underline */}
+                  <span
+                    className="
+                mt-2 h-[2px] w-0
+                bg-gradient-to-r from-blue-500 to-indigo-500
+                transition-all duration-300
+                group-hover:w-10
+              "
+                  />
                 </div>
               );
             })}
@@ -148,27 +159,33 @@ const SkillsClientPage = () => {
         <section aria-label="Certifications and Achievements">
           <Card className="overflow-hidden">
             <CardContent className="p-0">
-              <div className="relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white p-10 text-center overflow-hidden  shadow-lg">
-                {/* Subtle animated gradient glow */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500 opacity-20 blur-3xl animate-[pulse_6s_ease-in-out_infinite] -z-10"></div>
+              <div className="text-center  p-10 relative">
+                {/* Background Glow */}
+                <div className="absolute inset-0 flex justify-center -z-10">
+                  <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+                </div>
 
-                {/* Terminal-style header */}
-                <h2 className="text-3xl sm:text-4xl font-bold font-mono inline-block relative mb-4">
-                  <span className="before:content-['>_'] before:text-green-300 animate-pulse"></span>
+                {/* Small Label */}
+                <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
                   Certifications
-                  <span className="text-blue-200 ml-2">& Achievements</span>
-                  {/* Animated underline */}
-                  <span className="absolute -bottom-1 right-0 w-2/5 h-1 bg-gradient-to-r from-green-300 to-blue-200 rounded-full  animate-pulse"></span>
+                </span>
+
+                {/* Heading */}
+                <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
+                  Certifications &{" "}
+                  <span className="text-blue-600">Achievements</span>
                 </h2>
 
-                {/* Description in terminal/code block style */}
-                <p className="relative max-w-2xl mx-auto text-sm sm:text-base font-mono bg-white/10 dark:bg-black/20 rounded-xl py-4 px-6 border-l-4 border-green-400 shadow-md">
-                  <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-300 via-blue-200 to-purple-300 animate-[pulse_3s_ease-in-out_infinite] rounded-t-xl" />
-                  <span className="block text-gray-100">
-                    Professional certifications that validate my skills,
-                    expertise, and dedication to continuous learning in modern
-                    web development.
-                  </span>
+                {/* Divider */}
+                <div className="flex justify-center mt-4">
+                  <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full"></div>
+                </div>
+
+                {/* Description */}
+                <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                  Professional certifications that validate my technical
+                  expertise and commitment to continuous learning in modern web
+                  development and software engineering.
                 </p>
               </div>
 
@@ -184,56 +201,58 @@ const SkillsClientPage = () => {
                         <div
                           key={index}
                           className={`
-                      group relative p-6 rounded-2xl border-2 transition-all duration-300 
-                      hover:shadow-2xl hover:scale-105 
-                      ${cert.color} cursor-pointer overflow-hidden
-                    `}
+    group relative p-6 rounded-2xl border border-neutral-200
+     backdrop-blur-xl
+    transition-all duration-300
+    hover:-translate-y-2 hover:shadow-xl
+    ${cert.color} cursor-pointer
+  `}
                           aria-label={`Certificate: ${cert.name} by ${cert.issuer}`}
                         >
-                          {/* Top: Icon and Date with terminal vibes */}
-                          <div className="flex items-start justify-between mb-4">
-                            <div className="text-3xl flex items-center gap-1">
-                              <span className="text-blue-500 animate-pulse">
-                                {">_"}
-                              </span>
-                              {Icon && <Icon className="h-7 w-7 " />}
+                          {/* Top Section */}
+                          <div className="flex items-start justify-between mb-5">
+                            {/* Icon */}
+                            <div className="flex items-center justify-center w-11 h-11 rounded-xl ">
+                              {Icon && <Icon className="h-5 w-5" />}
                             </div>
-                            <div className="text-sm font-mono text-gray-700 dark:text-gray-300 opacity-75">
+
+                            {/* Date */}
+                            <span className="text-sm text-neutral-500 font-medium">
                               {cert.date}
-                            </div>
+                            </span>
                           </div>
 
                           {/* Certificate Title */}
-                          <h3 className="font-mono font-bold text-lg sm:text-xl mb-1 leading-snug text-gray-900 dark:text-white">
+                          <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 leading-snug mb-1">
                             {cert.name}
                           </h3>
 
                           {/* Issuer */}
-                          <p className="text-sm sm:text-base font-mono text-gray-600 dark:text-gray-400 mb-4">
+                          <p className="text-sm sm:text-base text-neutral-600 mb-5">
                             {cert.issuer}
                           </p>
 
-                          {/* Verified + Download Button */}
+                          {/* Footer */}
                           <div className="flex items-center justify-between">
-                            {/* Animated Developer-style Status */}
-                            <div className="flex items-center gap-2">
-                              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-                              <span className="text-xs sm:text-sm font-mono font-semibold text-gray-700 dark:text-gray-300 opacity-80">
-                                Verified
-                              </span>
+                            {/* Verified Status */}
+                            <div className="flex items-center gap-2 text-sm text-neutral-600">
+                              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                              <span className="font-medium">Verified</span>
                             </div>
 
+                            {/* Download Button */}
                             <Button
                               size="sm"
                               variant="outline"
                               className="
-                          opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                          flex items-center gap-1 border-gray-300 dark:border-gray-600
-                          text-gray-700 dark:text-gray-300 font-mono font-semibold
-                          hover:bg-gradient-to-r hover:from-blue-600 hover:via-indigo-500 hover:to-purple-600
-                          hover:text-white
-                          px-3 py-1.5 rounded-lg
-                        "
+        opacity-0 group-hover:opacity-100
+        transition-all duration-300
+        flex items-center gap-2
+        border-neutral-300
+        text-neutral-700
+        hover:bg-blue-600 hover:text-white hover:border-blue-600
+        px-3 py-1.5 rounded-lg
+      "
                               asChild
                             >
                               <Link
@@ -241,56 +260,54 @@ const SkillsClientPage = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 download
-                                aria-label={`Download ${cert.name} certificate PDF`}
+                                aria-label={`Download ${cert.name} certificate`}
                               >
                                 <Download className="h-4 w-4" />
-                                {cert.pdfLink.endsWith(".pdf")
-                                  ? "PDF"
-                                  : cert.pdfLink.endsWith(".webp")
-                                  ? "Image"
-                                  : cert.pdfLink
-                                      .split(".")
-                                      .pop()
-                                      ?.toUpperCase() || "File"}
+                                View
                               </Link>
                             </Button>
                           </div>
 
-                          {/* Terminal-style Bottom Accent + Neon Glow */}
-                          <div className="absolute bottom-2 left-1/2 w-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full transition-all duration-500 group-hover:w-3/4 -translate-x-1/2"></div>
-                          <div className="absolute inset-0 rounded-2xl pointer-events-none group-hover:shadow-[0_0_50px_rgba(99,102,241,0.35)] transition-shadow duration-300"></div>
+                          {/* Bottom Accent Line */}
+                          <div className="absolute bottom-0 left-6 right-6 h-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
                         </div>
                       );
                     })}
                   </div>
                 )}
-                <div className="mt-8 text-center">
+                <div className="mt-10 flex justify-center">
                   <div
                     className="
-    inline-flex items-center gap-3 px-5 py-3
-    bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600
-    text-white font-mono text-sm
-    rounded-xl shadow-[0_5px_20px_rgba(99,102,241,0.25)]
-    hover:shadow-[0_8px_30px_rgba(99,102,241,0.4)]
-    transition-all duration-300
-    ring-1 ring-blue-400/30
-    group
-  "
+      relative flex items-center gap-3
+      px-6 py-4
+      rounded-2xl
+      border border-blue-100
+      bg-white/70 backdrop-blur-xl
+      shadow-[0_10px_35px_rgba(37,99,235,0.12)]
+      hover:shadow-[0_15px_45px_rgba(37,99,235,0.18)]
+      transition-all duration-300
+      group
+    "
                     aria-label="Certification verification note"
                   >
-                    {/* Icon with animated pulse */}
-                    <LucideIcons.Shield
-                      className="h-5 w-5 flex-shrink-0 animate-pulse text-white"
-                      aria-hidden="true"
-                    />
+                    {/* Icon */}
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50">
+                      <LucideIcons.Shield
+                        className="h-5 w-5 text-blue-600"
+                        aria-hidden="true"
+                      />
+                    </div>
 
-                    {/* Text with terminal-style prefix */}
-                    <span className="relative before:content-['>_'] before:text-green-300 before:mr-1">
-                      All certifications are verified and up-to-date
-                    </span>
+                    {/* Text */}
+                    <p className="text-sm font-medium text-gray-700">
+                      All certifications are{" "}
+                      <span className="text-blue-600 font-semibold">
+                        verified and up-to-date
+                      </span>
+                    </p>
 
-                    {/* Optional animated glow effect */}
-                    <span className="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-green-300 animate-ping opacity-70"></span>
+                    {/* subtle accent line */}
+                    <span className="absolute bottom-0 left-6 right-6 h-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-60 rounded-full"></span>
                   </div>
                 </div>
               </div>

@@ -1,19 +1,26 @@
 "use client";
 
-export default function SectionLoader({ text = "Fetching data..." }) {
+export default function SectionLoader({ text = "Loading content..." }) {
   return (
-    <div className="w-full py-16 flex items-center justify-center">
-      <div className="flex flex-col items-center gap-3">
-        {/* Minimal inline loader */}
-        <div className="relative flex items-center gap-1">
-          <span className="h-2 w-2 rounded-full bg-blue-600 animate-bounce [animation-delay:-0.2s]" />
-          <span className="h-2 w-2 rounded-full bg-indigo-500 animate-bounce [animation-delay:-0.1s]" />
-          <span className="h-2 w-2 rounded-full bg-purple-500 animate-bounce" />
+    <div className="w-full py-20 flex items-center justify-center">
+      <div className="flex flex-col items-center gap-6">
+        {/* Gradient Spinner */}
+        <div className="relative flex items-center justify-center">
+          <div className="h-14 w-14 rounded-full border-[3px] border-neutral-200"></div>
+
+          <div
+            className="absolute h-14 w-14 rounded-full border-[3px]
+            border-transparent border-t-blue-600 border-r-indigo-500
+            animate-spin"
+          />
+
+          {/* Inner Glow */}
+          <div className="absolute h-6 w-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-500 blur-md opacity-60"></div>
         </div>
 
-        {/* Terminal-style text */}
-        <p className="text-base font-mono text-slate-500 dark:text-slate-400">
-          <span className="text-blue-600">{">_"}</span> {text}
+        {/* Loading Text */}
+        <p className="text-sm sm:text-base text-neutral-500 font-medium tracking-wide">
+          {text}
         </p>
       </div>
     </div>

@@ -35,29 +35,32 @@ export default function ServicesSection() {
       className="container mx-auto px-4 sm:px-6 lg:px-8"
       aria-label="Professional Web Development Services Section"
     >
-      <div className="text-center mb-12 space-y-6 relative">
-        {/* Terminal-style background glow */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-10 blur-3xl -z-10 rounded-lg"></div>
+      <div className="text-center mb-16 relative">
+        {/* Background Glow */}
+        <div className="absolute inset-0 flex justify-center -z-10">
+          <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+        </div>
+
+        {/* Small Label */}
+        <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
+          Services
+        </span>
 
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 font-mono relative inline-block">
-          <span className="before:content-['>_'] before:text-blue-500  animate-pulse">
-            {""}
-          </span>
+        <h2 className="text-3xl sm:text-4xl  font-semibold text-gray-900 tracking-tight">
           Services <span className="text-blue-600">I Offer</span>
-          <span className="absolute -bottom-1 max-sm:left-1/2 max-sm:-translate-x-1/2 right-0 w-2/5 h-[4px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full "></span>
         </h2>
 
-        {/* Subtext / Description */}
-        <p className="relative text-lg text-gray-100 max-w-2xl mx-auto font-mono bg-gray-900/80 dark:bg-gray-800/70 rounded-2xl p-6 border-l-4 border-blue-500 shadow-lg overflow-hidden">
-          {/* Neon glow top bar */}
-          <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 animate-[pulse_3s_ease-in-out_infinite] rounded-t-xl"></span>
+        {/* Divider */}
+        <div className="flex justify-center mt-4">
+          <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+        </div>
 
-          {/* Terminal-style content */}
-          <span className="block before:content-['>_'] before:text-blue-400 before:mr-2">
-            From concept to deployment, I provide comprehensive development
-            services to bring your ideas to life.
-          </span>
+        {/* Description */}
+        <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          I help businesses and individuals build modern, scalable, and
+          high-performance web applications — from idea to deployment — using
+          the latest web technologies.
         </p>
       </div>
 
@@ -70,67 +73,72 @@ export default function ServicesSection() {
             return (
               <Card
                 key={index}
-                className="relative hover:shadow-lg transition-all duration-300 hover:scale-105"
+                className="group relative overflow-hidden
+  border border-neutral-200/60
+  bg-white/70 backdrop-blur-xl
+  shadow-sm hover:shadow-xl
+  transition-all duration-500
+  hover:-translate-y-2"
               >
+                {/* Popular Badge */}
                 {service.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="absolute top-4 right-4 z-10">
                     <Badge
-                      className="relative inline-flex items-center px-4 py-1 rounded-full text-sm font-mono text-white
-               bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-600
-               
-               before:absolute before:inset-0 before:rounded-full before:blur-xl before:opacity-30 before:bg-gradient-to-r before:from-blue-400 before:via-indigo-500 before:to-purple-500
-               "
+                      className="rounded-full px-3 py-1 text-xs font-medium
+        bg-gradient-to-r from-blue-600 to-indigo-600 text-white
+        shadow-md"
                     >
-                      <span className="relative z-10">Most Popular</span>
+                      Most Popular
                     </Badge>
                   </div>
                 )}
+
                 <CardHeader className="text-center pb-4">
+                  {/* Icon */}
                   <div
-                    className={`mx-auto w-16 h-16 rounded-lg flex items-center justify-center mb-4 ${service.color}`}
+                    className={`mx-auto w-16 h-16 rounded-xl flex items-center justify-center mb-4
+      shadow-sm group-hover:scale-110 transition-transform duration-300
+      ${service.color}`}
                   >
                     <Icon className="h-7 w-7" aria-hidden />
                   </div>
-                  <CardTitle
-                    className="
-    text-xl font-mono relative 
-    before:content-['{'] after:content-['}'] 
-    before:text-blue-500 after:text-blue-500 
-    before:mr-2 after:ml-2
-    transition-all duration-300 
-    group-hover:before:animate-pulse group-hover:after:animate-pulse
-    hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 text-neutral-600
-  "
-                  >
+
+                  {/* Title */}
+                  <CardTitle className="text-xl font-semibold text-neutral-900">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-gray-200 text-center font-mono text-sm sm:text-base relative bg-gray-900/80 dark:bg-gray-800/80 p-4 rounded-lg shadow-md border-l-4 border-blue-500 overflow-hidden">
-                    <span className="text-blue-400 before:content-['>_'] before:mr-2"></span>
+
+                <CardContent className="space-y-5">
+                  {/* Description */}
+                  <p className="text-neutral-600 text-center text-sm sm:text-base leading-relaxed">
                     {service.description}
                   </p>
 
-                  <div className="space-y-3">
+                  {/* Features */}
+                  <div className="space-y-3 pt-2">
                     {service.features.map((feature, featureIndex) => (
                       <div
                         key={featureIndex}
-                        className="flex items-center gap-1 group transition-all duration-300 hover:translate-x-2"
+                        className="flex items-start gap-3 text-sm text-neutral-700
+          transition-all duration-300 group-hover:translate-x-1"
                       >
-                        {/* Glowing dev icon */}
-                        <span className="text-blue-500 font-mono animate-pulse">
-                          •
-                        </span>
+                        {/* Check Icon */}
+                        <span className="mt-[6px] h-2 w-2 rounded-full bg-blue-600 flex-shrink-0"></span>
 
-                        {/* Feature text in terminal/code style */}
-                        <span className="relative font-mono text-base text-gray-700 group-hover:text-blue-600 transition-colors">
-                          <span className="before:content-['>_'] before:text-blue-500 animate-pulse-slow"></span>
-                          {feature}
-                        </span>
+                        {/* Feature Text */}
+                        <span>{feature}</span>
                       </div>
                     ))}
                   </div>
                 </CardContent>
+
+                {/* Bottom Gradient Hover Line */}
+                <div
+                  className="absolute bottom-0 left-0 h-[3px] w-0
+    bg-gradient-to-r from-blue-600 to-indigo-600
+    transition-all duration-500 group-hover:w-full"
+                />
               </Card>
             );
           })}
@@ -140,31 +148,46 @@ export default function ServicesSection() {
       <div className="text-center">
         <Button
           size="lg"
-          asChild
           className="
-              relative overflow-hidden px-5 py-5 rounded-xl
-              font-mono font-semibold text-white
-              bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600
-              shadow-[0_10px_30px_rgba(99,102,241,0.35)]
-              hover:shadow-[0_15px_45px_rgba(99,102,241,0.55)]
-              transition-all duration-300
-              group
-            "
+  group relative overflow-hidden
+  rounded-xl px-6 py-6
+  font-semibold text-white
+  bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600
+  shadow-[0_12px_35px_rgba(79,70,229,0.35)]
+  hover:shadow-[0_18px_55px_rgba(79,70,229,0.45)]
+  transition-all duration-300
+  hover:-translate-y-[2px]
+  "
         >
           <Link
             href="/services"
             aria-label="View all available web development services"
             className="relative z-10 flex items-center gap-3"
           >
-            {/* Terminal prefix */}
-            <span className="text-green-300 font-mono animate-pulse">
-              {">_"}
+            <span className="tracking-tight">Explore My Services</span>
+
+            <span
+              className="
+      flex items-center justify-center
+      w-7 h-7 rounded-lg
+      bg-white/20
+      transition-all duration-300
+      group-hover:bg-white/30
+      "
+            >
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
-
-            <span className="tracking-wide">View All Services</span>
-
-            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
+
+          {/* subtle gradient sweep animation */}
+          <span
+            className="
+    pointer-events-none absolute inset-0
+    bg-gradient-to-r from-transparent via-white/20 to-transparent
+    opacity-0 group-hover:opacity-100
+    transition-opacity duration-500
+    "
+          />
         </Button>
       </div>
     </section>

@@ -18,134 +18,103 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/pawan-kumavat-11b105297/",
     icon: Linkedin,
   },
-  {
-    name: "Email",
-    href: "mailto:pawankumavat042@gmail.com",
-    icon: Mail,
-  },
+  { name: "Email", href: "mailto:pawankumavat042@gmail.com", icon: Mail },
 ];
 
 export default function Footer() {
   return (
-    <footer
-      className="border-t border-gray-200 bg-white mt-5"
-      aria-label="Developer footer"
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main footer */}
-        <div className="grid gap-12 py-16 md:grid-cols-4">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <Link
-              href="/"
-              className="group inline-flex items-center gap-3 mb-5"
+    <footer className="relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl border-t border-gray-200 dark:border-gray-700">
+      <div className="mx-auto max-w-7xl px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+        {/* Brand Section */}
+        <div className="md:col-span-2 space-y-5">
+          <Link href="/" className="flex items-center gap-3 select-none">
+            <div
+              className="flex h-10 w-10 items-center justify-center rounded-xl
+  bg-gradient-to-br from-blue-600 to-indigo-600
+  shadow-md"
             >
-              <div
-                className="relative flex h-11 w-11 items-center justify-center rounded-xl
-                bg-gradient-to-br from-blue-600 to-indigo-600
-                shadow-[0_6px_20px_rgba(59,130,246,0.35)]
-                group-hover:scale-105 transition-transform"
-              >
-                <Code2 className="h-5 w-5 text-white" />
-                <span className="absolute bottom-1 right-1 h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
-              </div>
-
-              <div className="flex items-center font-mono text-lg font-semibold">
-                <span className="text-gray-500">&gt;</span>
-                <span className="ml-1 text-gray-800">
-                  pawan<span className="text-blue-600">.dev</span>
-                </span>
-                <span className="ml-1 h-4 w-[2px] bg-blue-600 animate-pulse" />
-              </div>
-            </Link>
-
-            <p className="max-w-md text-gray-600 leading-relaxed">
-              Full-stack developer crafting scalable, maintainable and
-              production-ready web applications using modern technologies and
-              clean architecture.
-            </p>
-
-            {/* Social links */}
-            <div className="mt-6 flex items-center gap-4">
-              {socialLinks.map(({ name, href, icon: Icon }) => (
-                <Link
-                  key={name}
-                  href={href}
-                  target="_blank"
-                  aria-label={name}
-                  className="group relative"
-                >
-                  <span
-                    className="absolute inset-0 rounded-xl
-                    bg-gradient-to-r from-blue-600 to-indigo-600
-                    opacity-0 group-hover:opacity-10 transition"
-                  />
-                  <Icon className="h-5 w-5 text-gray-600 group-hover:text-blue-600 transition" />
-                </Link>
-              ))}
+              <Code2 className="h-5 w-5 text-white" />
             </div>
 
-            {/* Status */}
-            <p className="mt-4 font-mono text-xs text-gray-400">
-              // status: open for freelance & collaborations
-            </p>
-          </div>
-
-          {/* Navigation */}
-          <nav className="font-mono">
-            <h3 className="mb-4 text-sm font-semibold text-gray-900">
-              Navigation
-            </h3>
-            <ul className="space-y-2">
-              {navigation.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="group inline-flex items-center gap-1 text-gray-600 hover:text-blue-600 transition"
-                  >
-                    <span className="group-hover:translate-x-0.5 transition-transform">
-                      {item.name}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Contact */}
-          <div className="font-mono">
-            <h3 className="mb-4 text-sm font-semibold text-gray-900">
-              Contact
-            </h3>
-
-            <div className="space-y-2 text-sm text-gray-600">
-              <p>// Kalyan (W), Thane, MH</p>
-
-              <Link
-                href="mailto:pawankumavat042@gmail.com"
-                className="hover:text-blue-600 transition block"
-              >
-                pawankumavat042@gmail.com
-              </Link>
-
-              <Link
-                href="tel:+919619579304"
-                className="hover:text-blue-600 transition block"
-              >
-                +91 96195 79304
-              </Link>
+            <div className="flex items-center text-lg font-semibold tracking-tight">
+              <span className="text-neutral-800">Pawan</span>
+              <span className="text-blue-600">.dev</span>
             </div>
+          </Link>
+
+          <p className="text-gray-600 dark:text-gray-300 max-w-md leading-relaxed">
+            Crafting modern, scalable, and production-ready web applications
+            with a clean architecture and optimized user experiences.
+          </p>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-4 mt-4">
+            {socialLinks.map(({ name, href, icon: Icon }) => (
+              <Link
+                key={name}
+                href={href}
+                target="_blank"
+                aria-label={name}
+                className="group relative p-1 rounded-full transition-all hover:bg-blue-50 dark:hover:bg-blue-900/30"
+              >
+                <Icon className="h-5 w-5 text-gray-600 dark:text-gray-300 group-hover:text-blue-600 transition-all" />
+              </Link>
+            ))}
           </div>
-        </div>
 
-        {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3 border-t border-gray-200 py-6 text-sm text-gray-500 font-mono">
-          <p>© {new Date().getFullYear()} pawan.dev — all rights reserved</p>
-
-          <p className="flex items-center gap-1">
-            built with <Heart className="h-4 w-4 text-red-500" /> & clean code
+          <p className="mt-4 text-xs text-gray-400 dark:text-gray-500">
+            // Open for freelance & collaborations
           </p>
         </div>
+
+        {/* Navigation */}
+        <div className="space-y-4">
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+            Navigation
+          </h3>
+          <ul className="space-y-2">
+            {navigation.map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div className="space-y-4">
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+            Contact
+          </h3>
+          <div className="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
+            <p>// Kalyan (W), Thane, MH</p>
+            <Link
+              href="mailto:pawankumavat042@gmail.com"
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition block"
+            >
+              pawankumavat042@gmail.com
+            </Link>
+            <Link
+              href="tel:+919619579304"
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition block"
+            >
+              +91 96195 79304
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-200 dark:border-gray-700 py-6 text-sm text-gray-500 dark:text-gray-400 flex flex-col md:flex-row items-center justify-between gap-3 px-6">
+        <p>© {new Date().getFullYear()} pawan.dev — all rights reserved</p>
+        <p className="flex items-center gap-1">
+          built with <Heart className="h-4 w-4 text-red-500" /> & clean code
+        </p>
       </div>
     </footer>
   );

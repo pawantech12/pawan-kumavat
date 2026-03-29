@@ -5,226 +5,152 @@ import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export default function HeroSection() {
-  const [stage, setStage] = useState("terminal");
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    if (stage === "terminal") {
-      const timer = setTimeout(() => setStage("loading"), 2000);
-      return () => clearTimeout(timer);
-    }
-
-    if (stage === "loading") {
-      const interval = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 100) {
-            clearInterval(interval);
-            setTimeout(() => setStage("profile"), 500);
-            return 100;
-          }
-          return prev + 1;
-        });
-      }, 20);
-      return () => clearInterval(interval);
-    }
-  }, [stage]);
   return (
     <section
-      className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16"
-      aria-label="Hero section introducing Pawan Kumavat, full stack web developer"
+      className="relative isolate overflow-hidden py-20 sm:py-24 max-sm:py-16"
+      aria-label="Hero section introducing Pawan Kumavat"
     >
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        {/* Text Column */}
-        <div className="space-y-8">
-          <div className="space-y-4">
-            {/* Developer-style Neon Terminal Badge */}
-            <Badge
-              variant="secondary"
-              className="relative inline-flex items-center px-5 py-2 rounded-xl font-mono text-sm text-white 
-             bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 
-             shadow-[0_0_10px_rgba(99,102,241,0.5)]"
-            >
-              {/* Glowing animated background effect */}
-              <span
-                className="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 
-                   opacity-30 animate-[pulse_2s_ease-in-out_infinite] rounded-xl pointer-events-none"
-              ></span>
-              <span className="relative z-10">
-                $ Available for new opportunities
+      {/* Background Atmosphere */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-1/2 top-[-8rem] h-[32rem] w-[32rem] sm:h-[42rem] sm:w-[42rem] -translate-x-1/2 rounded-full bg-blue-600/20 blur-[120px] sm:blur-[140px]" />
+        <div className="absolute right-0 bottom-0 h-[20rem] w-[20rem] sm:h-[28rem] sm:w-[28rem] rounded-full bg-indigo-600/15 blur-[100px] sm:blur-[120px]" />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
+          {/* LEFT CONTENT */}
+          <div className="max-lg:text-center lg:text-left">
+            {/* Availability Badge */}
+            <Badge className="inline-flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white/60 backdrop-blur-xl px-5 py-2 text-sm font-medium text-neutral-700 shadow-sm">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-70 animate-ping" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
+              </span>
+
+              <span>
+                <span className="font-semibold text-blue-600">Available</span>{" "}
+                for Freelance, Remote & Part Time Role
               </span>
             </Badge>
 
             {/* Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight font-mono">
-              Hi, I'm{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                Pawan Kumavat
-              </span>
-              <span className="inline-block animate-pulse ml-1 text-blue-600">
-                |
-              </span>
+            <h1 className="mt-6 sm:mt-8 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-neutral-900 leading-tight">
+              Hi, I'm <span className="text-blue-600">Pawan Kumavat</span>
             </h1>
 
-            {/* Typewriter Job Titles */}
-            <h2 className="text-xl sm:text-2xl text-gray-600 font-medium font-mono">
+            {/* Typewriter Role */}
+            <h2 className="mt-3 sm:mt-4 text-lg sm:text-xl lg:text-2xl text-neutral-600 font-medium">
               <Typewriter
                 words={[
-                  "Frontend Developer",
-                  "Backend Developer",
                   "Full Stack Developer",
                   "MERN Stack Developer",
-                  "React Developer",
                   "Next.js Developer",
-                  "Web Developer",
-                  "Software Developer",
-                  "UI/UX Developer",
-                  "E-commerce Developer",
+                  "React Developer",
+                  "Web Application Developer",
                 ]}
                 loop={true}
                 cursor
-                cursorStyle="_"
+                cursorStyle="|"
                 typeSpeed={70}
                 deleteSpeed={50}
-                delaySpeed={1000}
+                delaySpeed={1200}
               />
             </h2>
 
-            {/* Description in code block style */}
-            <div className="relative text-gray-100 bg-gray-900/90 dark:bg-gray-800/90 rounded-xl p-6 font-mono max-w-2xl shadow-lg border-l-4 border-blue-500 overflow-hidden">
-              {/* Optional terminal header for dev-style vibe */}
-              <div className="flex items-center mb-4 space-x-2">
-                <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-                <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
-                <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-                <span className="ml-2 text-sm text-gray-400 font-mono">
-                  ~/projects/portfolio
-                </span>
-              </div>
+            {/* Description */}
+            <p className="mt-6 sm:mt-7 max-w-xl text-base leading-relaxed text-neutral-600 border-l-2 border-blue-500/40 pl-4 max-lg:mx-auto lg:mx-0">
+              I design and develop scalable, high-performance web applications
+              using modern technologies like React, Next.js, Node.js, and
+              MongoDB. My focus is building clean, SEO-friendly, and
+              user-focused digital products that help businesses grow.
+            </p>
 
-              {/* Terminal-style content */}
-              <code className="block leading-relaxed text-sm">
-                <span className="block before:content-['>_'] before:text-blue-400 before:mr-2">
-                  I'm a passionate full stack developer building fast, scalable,
-                  and responsive web apps.
-                </span>
+            {/* CTA Buttons */}
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row max-lg:justify-center lg:justify-start gap-4 sm:gap-5">
+              {/* Primary CTA */}
+              <Link href="/projects">
+                <Button
+                  className="group relative isolate overflow-hidden
+              w-full sm:w-auto
+              rounded-xl px-7 py-5
+              bg-gradient-to-r from-blue-600 to-indigo-600
+              text-white font-medium
+              shadow-md
+              hover:shadow-lg
+              transition-all duration-300
+              hover:-translate-y-[2px]"
+                >
+                  <span
+                    className="absolute -left-full top-0 h-full w-full
+                bg-gradient-to-r from-transparent via-white/20 to-transparent
+                group-hover:left-full
+                transition-all duration-700"
+                  />
 
-                <span className="block mt-2 before:content-['>_'] before:text-blue-400 before:mr-2">
-                  Tech stack:
-                  <span className="text-green-400 font-bold ml-1">
-                    React, Next.js, Node.js, MongoDB, TailwindCSS
+                  <span className="relative flex items-center justify-center gap-2">
+                    View My Work
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
-                </span>
+                </Button>
+              </Link>
 
-                <span className="block mt-2 before:content-['>_'] before:text-blue-400 before:mr-2">
-                  I craft SEO-friendly, performance-optimized websites to help
-                  businesses grow.
-                </span>
+              {/* Secondary CTA */}
+              <Link href="/resume.pdf" target="_blank">
+                <Button
+                  variant="outline"
+                  className="group relative isolate overflow-hidden
+              w-full sm:w-auto
+              rounded-xl px-7 py-5
+              border border-neutral-300
+              bg-white/70 backdrop-blur-xl
+              text-neutral-800
+              shadow-sm
+              hover:border-blue-500
+              hover:text-blue-600
+              hover:-translate-y-[2px]
+              transition-all duration-300"
+                >
+                  <span
+                    className="absolute inset-0 rounded-xl
+                bg-gradient-to-r from-blue-500/5 to-indigo-500/5
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-300"
+                  />
 
-                {/* Optional blinking cursor for dynamic effect */}
-                <span className="inline-block w-1 h-5 bg-blue-400 animate-blink ml-1 align-bottom"></span>
-              </code>
+                  <span className="relative flex items-center justify-center gap-2">
+                    <Download className="w-4 h-4 transition-transform group-hover:-translate-y-[1px]" />
+                    Download Resume
+                  </span>
+                </Button>
+              </Link>
             </div>
           </div>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button
-              size="lg"
-              asChild
-              className="relative overflow-hidden rounded-lg px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 text-white font-mono font-semibold shadow-sm hover:shadow-md transition-all duration-300 group"
-            >
-              <Link
-                href="/projects"
-                className="relative z-10 flex items-center gap-2"
-              >
-                View My Work <ArrowRight className="h-5 w-5" />
-              </Link>
-            </Button>
+          {/* RIGHT VISUAL */}
+          <div className="relative flex justify-center lg:justify-end">
+            {/* Glow */}
+            <div className="absolute h-[300px] w-[300px] sm:h-[380px] sm:w-[380px] lg:h-[420px] lg:w-[420px] rounded-full bg-gradient-to-br from-blue-500/30 via-indigo-400/20 to-transparent blur-[100px] sm:blur-[120px]" />
 
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="relative rounded-lg px-10 py-5 border-2 border-blue-600 text-blue-600 font-mono font-semibold hover:border-blue-700 hover:text-blue-700 transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2"
-            >
-              <Link
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                download={true}
-                className="flex items-center gap-2"
-              >
-                <Download className="h-5 w-5" /> Download Resume
-              </Link>
-            </Button>
-          </div>
+            {/* Glass Card */}
+            <div className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[480px] rounded-[28px] sm:rounded-[32px] border border-neutral-200/40 bg-white/60 backdrop-blur-2xl shadow-[0_40px_100px_rgba(37,99,235,0.25)] hover:-translate-y-2 transition-all duration-500">
+              <div className="h-[3px] w-full rounded-t-[32px] bg-gradient-to-r from-transparent via-blue-600 to-transparent" />
 
-          {/* Social Links */}
-          <div className="flex items-center space-x-6">
-            <Link
-              href="https://github.com/pawantech12"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit my GitHub profile"
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-            >
-              <Github className="h-6 w-6" />
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/pawan-kumavat-11b105297/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit my LinkedIn profile"
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-            >
-              <Linkedin className="h-6 w-6" />
-            </Link>
-          </div>
-        </div>
-
-        {/* Image Column */}
-        <div className="relative flex justify-center">
-          {stage === "terminal" && (
-            <div className="bg-black/90 border border-gray-700 rounded-md p-6 font-mono text-green-400 shadow-lg w-full max-w-md">
-              <p className="mb-2">➜ Starting Portfolio...</p>
-              <p className="text-white">pnpm run dev</p>
-            </div>
-          )}
-
-          {stage === "loading" && (
-            <div className="w-full max-w-md">
-              <p className="font-mono text-indigo-400 mb-2">
-                Loading portfolio...
-              </p>
-              <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden shadow-inner">
-                <div
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full transition-all duration-200"
-                  style={{ width: `${progress}%` }}
-                ></div>
+              <div className="relative p-6 sm:p-8 lg:p-10">
+                <div className="rounded-2xl overflow-hidden">
+                  <Image
+                    src="/profile.png"
+                    alt="Pawan Kumavat - Full Stack Developer"
+                    width={500}
+                    height={500}
+                    className="w-full h-auto object-contain transition-transform duration-700 hover:scale-[1.03]"
+                    priority
+                  />
+                </div>
               </div>
-              <p className="font-mono text-gray-400 text-right mt-1">
-                {progress}%
-              </p>
             </div>
-          )}
-
-          {stage === "profile" && (
-            <div className="relative w-full max-w-md mx-auto mt-8">
-              {/* Floating gradient glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-3xl opacity-25 animate-pulse-slow"></div>
-              <Image
-                src="/profile.png"
-                alt="Pawan Kumavat - Full Stack Developer"
-                width={400}
-                height={400}
-                className="relative rounded-full border-4 border-white shadow-2xl"
-                priority
-              />
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </section>

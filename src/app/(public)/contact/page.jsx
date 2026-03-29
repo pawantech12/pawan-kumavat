@@ -1,6 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Github,
+  Linkedin,
+  Twitter,
+  ArrowRight,
+} from "lucide-react";
 import Link from "next/link";
 import { generateMetadata } from "@/lib/seo";
 
@@ -59,194 +67,202 @@ export default function ContactPage() {
       >
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <header className="text-center mb-16 relative space-y-6">
-            {/* Subtle terminal-style background glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-10 blur-3xl -z-10 rounded-xl"></div>
+          <div className="text-center mb-16 relative">
+            {/* Background Glow */}
+            <div className="absolute inset-0 flex justify-center -z-10">
+              <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+            </div>
 
-            {/* Heading with terminal cursor */}
-            <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 font-mono relative inline-block">
-              <span className="before:content-['>_'] before:text-blue-500 animate-pulse"></span>
-              Get In <span className="text-blue-600 ml-2">Touch</span>
-              <span className="absolute -bottom-1 max-sm:left-1/2 max-sm:-translate-x-1/2 right-0 w-1/3 h-[4px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full  animate-pulse-slow"></span>
-            </h1>
+            {/* Small Label */}
+            <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
+              Contact
+            </span>
 
-            {/* Description in terminal-style code block */}
-            <p className="relative text-gray-100 text-lg max-w-3xl mx-auto font-mono bg-gray-900/80 dark:bg-gray-800/70 rounded-2xl p-6 border-l-4 border-blue-500 shadow-lg overflow-hidden">
-              {/* Neon glow top bar */}
-              <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 animate-[pulse_3s_ease-in-out_infinite] rounded-t-xl"></span>
+            {/* Heading */}
+            <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
+              Get In <span className="text-blue-600">Touch</span>
+            </h2>
 
-              <span className="block before:content-['>_'] before:text-blue-400 before:mr-2 leading-relaxed">
-                I'm always interested in new opportunities and exciting
-                projects. Let's discuss how we can work together to bring your
-                ideas to life.
-              </span>
+            {/* Divider */}
+            <div className="flex justify-center mt-4">
+              <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+            </div>
+
+            {/* Description */}
+            <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              I'm always interested in new opportunities and exciting projects.
+              Let's discuss how we can work together to bring your ideas to
+              life.
             </p>
-          </header>
+          </div>
 
           <section aria-labelledby="contact-information" className="">
             {/* Contact Information */}
             <div className="space-y-8">
-              <Card className="relative overflow-hidden border border-slate-200 dark:border-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                {/* Header with terminal vibe */}
-                <CardHeader className="px-6 py-4 relative">
-                  <CardTitle className="text-2xl font-mono flex items-center gap-2">
-                    <span className="text-blue-500 animate-pulse">{">_"}</span>
+              <Card className="relative overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-300">
+                {/* subtle top accent */}
+                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600" />
+
+                <CardHeader className="px-6 pt-6 pb-4">
+                  <CardTitle className="text-xl sm:text-2xl font-semibold text-neutral-900 dark:text-white flex items-center gap-3">
                     Contact Information
                   </CardTitle>
                 </CardHeader>
 
-                <CardContent className="space-y-6 px-6 pb-8">
+                <CardContent className="space-y-4 px-6 pb-8">
                   {contactInfo.map((info, index) => (
                     <div
                       key={index}
                       className="
-                      relative
-                      flex flex-col sm:flex-row
-                      items-start sm:items-center
-                      gap-3 sm:gap-4
-                      p-4
-                      rounded-lg
-                      border border-gray-100 dark:border-gray-700
-                      hover:border-blue-500 hover:shadow-md
-                      transition-all duration-300
-                      group
-                    "
+      group
+      relative
+      flex items-start sm:items-center
+      gap-4
+      p-4
+      rounded-xl
+      border border-neutral-200 dark:border-neutral-700
+      bg-white dark:bg-neutral-900
+      hover:border-blue-500/40
+      hover:shadow-md
+      transition-all duration-300
+    "
                     >
-                      {/* Icon container */}
+                      {/* Icon */}
                       <div
                         className="
-                        flex items-center justify-center
-                        w-11 h-11 sm:w-12 sm:h-12
-                        rounded-lg
-                        bg-gradient-to-br from-blue-500 to-indigo-500
-                        text-white
-                        shrink-0
-                        group-hover:scale-110
-                        transition-transform duration-300
-                      "
+        flex items-center justify-center
+        w-11 h-11
+        rounded-lg
+        bg-gradient-to-br from-blue-600 to-indigo-600
+        text-white
+        shadow-sm
+        group-hover:scale-105
+        transition-transform
+      "
                       >
                         {info.icon}
                       </div>
 
-                      {/* Text content */}
-                      <div className="flex flex-col gap-1 break-all sm:break-normal">
-                        <p className="font-mono font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                      {/* Content */}
+                      <div className="flex flex-col gap-1">
+                        <p className="text-sm font-medium text-neutral-800 dark:text-neutral-200">
                           {info.label}
                         </p>
 
                         {info.href === "#" ? (
-                          <p className="text-gray-600 dark:text-gray-300 text-sm">
+                          <p className="text-sm text-neutral-600 dark:text-neutral-400 break-all">
                             {info.value}
                           </p>
                         ) : (
                           <Link
                             href={info.href}
                             className="
-                            font-mono
-                            text-blue-500 hover:text-blue-400
-                            dark:hover:text-blue-300
-                            transition-colors
-                            text-sm
-                            break-all sm:break-normal
-                          "
+            text-sm
+            text-blue-600
+            hover:text-blue-500
+            font-medium
+            transition-colors
+            break-all
+          "
                             aria-label={`Contact via ${info.label}`}
                           >
                             {info.value}
                           </Link>
                         )}
                       </div>
+
+                      {/* hover arrow indicator */}
+                      <span className="ml-auto opacity-0 group-hover:opacity-100 transition text-blue-500">
+                        <ArrowRight className="w-4 h-4" />
+                      </span>
                     </div>
                   ))}
                 </CardContent>
               </Card>
 
-              <Card className="relative overflow-hidden border border-slate-200 dark:border-slate-800 rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
-                {/* Header with terminal vibe */}
-                <CardHeader className="px-6 py-4 relative">
-                  <CardTitle className="text-2xl font-mono flex items-center gap-2">
-                    <span className="text-blue-500 animate-pulse">{">_"}</span>
+              <Card className="relative overflow-hidden rounded-2xl border border-neutral-200/70 dark:border-neutral-800/60 bg-white/70 dark:bg-neutral-900/60 backdrop-blur-xl shadow-sm hover:shadow-xl transition-all duration-500">
+                {/* top gradient accent */}
+                <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-blue-600 to-transparent" />
+
+                <CardHeader className="px-6 pt-6 pb-2">
+                  <CardTitle className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-white flex items-center gap-2">
                     Follow Me
                   </CardTitle>
+
+                  <p className="text-sm text-neutral-500 mt-1">
+                    Connect with me on social platforms
+                  </p>
                 </CardHeader>
 
-                <CardContent className="px-6 pb-6">
-                  <div className="flex gap-4 flex-wrap ">
+                <CardContent className="px-6 py-6">
+                  <div className="flex flex-wrap gap-3">
                     {socialLinks.map((social, index) => (
-                      <Button
+                      <Link
                         key={index}
-                        variant="outline"
-                        size="lg"
-                        asChild
-                        className="relative group overflow-hidden font-mono px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 hover:text-white hover:bg-indigo-500 font-semibold hover:border-transparent transition-all duration-300 shadow-sm hover:shadow-lg"
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Follow on ${social.label}`}
+                        className="group flex items-center gap-2 rounded-xl border border-neutral-200 dark:border-neutral-700 px-4 py-3 text-sm font-medium text-neutral-700 dark:text-neutral-200 bg-white dark:bg-neutral-900 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300 shadow-sm hover:shadow-md"
                       >
-                        <Link
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 relative z-10"
-                          aria-label={`Follow on ${social.label}`}
-                        >
-                          <span className="text-blue-400 group-hover:text-white transition">
-                            {social.icon}
-                          </span>
-                          <span>{social.label}</span>
-                        </Link>
-                      </Button>
+                        <span className="text-blue-600 group-hover:text-white transition">
+                          {social.icon}
+                        </span>
+
+                        {social.label}
+                      </Link>
                     ))}
                   </div>
                 </CardContent>
               </Card>
 
               <Card
-                className="relative overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-xl hover:shadow-2xl transition-shadow duration-300"
+                className="relative overflow-hidden rounded-3xl
+  border border-neutral-200 dark:border-neutral-800
+  bg-white dark:bg-neutral-900
+  shadow-[0_25px_70px_rgba(59,130,246,0.15)]
+  hover:shadow-[0_35px_90px_rgba(59,130,246,0.25)]
+  transition-all duration-500"
                 aria-label="CTA to collaborate or contact"
               >
-                {/* Floating gradient glow */}
-                <span className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-20 blur-3xl animate-pulse-slow -z-10 rounded-2xl" />
+                {/* Background Glow */}
+                <div className="pointer-events-none absolute inset-0 -z-10">
+                  <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-[320px] w-[320px] rounded-full bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl" />
+                </div>
 
-                <CardContent className="relative p-6">
-                  {/* Terminal header line */}
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                    <span className="ml-2 text-xs font-mono opacity-80">
-                      ~/contact/cta
-                    </span>
-                  </div>
-
-                  {/* Heading with terminal vibe */}
-                  <h3 className="text-2xl sm:text-3xl font-bold font-mono flex items-center gap-2 mb-3">
-                    <span className="text-green-300 animate-pulse">{">_"}</span>
-                    Let's Build Something Amazing
+                <CardContent className="relative p-8 sm:p-10 text-center">
+                  {/* Heading */}
+                  <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+                    Let’s Build Something Great Together
                   </h3>
 
-                  {/* Description block */}
-                  <p className="relative text-sm sm:text-base font-mono opacity-90 mb-6 bg-black/20 dark:bg-black/30 rounded-md p-4 border-l-4 border-green-400 shadow-sm">
-                    <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 rounded-t-md animate-[pulse_3s_ease-in-out_infinite]" />
-                    I'm passionate about creating digital solutions that make a
-                    difference. Whether you have a project in mind or just want
-                    to chat about technology, I'd love to hear from you.
+                  {/* Description */}
+                  <p className="mt-4 text-neutral-600 dark:text-neutral-300 max-w-xl mx-auto leading-relaxed">
+                    I'm always open to discussing new projects, creative ideas,
+                    or opportunities to build impactful digital experiences. If
+                    you have something in mind, feel free to reach out.
                   </p>
 
                   {/* CTA Button */}
-                  <Button
-                    variant="secondary"
-                    asChild
-                    className="relative font-mono font-semibold text-indigo-500 px-6 py-4 rounded-xl bg-white hover:bg-indigo-50 shadow-lg hover:shadow-2xl transition-all duration-300 group"
-                  >
-                    <Link
-                      href="mailto:pawankumavat042@gmail.com"
-                      aria-label="Send a quick email to Pawan Kumavat"
-                      className="flex items-center gap-3"
+                  <div className="mt-8 flex justify-center">
+                    <Button
+                      asChild
+                      className="group relative rounded-xl px-7 py-5
+        bg-blue-600 hover:bg-blue-700
+        text-white font-medium
+        shadow-lg hover:shadow-xl
+        transition-all duration-300"
                     >
-                      <span className="text-indigo-600 animate-pulse">
-                        {">_"}
-                      </span>
-                      Quick Email
-                      <Mail className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
+                      <Link
+                        href="mailto:pawankumavat042@gmail.com"
+                        className="flex items-center gap-2"
+                        aria-label="Send a quick email to Pawan Kumavat"
+                      >
+                        <Mail className="h-4 w-4" />
+                        Send Me an Email
+                      </Link>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </div>

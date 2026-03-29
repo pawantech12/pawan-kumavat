@@ -43,41 +43,31 @@ export default function Navigation() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-md">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="group flex items-center gap-3 select-none">
-            {/* Terminal Icon */}
+    <header className="sticky top-0 z-50 w-full border-b border-neutral-200/60 bg-white/70 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex py-2 items-center justify-between">
+          <Link href="/" className="flex items-center gap-3 select-none">
             <div
-              className="relative flex h-10 w-10 items-center justify-center rounded-lg
-    bg-gradient-to-br from-blue-600 to-indigo-600
-    shadow-lg ring-1 ring-blue-500/30
-    group-hover:scale-105 transition-transform"
+              className="flex h-10 w-10 items-center justify-center rounded-xl
+  bg-gradient-to-br from-blue-600 to-indigo-600
+  shadow-md"
             >
               <Code2 className="h-5 w-5 text-white" />
-
-              {/* Blinking cursor dot */}
-              <span className="absolute bottom-1 right-1 h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
             </div>
 
-            {/* Terminal Text */}
-            <div className="flex items-center font-mono text-xl font-semibold">
-              <span className="text-gray-700">&gt;</span>
-              <span className="ml-1 text-gray-800">
-                pawan
-                <span className="text-blue-600">.dev</span>
-              </span>
-              <span className="ml-1 h-5 w-[2px] bg-blue-600 animate-pulse" />
+            <div className="flex items-center text-lg font-semibold tracking-tight">
+              <span className="text-neutral-800">Pawan</span>
+              <span className="text-blue-600">.dev</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav
-            className="max-[956px]:hidden flex items-center gap-2
-  rounded-full border border-neutral-200/70
-  bg-white/60 backdrop-blur-md
-  px-4 py-2
-  font-mono text-base shadow-sm"
+            className="max-[956px]:hidden flex items-center gap-1
+            rounded-full border border-neutral-200/70
+            bg-white/60 backdrop-blur-xl
+            px-3 py-1.5
+            text-sm font-medium shadow-sm"
             aria-label="Primary navigation"
           >
             {navigation.map((item) => {
@@ -87,35 +77,17 @@ export default function Navigation() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`group relative flex items-center gap-1.5
-          rounded-full px-3 py-1.5
-          transition-all duration-300
-          ${
-            active
-              ? "bg-gradient-to-r from-blue-600/10 to-indigo-600/10 text-blue-600 shadow-inner"
-              : "text-neutral-600 hover:text-blue-600 hover:bg-blue-500/5"
-          }
-        `}
+                  className={`relative rounded-lg px-3 py-2 transition-all duration-200
+                    ${
+                      active
+                        ? "text-blue-600 bg-blue-50"
+                        : "text-neutral-600 hover:text-blue-600 hover:bg-neutral-100"
+                    }`}
                 >
                   {/* Command Text */}
                   <span className="relative font-semibold tracking-tight">
                     {item.name}
                   </span>
-
-                  {/* Active underline pulse */}
-                  <span
-                    className={`pointer-events-none absolute left-2 right-2 -bottom-[3px]
-            h-[2px] rounded-full
-            bg-gradient-to-r from-blue-600 to-indigo-600
-            transition-transform duration-300 origin-left
-            ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
-          `}
-                  />
-
-                  {/* Glow dot */}
-                  {active && (
-                    <span className="absolute -right-1 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-blue-500 animate-pulse" />
-                  )}
                 </Link>
               );
             })}
@@ -128,9 +100,9 @@ export default function Navigation() {
               variant="ghost"
               size="icon"
               asChild
-              className="group rounded-xl border border-transparent
-               hover:border-gray-200 hover:bg-gray-100
-               transition-all duration-300 hover:-translate-y-0.5"
+              className="rounded-lg border border-transparent
+hover:border-neutral-200 hover:bg-neutral-100
+transition-all duration-200"
             >
               <Link
                 href="https://github.com/pawantech12"
@@ -138,7 +110,7 @@ export default function Navigation() {
                 rel="noopener noreferrer"
                 aria-label="Visit GitHub Profile"
               >
-                <Github className="h-4 w-4 text-gray-700 group-hover:text-black" />
+                <Github className="h-4 w-4 text-neutral-600 group-hover:text-neutral-900" />
               </Link>
             </Button>
 
@@ -182,8 +154,10 @@ export default function Navigation() {
             {isAdmin && (
               <Button
                 size="sm"
-                className="ml-2 gap-1 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600
-                 text-white shadow-md hover:shadow-lg transition-all"
+                className="ml-2 gap-1 rounded-lg
+bg-blue-600 text-white
+hover:bg-blue-700
+shadow-sm"
                 asChild
               >
                 <Link href="/admin">
@@ -205,28 +179,27 @@ export default function Navigation() {
             <SheetContent
               side="right"
               className="w-[320px] sm:w-[400px]
-      bg-white/90 backdrop-blur-xl
+      bg-white backdrop-blur-xl
       border-l border-neutral-200"
             >
               {/* Header / Brand */}
-              <div className="flex items-center gap-3 mb-10">
+              <Link
+                href="/"
+                className="flex items-center gap-3 select-none mb-5"
+              >
                 <div
-                  className="relative flex h-10 w-10 items-center justify-center rounded-lg
-        bg-gradient-to-br from-blue-600 to-indigo-600
-        shadow-lg ring-1 ring-blue-500/30"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl
+  bg-gradient-to-br from-blue-600 to-indigo-600
+  shadow-md"
                 >
                   <Code2 className="h-5 w-5 text-white" />
-                  <span className="absolute bottom-1 right-1 h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
                 </div>
 
-                <div className="flex items-center font-mono text-lg font-semibold">
-                  <span className="text-gray-600">&gt;</span>
-                  <span className="ml-1 text-gray-800">
-                    pawan<span className="text-blue-600">.dev</span>
-                  </span>
-                  <span className="ml-1 h-4 w-[2px] bg-blue-600 animate-pulse" />
+                <div className="flex items-center text-lg font-semibold tracking-tight">
+                  <span className="text-neutral-800">Pawan</span>
+                  <span className="text-blue-600">.dev</span>
                 </div>
-              </div>
+              </Link>
 
               {/* Navigation */}
               <nav
@@ -241,37 +214,17 @@ export default function Navigation() {
                       key={item.name}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className={`group relative flex items-center gap-3
-              rounded-xl px-4 py-3
-              transition-all duration-300
-              ${
-                active
-                  ? "bg-gradient-to-r from-blue-600/10 to-indigo-600/10 text-blue-600 shadow-inner"
-                  : "text-gray-700 hover:bg-blue-500/5 hover:text-blue-600"
-              }
-            `}
+                      className={`rounded-lg px-4 py-3 transition-all
+                        ${
+                          active
+                            ? "bg-blue-50 text-blue-600"
+                            : "text-neutral-700 hover:bg-neutral-100"
+                        }`}
                     >
                       {/* Command */}
                       <span className="font-semibold tracking-tight">
                         {item.name}
                       </span>
-
-                      {/* Active underline */}
-                      <span
-                        className={`absolute left-4 right-4 bottom-1 h-[2px] rounded-full
-                bg-gradient-to-r from-blue-600 to-indigo-600
-                transition-transform duration-300 origin-left
-                ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}
-              `}
-                      />
-
-                      {/* Active glow dot */}
-                      {active && (
-                        <span
-                          className="absolute right-3 top-1/2 -translate-y-1/2
-                h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse"
-                        />
-                      )}
                     </Link>
                   );
                 })}

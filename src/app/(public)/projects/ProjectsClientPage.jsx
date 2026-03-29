@@ -58,126 +58,162 @@ export default function ProjectsClientPage() {
     >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <header
-          aria-label="Projects introduction"
-          className="relative text-center mb-12 space-y-6"
-        >
-          {/* Terminal-style gradient background glow */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-10 blur-3xl -z-10 rounded-lg"></div>
+        <div className="text-center mb-16 relative">
+          {/* Background Glow */}
+          <div className="absolute inset-0 flex justify-center -z-10">
+            <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+          </div>
 
-          {/* Main heading with terminal prefix */}
-          <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 font-mono relative inline-block">
-            <span className="before:content-['>_'] before:text-blue-500 animate-pulse"></span>
-            My Projects
-            <span className="text-blue-600 ml-2">Showcase</span>
-            {/* Animated underline */}
-            <span className="absolute -bottom-1 max-sm:left-1/2 max-sm:-translate-x-1/2 right-0 w-2/5 h-[4px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
-          </h1>
+          {/* Small Label */}
+          <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
+            Portfolio
+          </span>
 
-          {/* Subtext with terminal/code block vibe */}
-          <p className="relative text-lg text-gray-100 max-w-3xl mx-auto font-mono bg-gray-900/80 dark:bg-gray-800/70 rounded-2xl p-6 border-l-4 border-blue-500 shadow-lg overflow-hidden">
-            <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 animate-[pulse_3s_ease-in-out_infinite] rounded-t-xl"></span>
+          {/* Heading */}
+          <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
+            My <span className="text-blue-600">Projects</span>
+          </h2>
 
-            <span className="block before:content-['>_'] before:text-blue-400 before:mr-2">
-              Here's a curated collection of my projects, highlighting
-              full-stack development, modern UI/UX, and scalable web
-              applications.
-            </span>
+          {/* Divider */}
+          <div className="flex justify-center mt-4">
+            <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+          </div>
+
+          {/* Description */}
+          <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            A collection of projects that demonstrate my expertise in building
+            modern, scalable, and performance-focused web applications using
+            technologies like React, Next.js, Node.js, and MongoDB.
           </p>
-        </header>
+        </div>
 
         {/* Search Bar */}
-        <section aria-label="Search projects" className="relative mb-8">
-          <div className="relative w-full  mx-auto">
-            {/* Search Icon */}
-            <Search
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-500 dark:text-blue-400 h-5 w-5 pointer-events-none"
-              aria-hidden="true"
-            />
+        <section aria-label="Search projects" className="relative mb-12">
+          <div className="relative  group">
+            {/* Glass background */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/5 via-indigo-500/5 to-purple-500/5 blur-xl opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
-            {/* Input Field */}
-            <Input
-              type="text"
-              placeholder=">_ Search projects by name, description, or tech..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              aria-label="Search input"
-              className="
-        pl-12 pr-4 py-3 h-12 w-full rounded-xl
-        bg-gray-50 dark:bg-slate-900
-        border border-gray-300 dark:border-gray-700
-        shadow-inner focus:shadow-[0_0_10px_rgba(99,102,241,0.3)]
-        focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-30
-        placeholder-gray-400 dark:placeholder-gray-500
-        font-mono text-gray-900 dark:text-gray-100
-        transition-all duration-300
-      "
-            />
+            {/* Search Input Container */}
+            <div className="relative flex items-center rounded-2xl border border-neutral-200/70 bg-white/70 backdrop-blur-xl shadow-sm transition-all duration-300 group-hover:shadow-md focus-within:border-blue-500">
+              {/* Search Icon */}
+              <Search
+                className="absolute left-4 text-neutral-500 h-5 w-5 pointer-events-none"
+                aria-hidden="true"
+              />
 
-            {/* Optional subtle animated underline */}
-            <span className="absolute bottom-0 left-0 h-1 w-0 group-focus:w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full transition-all duration-500"></span>
+              {/* Input Field */}
+              <Input
+                type="text"
+                placeholder="Search projects, technologies, or keywords..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                aria-label="Search projects"
+                className="
+          pl-12 pr-4 py-3 h-12 w-full
+          rounded-2xl border-none
+          bg-transparent
+          text-neutral-800
+          placeholder:text-neutral-400
+          focus-visible:ring-0 focus-visible:outline-none
+        "
+              />
+            </div>
           </div>
         </section>
 
         {/* Search Results Info */}
         {searchTerm && (
-          <div className="text-center mb-8 relative" aria-live="polite">
-            {/* Background gradient glow */}
-            <div className="absolute inset-0 mx-auto w-2/3 h-full bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 opacity-10 rounded-xl blur-xl -z-10"></div>
-
-            <p className="font-mono text-gray-700 dark:text-gray-300 text-sm sm:text-base inline-flex items-center justify-center gap-2">
-              {/* Terminal prefix */}
-              <span className="text-indigo-400 animate-pulse">{">_"}</span>
-              Found{" "}
-              <span className="font-semibold text-blue-500">
-                {filteredProjects.length}
-              </span>{" "}
-              project{filteredProjects.length !== 1 ? "s" : ""} matching{" "}
-              <span className="font-semibold text-indigo-500">
-                &quot;{searchTerm}&quot;
+          <div
+            className="relative flex justify-center mb-10"
+            aria-live="polite"
+          >
+            {/* Result Card */}
+            <div
+              className="relative inline-flex items-center gap-3
+            rounded-xl border border-neutral-200/60
+            bg-white/70 backdrop-blur-xl
+            px-6 py-3
+            text-sm sm:text-base
+            text-neutral-700
+            "
+            >
+              {/* Status Dot */}
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-70 animate-ping"></span>
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-blue-600"></span>
               </span>
-            </p>
+
+              {/* Text */}
+              <p className="leading-none">
+                Showing{" "}
+                <span className="font-semibold text-blue-600">
+                  {filteredProjects.length}
+                </span>{" "}
+                project{filteredProjects.length !== 1 ? "s" : ""}
+                {searchTerm && (
+                  <>
+                    {" "}
+                    for{" "}
+                    <span className="font-medium text-indigo-600">
+                      "{searchTerm}"
+                    </span>
+                  </>
+                )}
+              </p>
+            </div>
           </div>
         )}
 
         {/* No Results */}
         {searchTerm && filteredProjects.length === 0 && (
           <div
-            className="relative text-center py-16 px-8 sm:px-12 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-950 dark:to-indigo-900 rounded-3xl shadow-lg border border-slate-200 dark:border-slate-800"
+            className="relative text-center py-16 px-8 sm:px-12
+          bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50
+          dark:from-neutral-900 dark:via-neutral-950 dark:to-indigo-950
+          rounded-3xl border border-neutral-200 dark:border-neutral-800
+          shadow-sm"
             role="alert"
           >
-            {/* Top gradient accent bar */}
-            <span className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-t-3xl" />
-
-            {/* Decorative Icon */}
-            <div className="mx-auto mb-6 w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-blue-900 dark:via-indigo-950 dark:to-purple-900 rounded-full shadow-inner">
-              <Info className="w-10 h-10 text-blue-600 dark:text-blue-400" />
+            {/* soft background glow */}
+            <div className="pointer-events-none absolute inset-0 flex justify-center">
+              <div className="h-40 w-40 rounded-full bg-blue-500/20 blur-3xl"></div>
             </div>
 
-            {/* Alert Text */}
-            <p className="text-gray-800 bg-white p-4 dark:text-gray-200 text-lg sm:text-xl font-mono mb-8 border-l-4 border-blue-500 pl-4">
-              <span className="text-blue-600">&gt;_</span> No projects found
-              matching your search.
-            </p>
-
-            {/* Clear Search Button */}
-            <Button
-              variant="outline"
-              onClick={() => setSearchTerm("")}
-              className="relative group mx-auto font-mono text-sm sm:text-base px-10 py-5 rounded-xl border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2"
-              aria-label="Clear search and show all projects"
+            {/* Icon */}
+            <div
+              className="relative mx-auto mb-6 w-16 h-16 flex items-center justify-center
+          rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm"
             >
-              <span className="text-blue-600 group-hover:text-white">
-                &gt;_
-              </span>
-              Clear Search
-              <ArrowRight className="h-5 w-5" />
-            </Button>
+              <Info className="w-7 h-7 text-blue-600" />
+            </div>
 
-            {/* Footer hint */}
-            <p className="mt-6 text-xs text-gray-500 dark:text-gray-400 font-mono">
-              Tip: Try different keywords to discover more projects
+            {/* Title */}
+            <h3 className="text-xl sm:text-2xl font-semibold text-neutral-900 dark:text-white">
+              No projects found
+            </h3>
+
+            {/* Description */}
+            <p className="mt-3 max-w-md mx-auto text-neutral-600 dark:text-neutral-400 text-sm sm:text-base">
+              We couldn't find any projects matching your search. Try using
+              different keywords or clear the search to explore all projects.
             </p>
+
+            {/* Button */}
+            <div className="mt-8">
+              <Button
+                onClick={() => setSearchTerm("")}
+                className="group rounded-xl px-6 py-3
+              bg-blue-600 text-white
+              hover:bg-blue-700
+              transition-all duration-300"
+                aria-label="Clear search and show all projects"
+              >
+                <span className="flex items-center gap-2">
+                  Show All Projects
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Button>
+            </div>
           </div>
         )}
 
@@ -186,7 +222,7 @@ export default function ProjectsClientPage() {
           <SectionLoader text="Loading Projects..." />
         ) : (
           <section aria-label="List of filtered projects" className="mb-16">
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProjects.map((project, index) => (
                 <Card
                   key={index}
@@ -208,141 +244,89 @@ export default function ProjectsClientPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-t-3xl pointer-events-none" />
                   </div>
 
-                  {/* Header */}
-                  <CardHeader className="px-6 pt-6">
-                    <CardTitle
-                      className="
-        relative text-2xl font-mono font-semibold
-        text-gray-900 dark:text-white
-        tracking-tight
-        transition-all duration-300
-        group-hover:text-transparent
-        group-hover:bg-clip-text
-        group-hover:bg-gradient-to-r
-        group-hover:from-blue-500
-        group-hover:to-purple-600
-      "
-                    >
-                      <span className="mr-2 text-blue-500 opacity-80">
-                        {">_"}
-                      </span>
+                  {/* Card Body */}
+                  <div className="p-6 space-y-4">
+                    {/* Title */}
+                    <h3 className="text-xl font-semibold text-neutral-900 group-hover:text-blue-600 transition-colors">
                       {project.title}
-                    </CardTitle>
+                    </h3>
 
-                    <CardDescription
-                      className="
-        relative mt-4
-        font-mono text-sm leading-relaxed
-        text-gray-800 dark:text-gray-200
-        bg-gradient-to-br from-gray-50/90 to-gray-100/60
-        dark:from-gray-900/80 dark:to-gray-950/60
-        rounded-xl p-5
-        border border-gray-200/60 dark:border-gray-700/60
-        shadow-[0_10px_30px_rgba(0,0,0,0.08)]
-        overflow-hidden
-      "
-                    >
-                      {/* Fake code editor header */}
-                      <div className="relative flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-2 text-xs text-gray-400">
-                          <span className="tracking-wide">
-                            // project.description.ts
+                    {/* Description */}
+                    <p className="text-sm leading-relaxed text-neutral-600">
+                      {project.description.length > 120
+                        ? project.description.slice(0, 120) + "..."
+                        : project.description}
+                    </p>
+
+                    {/* Tech Stack (optional if you have project.tech) */}
+                    {project.tech && (
+                      <div className="flex flex-wrap gap-2 pt-1">
+                        {project.tech.map((tech, i) => (
+                          <span
+                            key={i}
+                            className="text-xs px-2.5 py-1 rounded-md bg-blue-50 text-blue-600"
+                          >
+                            {tech}
                           </span>
-                        </div>
-
-                        {/* File status */}
-                        <span className="text-[10px] px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                          compiled
-                        </span>
+                        ))}
                       </div>
+                    )}
 
-                      {/* Description content */}
-                      <p className="relative z-10 text-sm leading-relaxed">
-                        <span className="block">
-                          <span className="text-blue-500 mr-2">{">"}</span>
-                          <span className="text-green-600 dark:text-green-400">
-                            const
-                          </span>{" "}
-                          <span className="text-purple-600 dark:text-purple-400">
-                            summary
-                          </span>{" "}
-                          <span className="text-gray-400">=</span>{" "}
-                          <span className="text-gray-800 dark:text-gray-200">
-                            {project.description.length > 120
-                              ? project.description.slice(0, 120) + "..."
-                              : project.description}
-                          </span>
-                        </span>
-                      </p>
-
-                      {/* Subtle glow line */}
-                      <span className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-60"></span>
-                    </CardDescription>
-                  </CardHeader>
-
-                  {/* Content */}
-                  <CardContent className="px-6 pb-6 space-y-4">
-                    <div className="flex gap-3">
+                    {/* Buttons */}
+                    <div className="flex gap-3 pt-4">
+                      {/* GitHub Button */}
                       {project.github && (
                         <Button
                           variant="outline"
                           asChild
-                          className="
-              group flex-1 relative overflow-hidden
-              border border-blue-500/60
-              bg-white/60 backdrop-blur
-              text-blue-600 font-mono
-              hover:text-blue-700
-              transition-all duration-300
-              hover:-translate-y-0.5
-              hover:shadow-[0_0_10px_rgba(59,130,246,0.35)]
-            "
+                          className="group/button relative flex-1 overflow-hidden
+                      border-neutral-300 bg-white
+                      hover:border-blue-600 hover:text-blue-600
+                      transition-all duration-300"
                         >
                           <Link
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label={`View source code of ${project.title} on GitHub`}
-                            className="relative z-10 flex items-center justify-center gap-2"
+                            className="flex items-center justify-center gap-2 font-medium"
                           >
-                            <span className="text-blue-500">{">_"}</span>
-                            <Github className="h-4 w-4" />
-                            <span className="tracking-wide">git&nbsp;code</span>
+                            {/* subtle hover background */}
+                            <span className="absolute inset-0 bg-blue-50 opacity-0 group-hover/button:opacity-100 transition-opacity duration-300" />
+
+                            <Github className="relative h-4 w-4 transition-transform group-hover/button:-translate-y-0.5" />
+                            <span className="relative">Source Code</span>
                           </Link>
                         </Button>
                       )}
 
+                      {/* Live Demo Button */}
                       {project.demo && (
                         <Button
                           asChild
-                          className="
-              group flex-1 relative overflow-hidden
-              bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600
-              text-white font-mono
-              shadow-md
-              transition-all duration-300
-              hover:-translate-y-0.5
-              hover:shadow-[0_0_10px_rgba(99,102,241,0.55)]
-            "
+                          className="group/button relative flex-1 overflow-hidden
+                      bg-gradient-to-r from-blue-600 to-indigo-600
+                      hover:from-blue-700 hover:to-indigo-700
+                      text-white transition-all duration-300"
                         >
                           <Link
                             href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label={`View live demo of ${project.title}`}
-                            className="relative z-10 flex items-center justify-center gap-2"
+                            className="flex items-center justify-center gap-2 font-medium"
                           >
-                            <span className="opacity-90">{">_"}</span>
-                            <ExternalLink className="h-4 w-4" />
-                            <span className="tracking-wide">run&nbsp;demo</span>
+                            {/* gradient shine effect */}
+                            <span className="absolute -left-full top-0 h-full w-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover/button:left-full transition-all duration-700" />
+
+                            <ExternalLink className="relative h-4 w-4 transition-transform group-hover/button:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            <span className="relative">Live Demo</span>
                           </Link>
                         </Button>
                       )}
                     </div>
-                  </CardContent>
+                  </div>
 
-                  {/* Bottom Gradient Accent */}
-                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 group-hover:w-full transition-all duration-500" />
+                  {/* Bottom Accent Line */}
+                  <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 group-hover:w-full transition-all duration-500"></div>
                 </Card>
               ))}
             </div>
