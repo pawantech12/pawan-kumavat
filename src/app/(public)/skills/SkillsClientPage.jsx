@@ -44,271 +44,435 @@ const SkillsClientPage = () => {
   }, []);
   return (
     <main
-      className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
+      className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20"
       aria-label="Skills and Certifications Page of Pawan Kumavat"
     >
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16 relative">
+      <div className="max-w-7xl mx-auto">
+        {/* ================= HEADER ================= */}
+        <div className="relative mb-16 sm:mb-20 lg:mb-24 text-center">
           {/* Background Glow */}
-          <div className="absolute inset-0 flex justify-center -z-10">
-            <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+          <div className="absolute inset-0 -z-10 flex justify-center">
+            <div
+              className="h-[160px] sm:h-[200px] lg:h-[240px]
+          w-[280px] sm:w-[420px] lg:w-[520px]
+          rounded-full
+          bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-cyan-500/10
+          blur-3xl"
+            />
           </div>
 
-          {/* Small Label */}
-          <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
-            Tech Stack
-          </span>
+          {/* Badge */}
+          <div
+            className="inline-flex items-center gap-2 sm:gap-2.5
+        rounded-full border border-neutral-200/70
+        bg-white/75 backdrop-blur-xl
+        px-4 sm:px-5 py-1.5 sm:py-2
+        shadow-sm"
+          >
+            <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-70 animate-ping" />
+              <span className="relative inline-flex h-full w-full rounded-full bg-blue-600" />
+            </span>
+
+            <span
+              className="text-[10px] sm:text-[11px]
+          font-semibold uppercase tracking-[0.2em]
+          text-blue-600"
+            >
+              Tech Stack
+            </span>
+          </div>
 
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
-            Skills & <span className="text-blue-600">Technologies</span>
-          </h2>
+          <h1
+            className="mt-5 sm:mt-7
+        text-3xl sm:text-4xl lg:text-6xl
+        font-bold tracking-tight leading-[1.05]
+        text-neutral-900"
+          >
+            Skills &
+            <br />
+            <span
+              className="bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500
+          bg-clip-text text-transparent"
+            >
+              Modern Technologies
+            </span>
+          </h1>
 
           {/* Divider */}
-          <div className="flex justify-center mt-4">
-            <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+          <div className="mt-6 sm:mt-8 flex items-center justify-center gap-2 sm:gap-3">
+            <div className="h-px w-6 sm:w-10 bg-neutral-300" />
+
+            <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-blue-500" />
+
+            <div className="h-[2px] sm:h-[3px] w-16 sm:w-24 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500" />
+
+            <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-indigo-500" />
+
+            <div className="h-px w-6 sm:w-10 bg-neutral-300" />
           </div>
 
           {/* Description */}
-          <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            I work with modern frameworks, tools, and technologies to build
-            scalable, high-performance web applications with clean architecture
-            and great user experience.
+          <p
+            className="mx-auto mt-6 sm:mt-7
+        max-w-xl sm:max-w-2xl
+        text-sm sm:text-base lg:text-lg
+        leading-relaxed text-neutral-600"
+          >
+            I work with modern frameworks, libraries, and development tools to
+            build scalable, high-performance applications with clean
+            architecture and exceptional user experiences.
           </p>
         </div>
 
-        {/* Skills Grid */}
+        {/* ================= SKILLS GRID ================= */}
         {loading ? (
           <SectionLoader text="Loading Skills..." />
         ) : (
           <section
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 mb-16"
             aria-label="List of Technical Skills"
+            className="
+          grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6
+          gap-4 sm:gap-5 lg:gap-6
+          mb-20 sm:mb-24
+        "
           >
             {skills.map((skill, index) => {
               const Icon = LucideIcons[skill.icon] || LucideIcons.HelpCircle;
+
               return (
-                <div
+                <article
                   key={index}
                   aria-label={`Skill card for ${skill.name}`}
                   className="
-              group relative flex flex-col items-center
-              p-6 rounded-2xl
-              border border-neutral-200
-              bg-white/70 backdrop-blur-sm
-              transition-all duration-300
-              hover:-translate-y-1
-              hover:border-blue-400
-              hover:shadow-lg
-            "
-                >
-                  {/* subtle gradient glow */}
-                  <div
-                    className="
-                absolute inset-0 rounded-2xl
-                bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-purple-500/5
-                opacity-0 group-hover:opacity-100
-                transition-opacity duration-300
-              "
-                  />
+                group relative overflow-hidden
 
-                  {/* Icon container */}
-                  <div
-                    className={`
-                  relative z-10
-                  flex items-center justify-center
-                  w-14 h-14 rounded-xl
-                  ${skill.color}
-                  shadow-sm
-                  transition-transform duration-300
-                  group-hover:scale-110
-                `}
-                  >
-                    <Icon className="h-7 w-7" aria-hidden />
+                rounded-2xl sm:rounded-3xl
+
+                border border-neutral-200/70
+
+                bg-white/80 backdrop-blur-2xl
+
+                p-5 sm:p-6
+
+                shadow-[0_8px_30px_rgb(0,0,0,0.04)]
+
+                transition-all duration-500
+                hover:-translate-y-2
+                hover:border-blue-200
+                hover:shadow-[0_20px_60px_rgba(37,99,235,0.12)]
+              "
+                >
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    <div className="absolute -top-16 -right-16 h-32 w-32 rounded-full bg-blue-500/10 blur-3xl" />
+                    <div className="absolute -bottom-16 -left-16 h-32 w-32 rounded-full bg-indigo-500/10 blur-3xl" />
                   </div>
 
-                  {/* Skill name */}
-                  <span
-                    className="
-                relative z-10
-                mt-4 text-sm font-semibold
-                text-neutral-800
-                tracking-tight
-              "
-                  >
-                    {skill.name}
-                  </span>
+                  {/* Top Gradient Line */}
+                  <div className="absolute inset-x-0 top-0 h-[3px] scale-x-0 origin-left bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500 transition-transform duration-500 group-hover:scale-x-100" />
 
-                  {/* subtle underline */}
-                  <span
-                    className="
-                mt-2 h-[2px] w-0
-                bg-gradient-to-r from-blue-500 to-indigo-500
-                transition-all duration-300
-                group-hover:w-10
-              "
-                  />
-                </div>
+                  <div className="relative z-10 flex flex-col items-center text-center">
+                    {/* Icon */}
+                    <div
+                      className={`
+                    relative flex items-center justify-center
+                    h-14 w-14 sm:h-16 sm:w-16
+                    rounded-2xl
+                    ${skill.color}
+
+                    shadow-lg shadow-black/5
+
+                    transition-all duration-500
+                    group-hover:scale-110
+                    group-hover:-translate-y-1
+                  `}
+                    >
+                      <div className="absolute inset-0 rounded-2xl bg-white/10" />
+
+                      <Icon
+                        className="relative h-6 w-6 sm:h-7 sm:w-7"
+                        aria-hidden
+                      />
+                    </div>
+
+                    {/* Name */}
+                    <h3
+                      className="
+                    mt-4 sm:mt-5
+                    text-sm sm:text-[15px]
+                    font-semibold
+                    text-neutral-800
+                    transition-colors duration-300
+                    group-hover:text-blue-600
+                  "
+                    >
+                      {skill.name}
+                    </h3>
+
+                    {/* Decorative Divider */}
+                    <div className="mt-3 flex items-center gap-2">
+                      <span className="h-[2px] w-0 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-500 group-hover:w-6 sm:group-hover:w-8" />
+
+                      <span className="h-1.5 w-1.5 rounded-full bg-blue-500 opacity-0 scale-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100" />
+
+                      <span className="h-[2px] w-0 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 transition-all duration-500 group-hover:w-6 sm:group-hover:w-8" />
+                    </div>
+                  </div>
+
+                  {/* Bottom Glow */}
+                  <div className="absolute bottom-0 left-1/2 h-20 w-20 -translate-x-1/2 rounded-full bg-blue-500/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                </article>
               );
             })}
           </section>
         )}
 
-        {/* Certifications */}
+        {/* ================= CERTIFICATIONS ================= */}
         <section aria-label="Certifications and Achievements">
-          <Card className="overflow-hidden">
-            <CardContent className="p-0">
-              <div className="text-center  p-10 relative">
-                {/* Background Glow */}
-                <div className="absolute inset-0 flex justify-center -z-10">
-                  <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+          <Card
+            className="
+          relative overflow-hidden
+
+          rounded-3xl sm:rounded-[2rem]
+
+          border border-neutral-200/70
+
+          bg-white/80 backdrop-blur-2xl
+
+          shadow-[0_20px_60px_rgba(15,23,42,0.06)]
+        "
+          >
+            {/* Glow Effects */}
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute left-1/2 top-[-10rem] h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-500/10 blur-[120px]" />
+
+              <div className="absolute right-0 bottom-0 h-[20rem] w-[20rem] rounded-full bg-indigo-500/10 blur-[100px]" />
+            </div>
+
+            {/* Top Border */}
+            <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500" />
+
+            <CardContent className="relative p-6 sm:p-10 lg:p-14">
+              {/* Header */}
+              <div className="text-center mb-14 sm:mb-16">
+                {/* Badge */}
+                <div
+                  className="
+                inline-flex items-center gap-2 sm:gap-2.5
+                rounded-full border border-neutral-200/70
+                bg-white/80 backdrop-blur-xl
+                px-4 sm:px-5 py-1.5 sm:py-2
+                shadow-sm
+              "
+                >
+                  <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-70 animate-ping" />
+                    <span className="relative inline-flex h-full w-full rounded-full bg-blue-600" />
+                  </span>
+
+                  <span
+                    className="text-[10px] sm:text-[11px]
+                font-semibold uppercase tracking-[0.2em]
+                text-blue-600"
+                  >
+                    Certifications
+                  </span>
                 </div>
 
-                {/* Small Label */}
-                <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
-                  Certifications
-                </span>
-
                 {/* Heading */}
-                <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
-                  Certifications &{" "}
-                  <span className="text-blue-600">Achievements</span>
+                <h2
+                  className="
+                mt-5 sm:mt-7
+                text-2xl sm:text-4xl lg:text-5xl
+                font-bold tracking-tight leading-[1.1]
+                text-neutral-900
+              "
+                >
+                  Certifications &
+                  <br />
+                  <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500 bg-clip-text text-transparent">
+                    Achievements
+                  </span>
                 </h2>
 
                 {/* Divider */}
-                <div className="flex justify-center mt-4">
-                  <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 rounded-full"></div>
+                <div className="mt-6 sm:mt-8 flex items-center justify-center gap-2 sm:gap-3">
+                  <div className="h-px w-6 sm:w-10 bg-neutral-300" />
+
+                  <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-blue-500" />
+
+                  <div className="h-[2px] sm:h-[3px] w-16 sm:w-24 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500" />
+
+                  <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-indigo-500" />
+
+                  <div className="h-px w-6 sm:w-10 bg-neutral-300" />
                 </div>
 
                 {/* Description */}
-                <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                  Professional certifications that validate my technical
-                  expertise and commitment to continuous learning in modern web
-                  development and software engineering.
+                <p
+                  className="
+                mx-auto mt-6 sm:mt-7
+                max-w-xl sm:max-w-2xl
+                text-sm sm:text-base lg:text-lg
+                leading-relaxed text-neutral-600
+              "
+                >
+                  Certifications that validate my technical expertise and
+                  continuous learning journey in modern web development and
+                  software engineering.
                 </p>
               </div>
 
-              <div className="p-8">
-                {loading ? (
-                  <SectionLoader text="Loading Certifications..." />
-                ) : (
-                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {certifications.map((cert, index) => {
-                      const Icon =
-                        LucideIcons[cert.icon] || LucideIcons.HelpCircle;
-                      return (
-                        <div
-                          key={index}
-                          className={`
-    group relative p-6 rounded-2xl border border-neutral-200
-     backdrop-blur-xl
-    transition-all duration-300
-    hover:-translate-y-2 hover:shadow-xl
-    ${cert.color} cursor-pointer
-  `}
-                          aria-label={`Certificate: ${cert.name} by ${cert.issuer}`}
-                        >
-                          {/* Top Section */}
-                          <div className="flex items-start justify-between mb-5">
-                            {/* Icon */}
-                            <div className="flex items-center justify-center w-11 h-11 rounded-xl ">
-                              {Icon && <Icon className="h-5 w-5" />}
-                            </div>
+              {/* Certification Grid */}
+              {loading ? (
+                <SectionLoader text="Loading Certifications..." />
+              ) : (
+                <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6">
+                  {certifications.map((cert, index) => {
+                    const Icon =
+                      LucideIcons[cert.icon] || LucideIcons.HelpCircle;
 
-                            {/* Date */}
-                            <span className="text-sm text-neutral-500 font-medium">
-                              {cert.date}
-                            </span>
+                    return (
+                      <article
+                        key={index}
+                        aria-label={`Certificate: ${cert.name}`}
+                        className={`
+                      group relative overflow-hidden
+
+                      rounded-2xl sm:rounded-3xl
+
+                      border border-neutral-200/70
+
+                      
+
+                      p-6
+
+                      shadow-sm
+
+                      transition-all duration-500
+                      hover:-translate-y-2
+                      hover:shadow-[0_20px_50px_rgba(37,99,235,0.12)]
+
+                      ${cert.color}
+                    `}
+                      >
+                        {/* Top Border */}
+                        <div className="absolute inset-x-0 top-0 h-[3px] scale-x-0 origin-left bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500 transition-transform duration-500 group-hover:scale-x-100" />
+
+                        {/* Glow */}
+                        <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                          <div className="absolute -top-16 -right-16 h-32 w-32 rounded-full bg-blue-500/10 blur-3xl" />
+                        </div>
+
+                        {/* Top */}
+                        <div className="relative z-10 flex items-start justify-between mb-6">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/80 shadow-sm">
+                            <Icon className="h-5 w-5" />
                           </div>
 
-                          {/* Certificate Title */}
-                          <h3 className="text-lg sm:text-xl font-semibold text-neutral-900 leading-snug mb-1">
+                          <span className="text-xs sm:text-sm font-medium text-neutral-500">
+                            {cert.date}
+                          </span>
+                        </div>
+
+                        {/* Content */}
+                        <div className="relative z-10">
+                          <h3 className="text-lg sm:text-xl font-semibold leading-snug text-neutral-900">
                             {cert.name}
                           </h3>
 
-                          {/* Issuer */}
-                          <p className="text-sm sm:text-base text-neutral-600 mb-5">
+                          <p className="mt-2 text-sm sm:text-base text-neutral-600">
                             {cert.issuer}
                           </p>
+                        </div>
 
-                          {/* Footer */}
-                          <div className="flex items-center justify-between">
-                            {/* Verified Status */}
-                            <div className="flex items-center gap-2 text-sm text-neutral-600">
-                              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                              <span className="font-medium">Verified</span>
-                            </div>
-
-                            {/* Download Button */}
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="
-        opacity-0 group-hover:opacity-100
-        transition-all duration-300
-        flex items-center gap-2
-        border-neutral-300
-        text-neutral-700
-        hover:bg-blue-600 hover:text-white hover:border-blue-600
-        px-3 py-1.5 rounded-lg
-      "
-                              asChild
-                            >
-                              <Link
-                                href={cert.pdfLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                download
-                                aria-label={`Download ${cert.name} certificate`}
-                              >
-                                <Download className="h-4 w-4" />
-                                View
-                              </Link>
-                            </Button>
+                        {/* Footer */}
+                        <div className="relative z-10 mt-8 flex items-center justify-between gap-4">
+                          {/* Verified */}
+                          <div className="flex items-center gap-2 text-sm text-neutral-600">
+                            <span className="h-2 w-2 rounded-full bg-green-500" />
+                            <span className="font-medium">Verified</span>
                           </div>
 
-                          {/* Bottom Accent Line */}
-                          <div className="absolute bottom-0 left-6 right-6 h-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+                          {/* Button */}
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            asChild
+                            className="
+                          rounded-xl
+
+                          border-neutral-300/80
+
+                          bg-white/80 backdrop-blur-xl
+
+                          px-4 py-2
+
+                          text-neutral-700
+
+                          transition-all duration-300
+
+                          hover:border-blue-600
+                          hover:bg-blue-600
+                          hover:text-white
+                        "
+                          >
+                            <Link
+                              href={cert.pdfLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              download
+                              aria-label={`View ${cert.name} certificate`}
+                              className="flex items-center gap-2"
+                            >
+                              <Download className="h-4 w-4" />
+                              View
+                            </Link>
+                          </Button>
                         </div>
-                      );
-                    })}
-                  </div>
-                )}
-                <div className="mt-10 flex justify-center">
-                  <div
-                    className="
-      relative flex items-center gap-3
-      px-6 py-4
-      rounded-2xl
-      border border-blue-100
-      bg-white/70 backdrop-blur-xl
-      shadow-[0_10px_35px_rgba(37,99,235,0.12)]
-      hover:shadow-[0_15px_45px_rgba(37,99,235,0.18)]
-      transition-all duration-300
-      group
-    "
-                    aria-label="Certification verification note"
-                  >
-                    {/* Icon */}
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50">
-                      <LucideIcons.Shield
-                        className="h-5 w-5 text-blue-600"
-                        aria-hidden="true"
-                      />
-                    </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              )}
 
-                    {/* Text */}
-                    <p className="text-sm font-medium text-gray-700">
-                      All certifications are{" "}
-                      <span className="text-blue-600 font-semibold">
-                        verified and up-to-date
-                      </span>
-                    </p>
+              {/* Bottom Verification Note */}
+              <div className="mt-10 sm:mt-12 flex justify-center">
+                <div
+                  className="
+                relative inline-flex items-center gap-3
 
-                    {/* subtle accent line */}
-                    <span className="absolute bottom-0 left-6 right-6 h-[2px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-60 rounded-full"></span>
+                rounded-2xl
+
+                border border-neutral-200/70
+
+                bg-white/80 backdrop-blur-xl
+
+                px-5 sm:px-6 py-3 sm:py-4
+
+                shadow-[0_10px_35px_rgba(37,99,235,0.10)]
+
+                text-sm sm:text-base text-neutral-700
+              "
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50">
+                    <LucideIcons.Shield
+                      className="h-5 w-5 text-blue-600"
+                      aria-hidden="true"
+                    />
                   </div>
+
+                  <p className="font-medium">
+                    All certifications are{" "}
+                    <span className="font-semibold text-blue-600">
+                      verified and up-to-date
+                    </span>
+                  </p>
+
+                  {/* Bottom Accent */}
+                  <span className="absolute inset-x-6 bottom-0 h-[2px] rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500 opacity-70" />
                 </div>
               </div>
             </CardContent>

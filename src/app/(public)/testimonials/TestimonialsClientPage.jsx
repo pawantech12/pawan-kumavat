@@ -28,36 +28,78 @@ const TestimonialsClientPage = () => {
   }, []);
   return (
     <main
-      className="container mx-auto px-4 sm:px-6 lg:px-8 py-12"
+      className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20"
       aria-label="Client testimonials and feedback about Pawan Kumavat"
     >
-      {/* Header */}
-      <div className="text-center mb-16 relative">
+      {/* Section Header */}
+      <div className="relative mb-14 sm:mb-16 lg:mb-20 text-center">
         {/* Background Glow */}
-        <div className="absolute inset-0 flex justify-center -z-10">
-          <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+        <div className="absolute inset-0 -z-10 flex justify-center">
+          <div
+            className="h-[160px] sm:h-[200px] lg:h-[240px]
+        w-[280px] sm:w-[380px] lg:w-[520px]
+        rounded-full
+        bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-cyan-500/10
+        blur-3xl"
+          />
         </div>
 
-        {/* Small Label */}
-        <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
-          Testimonials
-        </span>
+        {/* Top Badge */}
+        <div
+          className="inline-flex items-center gap-2 sm:gap-2.5
+      rounded-full border border-neutral-200/70
+      bg-white/75 px-4 sm:px-5 py-1.5 sm:py-2
+      shadow-sm backdrop-blur-xl"
+        >
+          <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-70 animate-ping" />
+            <span className="relative inline-flex h-full w-full rounded-full bg-blue-600" />
+          </span>
+
+          <span
+            className="text-[10px] sm:text-[11px] font-semibold uppercase
+        tracking-[0.2em] text-blue-600"
+          >
+            Testimonials
+          </span>
+        </div>
 
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight">
-          What Clients <span className="text-blue-600">Say</span>
+        <h2
+          className="mt-5 sm:mt-7 text-3xl sm:text-4xl lg:text-6xl
+      font-bold tracking-tight leading-[1.05] text-neutral-900"
+        >
+          What Clients
+          <br />
+          <span
+            className="bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500
+        bg-clip-text text-transparent"
+          >
+            Say About My Work
+          </span>
         </h2>
 
         {/* Divider */}
-        <div className="flex justify-center mt-4">
-          <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+        <div className="mt-5 sm:mt-7 flex items-center justify-center gap-2 sm:gap-3">
+          <div className="h-px w-6 sm:w-10 bg-neutral-300" />
+
+          <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500" />
+
+          <div className="h-[2px] sm:h-[3px] w-14 sm:w-24 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500" />
+
+          <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500" />
+
+          <div className="h-px w-6 sm:w-10 bg-neutral-300" />
         </div>
 
         {/* Description */}
-        <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+        <p
+          className="mx-auto mt-5 sm:mt-6 max-w-xl sm:max-w-2xl
+      text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-600"
+        >
           Feedback from clients and collaborators who trusted me to deliver
-          reliable, high-performance web solutions and modern digital
-          experiences.
+          scalable, modern, and high-performance digital experiences with clean
+          code and intuitive user interfaces.
         </p>
       </div>
 
@@ -67,64 +109,138 @@ const TestimonialsClientPage = () => {
       ) : (
         <section
           aria-label="Testimonial Cards Section"
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+          className="
+        grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3
+        gap-5 sm:gap-6 lg:gap-8
+        mb-16 sm:mb-20
+      "
         >
           {testimonials.map((testimonial, index) => (
             <Card
               key={index}
               className="
-         relative h-full
-         rounded-2xl
-         bg-white
-         border border-neutral-200
-         shadow-sm
-         hover:shadow-xl
-         hover:-translate-y-1
-         transition-all duration-300
-         group
-       "
+            group relative overflow-hidden
+
+            rounded-[24px] sm:rounded-[30px]
+
+            border border-neutral-200/70
+
+            bg-white/80 backdrop-blur-2xl
+
+            shadow-[0_10px_40px_rgba(15,23,42,0.05)]
+
+            transition-all duration-500
+            hover:-translate-y-2
+            hover:border-blue-200
+            hover:shadow-[0_25px_70px_rgba(37,99,235,0.14)]
+          "
               itemScope
               itemType="https://schema.org/Review"
             >
-              <CardContent className="p-6 flex flex-col h-full">
-                {/* Quote Icon */}
-                <div className="mb-4 text-blue-500/30">
-                  <Quote className="h-7 w-7" aria-hidden="true" />
+              {/* Hover Glow */}
+              <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-blue-500/10 blur-3xl" />
+                <div className="absolute -bottom-20 -left-20 h-40 w-40 rounded-full bg-indigo-500/10 blur-3xl" />
+              </div>
+
+              {/* Top Gradient Border */}
+              <div className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500 transition-transform duration-500 group-hover:scale-x-100" />
+
+              <CardContent className="relative flex h-full flex-col p-5 sm:p-7">
+                {/* Quote Header */}
+                <div className="flex items-start justify-between">
+                  <div
+                    className="
+                  flex h-12 sm:h-14 w-12 sm:w-14
+                  items-center justify-center
+
+                  rounded-2xl
+
+                  bg-gradient-to-br
+                  from-blue-500/10
+                  via-indigo-500/10
+                  to-cyan-500/10
+
+                  text-blue-600
+                "
+                  >
+                    <Quote className="h-5 sm:h-6 w-5 sm:w-6" />
+                  </div>
+
+                  {/* Decorative Dots */}
+                  <div className="flex gap-1 sm:gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue-400/70" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-indigo-400/70" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400/70" />
+                  </div>
                 </div>
 
                 {/* Review Content */}
                 <blockquote
                   className="
-             text-sm sm:text-base
-             text-neutral-700
-             leading-relaxed
-             flex-grow
-           "
+                pt-5 sm:pt-6
+
+                text-sm sm:text-[15px]
+
+                leading-relaxed
+
+                text-neutral-600
+
+                flex-grow
+              "
                   itemProp="reviewBody"
                 >
                   {testimonial.content}
                 </blockquote>
 
+                {/* Divider */}
+                <div className="mt-6 sm:mt-7 h-px w-full bg-gradient-to-r from-transparent via-neutral-200 to-transparent" />
+
                 {/* Author */}
                 <div
-                  className="mt-6 pt-5 border-t border-neutral-200 flex items-center gap-4"
+                  className="mt-4 sm:mt-5 flex items-center gap-3 sm:gap-4"
                   itemScope
                   itemProp="author"
                   itemType="https://schema.org/Person"
                 >
                   {/* Avatar */}
-                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-semibold text-sm">
+                  <div
+                    className="
+                  flex h-11 sm:h-12 w-11 sm:w-12
+                  items-center justify-center
+
+                  rounded-2xl
+
+                  bg-gradient-to-br
+                  from-blue-600
+                  via-indigo-500
+                  to-cyan-500
+
+                  text-white
+                  font-semibold
+                  text-sm
+                  shadow-md
+                "
+                  >
                     {testimonial.name.charAt(0)}
                   </div>
 
                   {/* Author Info */}
                   <div>
                     <h4
-                      className="text-sm sm:text-base font-semibold text-neutral-900"
+                      className="
+                    text-sm sm:text-[15px]
+                    font-semibold
+                    text-neutral-900
+
+                    transition-colors duration-300
+                    group-hover:text-blue-600
+                  "
                       itemProp="name"
                     >
                       {testimonial.name}
                     </h4>
+
                     <p
                       className="text-xs sm:text-sm text-neutral-500"
                       itemProp="jobTitle"
@@ -133,9 +249,6 @@ const TestimonialsClientPage = () => {
                     </p>
                   </div>
                 </div>
-
-                {/* Hover Gradient Line */}
-                <div className="absolute bottom-0 left-0 h-[3px] w-0 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 group-hover:w-full transition-all duration-500"></div>
               </CardContent>
             </Card>
           ))}
@@ -145,76 +258,262 @@ const TestimonialsClientPage = () => {
       {/* CTA Section */}
       <section
         aria-label="Call to action to contact Pawan Kumavat"
-        className="relative py-20"
+        className="relative isolate overflow-hidden"
       >
-        <div className="mx-auto max-w-6xl px-6">
-          <Card className="relative overflow-hidden rounded-[28px] border border-neutral-200/60 bg-white/70 backdrop-blur-xl shadow-[0_30px_80px_rgba(37,99,235,0.15)]">
-            {/* Background Glow */}
-            <div className="pointer-events-none absolute inset-0">
-              <div className="absolute left-1/2 top-[-6rem] h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-blue-500/20 blur-[120px]" />
-              <div className="absolute right-0 bottom-0 h-[18rem] w-[18rem] rounded-full bg-indigo-500/20 blur-[100px]" />
+        {/* Background Effects */}
+        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+          {/* Main Glow */}
+          <div
+            className="
+          absolute left-1/2 top-[-10rem]
+          h-[28rem] sm:h-[34rem]
+          w-[28rem] sm:w-[34rem]
+          -translate-x-1/2
+          rounded-full
+          bg-blue-500/12
+          blur-[120px]
+        "
+          />
+
+          {/* Secondary Glow */}
+          <div
+            className="
+          absolute bottom-[-8rem] right-[-4rem]
+          h-[18rem] sm:h-[24rem]
+          w-[18rem] sm:w-[24rem]
+          rounded-full
+          bg-indigo-500/12
+          blur-[100px]
+        "
+          />
+
+          {/* Grid Pattern */}
+          <div
+            className="
+          absolute inset-0
+          bg-[linear-gradient(to_right,#e5e7eb12_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb12_1px,transparent_1px)]
+          bg-[size:38px_38px]
+          [mask-image:radial-gradient(circle_at_center,black,transparent_80%)]
+        "
+          />
+        </div>
+
+        <Card
+          className="
+        group relative overflow-hidden
+
+        rounded-[28px] sm:rounded-[36px]
+
+        border border-neutral-200/70
+
+        bg-white/80 backdrop-blur-2xl
+
+        shadow-[0_25px_80px_rgba(15,23,42,0.08)]
+
+        transition-all duration-500
+        hover:shadow-[0_35px_100px_rgba(37,99,235,0.14)]
+      "
+        >
+          {/* Top Gradient Border */}
+          <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500" />
+
+          {/* Hover Glow */}
+          <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+            <div className="absolute -top-24 -left-24 h-60 w-60 rounded-full bg-blue-500/10 blur-3xl" />
+            <div className="absolute -bottom-24 -right-24 h-60 w-60 rounded-full bg-indigo-500/10 blur-3xl" />
+          </div>
+
+          <CardContent
+            className="
+          relative text-center
+
+          px-5 sm:px-10 lg:px-14
+          py-12 sm:py-16 lg:py-20
+        "
+          >
+            {/* Badge */}
+            <div
+              className="
+            inline-flex items-center gap-2 sm:gap-3
+
+            rounded-full
+            border border-neutral-200/70
+
+            bg-white/80 backdrop-blur-xl
+
+            px-4 sm:px-5 py-1.5 sm:py-2
+
+            shadow-sm
+          "
+            >
+              <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-70 animate-ping" />
+                <span className="relative inline-flex h-full w-full rounded-full bg-green-500" />
+              </span>
+
+              <span
+                className="
+              text-[10px] sm:text-[11px]
+              font-semibold uppercase
+              tracking-[0.2em]
+              text-blue-600
+            "
+              >
+                Available For New Projects
+              </span>
             </div>
 
-            <CardContent className="relative p-10 sm:p-14 text-center">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-3 rounded-full border border-blue-100 bg-blue-50 px-5 py-2 text-sm font-medium text-blue-700 mb-6">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-70 animate-ping" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
-                </span>
-                Available for Freelance & Collaboration
-              </div>
+            {/* Heading */}
+            <h2
+              className="
+            mx-auto mt-6 sm:mt-8 max-w-4xl
 
-              {/* Heading */}
-              <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-neutral-900 mb-6">
-                Let’s Build Something
-                <span className="text-blue-600"> Great Together</span>
-              </h2>
+            text-3xl sm:text-5xl lg:text-6xl
 
-              {/* Description */}
-              <p className="text-neutral-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-                I'm always excited to collaborate on meaningful projects.
-                Whether you’re building a startup, launching a product, or
-                scaling an existing platform, I can help design and develop
-                modern, scalable web applications.
-              </p>
+            font-bold tracking-tight leading-[1.05]
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                {/* Primary CTA */}
-                <Button
-                  size="lg"
-                  asChild
-                  className="rounded-xl px-7 py-6
-            bg-blue-600 text-white font-medium
-            shadow-md hover:bg-blue-700
-            transition-all duration-300
-            group"
+            text-neutral-900
+          "
+            >
+              Let’s Build
+              <br />
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500 bg-clip-text text-transparent">
+                Something Exceptional
+              </span>
+            </h2>
+
+            {/* Divider */}
+            <div className="mt-6 sm:mt-8 flex items-center justify-center gap-2 sm:gap-3">
+              <div className="h-px w-6 sm:w-10 bg-neutral-300" />
+              <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-blue-500" />
+              <div className="h-[2px] sm:h-[3px] w-14 sm:w-24 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500" />
+              <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-indigo-500" />
+              <div className="h-px w-6 sm:w-10 bg-neutral-300" />
+            </div>
+
+            {/* Description */}
+            <p
+              className="
+            mx-auto mt-6 sm:mt-7 max-w-xl sm:max-w-2xl
+
+            text-sm sm:text-base lg:text-lg
+
+            leading-relaxed
+
+            text-neutral-600
+          "
+            >
+              I collaborate with startups, founders, and businesses to create
+              modern web experiences with scalable architecture, clean design,
+              and high-performance development.
+            </p>
+
+            {/* CTA Buttons */}
+            <div
+              className="
+            mt-10 sm:mt-12
+
+            flex flex-col sm:flex-row
+            items-center justify-center
+
+            gap-4 sm:gap-5
+          "
+            >
+              {/* Primary CTA */}
+              <Button
+                size="lg"
+                asChild
+                className="
+              group/button relative isolate overflow-hidden
+
+              w-full sm:w-auto
+
+              rounded-2xl px-6 sm:px-8 py-5 sm:py-6
+
+              bg-neutral-900
+              text-white font-semibold tracking-tight
+
+              transition-all duration-500
+              hover:-translate-y-1
+
+              shadow-[0_10px_40px_rgba(0,0,0,0.12)]
+              hover:shadow-[0_18px_60px_rgba(37,99,235,0.22)]
+            "
+              >
+                <Link
+                  href="/contact"
+                  className="relative z-10 flex items-center gap-3 justify-center"
                 >
-                  <Link href="/contact" className="flex items-center gap-2">
+                  {/* Animated Background */}
+                  <span className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500 opacity-0 group-hover/button:opacity-100 transition-opacity duration-500" />
+
+                  {/* Shine */}
+                  <span className="absolute -left-full top-0 h-full w-1/2 skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover/button:left-[140%] transition-all duration-1000" />
+
+                  <span className="text-sm sm:text-base">
                     Start Your Project
-                    <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
+                  </span>
 
-                {/* Secondary CTA */}
-                <Button
-                  size="lg"
-                  variant="outline"
-                  asChild
-                  className="rounded-xl px-7 py-6
-            border-blue-600 text-blue-600
-            hover:bg-blue-50
-            transition-all duration-300"
+                  <span className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-white/15 bg-white/10 backdrop-blur-md group-hover/button:bg-white/20 transition-all">
+                    <ArrowRight className="h-4 w-4 group-hover/button:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </Link>
+              </Button>
+
+              {/* Secondary CTA */}
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="
+              w-full sm:w-auto
+
+              rounded-2xl px-6 sm:px-8 py-5 sm:py-6
+
+              border border-neutral-300/80
+
+              bg-white/80 backdrop-blur-xl
+
+              text-neutral-800 font-semibold
+
+              hover:text-blue-600
+              hover:border-blue-500
+
+              transition-all duration-300
+            "
+              >
+                <Link
+                  href="/projects"
+                  className="flex items-center gap-3 justify-center"
                 >
-                  <Link href="/projects" className="flex items-center gap-2">
-                    View My Work
-                  </Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                  <span className="text-sm sm:text-base">View My Work</span>
+                </Link>
+              </Button>
+            </div>
+
+            {/* Bottom Note */}
+            <div
+              className="
+            mt-8 sm:mt-10
+
+            inline-flex items-center gap-2
+
+            rounded-full
+
+            border border-neutral-200/70
+
+            bg-white/70
+
+            px-3 sm:px-4 py-1.5 sm:py-2
+
+            text-xs sm:text-sm text-neutral-500
+          "
+            >
+              <span className="h-2 w-2 rounded-full bg-green-500" />
+              Trusted by clients for clean code & modern UI
+            </div>
+          </CardContent>
+        </Card>
       </section>
     </main>
   );

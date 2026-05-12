@@ -35,109 +35,149 @@ export default function ServicesSection() {
       className="container mx-auto px-4 sm:px-6 lg:px-8"
       aria-label="Professional Web Development Services Section"
     >
-      <div className="text-center mb-16 relative">
+      <div className="relative mb-14 sm:mb-16 lg:mb-20 text-center">
         {/* Background Glow */}
-        <div className="absolute inset-0 flex justify-center -z-10">
-          <div className="w-[420px] h-[220px] bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 blur-3xl rounded-full"></div>
+        <div className="absolute inset-0 -z-10 flex justify-center">
+          <div
+            className="h-[160px] sm:h-[200px] lg:h-[220px]
+        w-[280px] sm:w-[380px] lg:w-[480px]
+        rounded-full
+        bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-cyan-500/10
+        blur-3xl"
+          />
         </div>
 
-        {/* Small Label */}
-        <span className="inline-block mb-4 text-sm font-medium tracking-wide text-blue-600 bg-blue-50 px-4 py-1 rounded-full">
-          Services
-        </span>
+        {/* Top Badge */}
+        <div
+          className="inline-flex items-center gap-2 sm:gap-2.5
+      rounded-full border border-neutral-200/70
+      bg-white/75 px-4 sm:px-5 py-1.5 sm:py-2
+      shadow-sm backdrop-blur-xl"
+        >
+          <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-70 animate-ping" />
+            <span className="relative inline-flex h-full w-full rounded-full bg-blue-600" />
+          </span>
+
+          <span
+            className="text-[10px] sm:text-[11px] font-semibold uppercase
+        tracking-[0.2em] text-blue-600"
+          >
+            Services
+          </span>
+        </div>
 
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl  font-semibold text-gray-900 tracking-tight">
-          Services <span className="text-blue-600">I Offer</span>
+        <h2
+          className="mt-5 sm:mt-7 text-2xl sm:text-3xl lg:text-5xl
+      font-bold tracking-tight leading-[1.1] text-neutral-900"
+        >
+          Modern Solutions
+          <br />
+          <span
+            className="bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500
+        bg-clip-text text-transparent"
+          >
+            For Modern Businesses
+          </span>
         </h2>
 
         {/* Divider */}
-        <div className="flex justify-center mt-4">
-          <div className="h-[3px] w-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+        <div className="mt-5 sm:mt-7 flex items-center justify-center gap-2 sm:gap-3">
+          <div className="h-px w-6 sm:w-10 bg-neutral-300" />
+
+          <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500" />
+
+          <div className="h-[2px] sm:h-[3px] w-14 sm:w-20 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500" />
+
+          <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500" />
+
+          <div className="h-px w-6 sm:w-10 bg-neutral-300" />
         </div>
 
         {/* Description */}
-        <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          I help businesses and individuals build modern, scalable, and
-          high-performance web applications — from idea to deployment — using
-          the latest web technologies.
+        <p
+          className="mx-auto mt-5 sm:mt-6 max-w-xl sm:max-w-2xl
+      text-sm sm:text-base lg:text-lg leading-relaxed text-neutral-600"
+        >
+          Clean, scalable, and high-performance web experiences designed to help
+          brands grow digitally.
         </p>
       </div>
 
+      {/* Grid */}
       {loading ? (
         <SectionLoader text="Loading Services..." />
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div
+          className="
+      grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
+      gap-5 sm:gap-6 lg:gap-8
+      mb-10 sm:mb-12
+    "
+        >
           {services.slice(0, 3).map((service, index) => {
             const Icon = LucideIcons[service.icon] || LucideIcons.HelpCircle;
+
             return (
               <Card
                 key={index}
                 className="group relative overflow-hidden
-  border border-neutral-200/60
-  bg-white/70 backdrop-blur-xl
-  shadow-sm hover:shadow-xl
-  transition-all duration-500
-  hover:-translate-y-2"
+              border border-neutral-200/60
+              bg-white/70 backdrop-blur-xl
+              shadow-sm hover:shadow-xl
+              transition-all duration-500
+              hover:-translate-y-2"
               >
                 {/* Popular Badge */}
                 {service.popular && (
-                  <div className="absolute top-4 right-4 z-10">
+                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4 z-10">
                     <Badge
-                      className="rounded-full px-3 py-1 text-xs font-medium
-        bg-gradient-to-r from-blue-600 to-indigo-600 text-white
-        shadow-md"
+                      className="rounded-full px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs font-medium
+                  bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md"
                     >
                       Most Popular
                     </Badge>
                   </div>
                 )}
 
-                <CardHeader className="text-center pb-4">
-                  {/* Icon */}
+                <CardHeader className="text-center pb-3 sm:pb-4">
                   <div
-                    className={`mx-auto w-16 h-16 rounded-xl flex items-center justify-center mb-4
-      shadow-sm group-hover:scale-110 transition-transform duration-300
-      ${service.color}`}
+                    className={`mx-auto w-14 sm:w-16 h-14 sm:h-16 rounded-xl flex items-center justify-center mb-3 sm:mb-4
+                shadow-sm group-hover:scale-110 transition-transform duration-300
+                ${service.color}`}
                   >
-                    <Icon className="h-7 w-7" aria-hidden />
+                    <Icon className="h-6 sm:h-7 w-6 sm:w-7" aria-hidden />
                   </div>
 
-                  {/* Title */}
-                  <CardTitle className="text-xl font-semibold text-neutral-900">
+                  <CardTitle className="text-lg sm:text-xl font-semibold text-neutral-900">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
 
-                <CardContent className="space-y-5">
-                  {/* Description */}
+                <CardContent className="space-y-4 sm:space-y-5">
                   <p className="text-neutral-600 text-center text-sm sm:text-base leading-relaxed">
                     {service.description}
                   </p>
 
-                  {/* Features */}
-                  <div className="space-y-3 pt-2">
+                  <div className="space-y-2 sm:space-y-3 pt-1 sm:pt-2">
                     {service.features.map((feature, featureIndex) => (
                       <div
                         key={featureIndex}
-                        className="flex items-start gap-3 text-sm text-neutral-700
-          transition-all duration-300 group-hover:translate-x-1"
+                        className="flex items-start gap-2 sm:gap-3 text-sm text-neutral-700
+                    transition-all duration-300 group-hover:translate-x-1"
                       >
-                        {/* Check Icon */}
-                        <span className="mt-[6px] h-2 w-2 rounded-full bg-blue-600 flex-shrink-0"></span>
-
-                        {/* Feature Text */}
-                        <span>{feature}</span>
+                        <span className="mt-[6px] h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-blue-600 flex-shrink-0"></span>
+                        <span className="text-sm">{feature}</span>
                       </div>
                     ))}
                   </div>
                 </CardContent>
 
-                {/* Bottom Gradient Hover Line */}
                 <div
                   className="absolute bottom-0 left-0 h-[3px] w-0
-    bg-gradient-to-r from-blue-600 to-indigo-600
-    transition-all duration-500 group-hover:w-full"
+              bg-gradient-to-r from-blue-600 to-indigo-600
+              transition-all duration-500 group-hover:w-full"
                 />
               </Card>
             );
@@ -145,49 +185,41 @@ export default function ServicesSection() {
         </div>
       )}
 
+      {/* CTA */}
       <div className="text-center">
         <Button
           size="lg"
           className="
-  group relative overflow-hidden
-  rounded-xl px-6 py-6
-  font-semibold text-white
-  bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600
-  shadow-[0_12px_35px_rgba(79,70,229,0.35)]
-  hover:shadow-[0_18px_55px_rgba(79,70,229,0.45)]
-  transition-all duration-300
-  hover:-translate-y-[2px]
-  "
+        group relative isolate overflow-hidden
+        rounded-2xl px-6 sm:px-7 py-5 sm:py-6
+
+        bg-neutral-900
+        text-white font-semibold tracking-tight
+
+        shadow-[0_10px_40px_rgba(0,0,0,0.12)]
+        hover:shadow-[0_18px_60px_rgba(37,99,235,0.22)]
+
+        transition-all duration-500
+        hover:-translate-y-1
+        border border-white/10
+      "
         >
+          <span className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+          <span className="absolute inset-0 -z-20 bg-blue-500/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+          <span className="absolute -left-full top-0 h-full w-1/2 skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:left-[140%] transition-all duration-1000" />
+
           <Link
             href="/services"
-            aria-label="View all available web development services"
             className="relative z-10 flex items-center gap-3"
           >
-            <span className="tracking-tight">Explore My Services</span>
+            <span className="text-sm sm:text-base">Explore My Services</span>
 
-            <span
-              className="
-      flex items-center justify-center
-      w-7 h-7 rounded-lg
-      bg-white/20
-      transition-all duration-300
-      group-hover:bg-white/30
-      "
-            >
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            <span className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-white/15 bg-white/10 backdrop-blur-md transition-all duration-300 group-hover:bg-white/20 group-hover:translate-x-0.5">
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
             </span>
           </Link>
-
-          {/* subtle gradient sweep animation */}
-          <span
-            className="
-    pointer-events-none absolute inset-0
-    bg-gradient-to-r from-transparent via-white/20 to-transparent
-    opacity-0 group-hover:opacity-100
-    transition-opacity duration-500
-    "
-          />
         </Button>
       </div>
     </section>

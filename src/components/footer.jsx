@@ -23,63 +23,182 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl border-t border-gray-200 dark:border-gray-700">
-      <div className="mx-auto max-w-7xl px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer
+      className="
+  relative overflow-hidden
+  border-t border-neutral-200/70
+  bg-white/80 backdrop-blur-2xl
+"
+    >
+      {/* Top Gradient Border */}
+      <div
+        className="
+    absolute inset-x-0 top-0 h-[2px]
+    bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500
+  "
+      />
+
+      <div
+        className="
+    mx-auto max-w-7xl
+    px-4 sm:px-6 lg:px-6
+    py-12 sm:py-16 lg:py-20
+
+    grid grid-cols-1
+    sm:grid-cols-2
+    lg:grid-cols-4
+
+    gap-10 sm:gap-12 lg:gap-16
+  "
+      >
         {/* Brand Section */}
-        <div className="md:col-span-2 space-y-5">
-          <Link href="/" className="flex items-center gap-3 select-none">
+        <div className="lg:col-span-2">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="
+        inline-flex items-center gap-3
+        select-none
+      "
+          >
             <div
-              className="flex h-10 w-10 items-center justify-center rounded-xl
-  bg-gradient-to-br from-blue-600 to-indigo-600
-  shadow-md"
+              className="
+          relative flex
+          h-10 w-10 sm:h-11 sm:w-11 lg:h-12 lg:w-12
+          items-center justify-center
+
+          rounded-2xl
+
+          bg-gradient-to-br from-blue-600 via-indigo-500 to-cyan-500
+
+          shadow-lg shadow-blue-500/20
+        "
             >
-              <Code2 className="h-5 w-5 text-white" />
+              <div className="absolute inset-0 rounded-2xl bg-white/10" />
+              <Code2 className="relative h-4 w-4 sm:h-5 sm:w-5 text-white" />
             </div>
 
-            <div className="flex items-center text-lg font-semibold tracking-tight">
-              <span className="text-neutral-800">Pawan</span>
-              <span className="text-blue-600">.dev</span>
+            <div className="flex items-center text-lg sm:text-xl font-bold tracking-tight">
+              <span className="text-neutral-900">Pawan</span>
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
+                .dev
+              </span>
             </div>
           </Link>
 
-          <p className="text-gray-600 dark:text-gray-300 max-w-md leading-relaxed">
-            Crafting modern, scalable, and production-ready web applications
-            with a clean architecture and optimized user experiences.
+          {/* Description */}
+          <p
+            className="
+        mt-5 sm:mt-6
+        max-w-md
+
+        text-sm sm:text-[15px]
+        leading-relaxed
+        text-neutral-600
+      "
+          >
+            Crafting clean, scalable, and high-performance web applications with
+            modern technologies, optimized UX, and production-ready
+            architecture.
           </p>
 
+          {/* Availability */}
+          <div
+            className="
+        mt-5 sm:mt-6
+
+        inline-flex items-center gap-2.5
+
+        rounded-full
+        border border-neutral-200/70
+        bg-white/80 backdrop-blur-xl
+
+        px-3 sm:px-4 py-1.5 sm:py-2
+
+        shadow-sm
+      "
+          >
+            <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-70 animate-ping" />
+              <span className="relative inline-flex h-full w-full rounded-full bg-green-500" />
+            </span>
+
+            <span className="text-[11px] sm:text-xs text-neutral-700">
+              Available for freelance & collaborations
+            </span>
+          </div>
+
           {/* Social Links */}
-          <div className="flex items-center gap-4 mt-4">
+          <div className="mt-6 sm:mt-7 flex flex-wrap items-center gap-3">
             {socialLinks.map(({ name, href, icon: Icon }) => (
               <Link
                 key={name}
                 href={href}
                 target="_blank"
                 aria-label={name}
-                className="group relative p-1 rounded-full transition-all hover:bg-blue-50 dark:hover:bg-blue-900/30"
+                className="
+            group relative
+
+            flex h-10 w-10 sm:h-11 sm:w-11
+            items-center justify-center
+
+            rounded-2xl
+
+            border border-neutral-200/70
+            bg-white/80 backdrop-blur-xl
+
+            text-neutral-600
+
+            shadow-sm
+
+            transition-all duration-300
+            hover:-translate-y-1
+            hover:border-blue-200
+            hover:text-blue-600
+          "
               >
-                <Icon className="h-5 w-5 text-gray-600 dark:text-gray-300 group-hover:text-blue-600 transition-all" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Icon className="relative h-4 w-4 sm:h-4.5 sm:w-4.5" />
               </Link>
             ))}
           </div>
-
-          <p className="mt-4 text-xs text-gray-400 dark:text-gray-500">
-            // Open for freelance & collaborations
-          </p>
         </div>
 
         {/* Navigation */}
-        <div className="space-y-4">
-          <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+        <div>
+          <h3
+            className="
+        text-xs sm:text-sm font-semibold uppercase
+        tracking-[0.18em]
+        text-neutral-900
+      "
+          >
             Navigation
           </h3>
-          <ul className="space-y-2">
+
+          <ul className="mt-5 sm:mt-6 space-y-2 sm:space-y-3">
             {navigation.map((item) => (
               <li key={item.name}>
                 <Link
                   href={item.href}
-                  className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
+                  className="
+              group inline-flex items-center gap-2
+
+              text-sm text-neutral-600
+
+              transition-colors duration-300
+              hover:text-blue-600
+            "
                 >
-                  {item.name}
+                  <span
+                    className="
+                h-[2px] w-0 rounded-full
+                bg-gradient-to-r from-blue-500 to-indigo-500
+                transition-all duration-300
+                group-hover:w-4
+              "
+                  />
+                  <span>{item.name}</span>
                 </Link>
               </li>
             ))}
@@ -87,34 +206,86 @@ export default function Footer() {
         </div>
 
         {/* Contact */}
-        <div className="space-y-4">
-          <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+        <div>
+          <h3
+            className="
+        text-xs sm:text-sm font-semibold uppercase
+        tracking-[0.18em]
+        text-neutral-900
+      "
+          >
             Contact
           </h3>
-          <div className="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
-            <p>// Kalyan (W), Thane, MH</p>
-            <Link
-              href="mailto:pawankumavat042@gmail.com"
-              className="hover:text-blue-600 dark:hover:text-blue-400 transition block"
-            >
-              pawankumavat042@gmail.com
-            </Link>
-            <Link
-              href="tel:+919619579304"
-              className="hover:text-blue-600 dark:hover:text-blue-400 transition block"
-            >
-              +91 96195 79304
-            </Link>
+
+          <div className="mt-5 sm:mt-6 space-y-4 sm:space-y-5">
+            {[
+              { label: "Location", value: "Kalyan (W), Thane, Maharashtra" },
+              { label: "Email", value: "mailto:pawankumavat042@gmail.com" },
+              { label: "Phone", value: "tel:+919619579304" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="
+            rounded-2xl
+            border border-neutral-200/70
+
+            bg-white/70 backdrop-blur-xl
+
+            p-3 sm:p-4
+
+            shadow-sm
+          "
+              >
+                <p className="text-[10px] sm:text-xs uppercase tracking-wider text-neutral-400">
+                  {item.label}
+                </p>
+
+                {item.label === "Location" ? (
+                  <p className="mt-1 text-sm text-neutral-700">{item.value}</p>
+                ) : (
+                  <Link
+                    href={item.value}
+                    className="
+                mt-1 inline-block text-sm text-neutral-700
+                hover:text-blue-600 transition-colors
+              "
+                  >
+                    {item.value.replace("mailto:", "").replace("tel:", "")}
+                  </Link>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-200 dark:border-gray-700 py-6 text-sm text-gray-500 dark:text-gray-400 flex flex-col md:flex-row items-center justify-between gap-3 px-6">
-        <p>© {new Date().getFullYear()} pawan.dev — all rights reserved</p>
-        <p className="flex items-center gap-1">
-          built with <Heart className="h-4 w-4 text-red-500" /> & clean code
-        </p>
+      <div className="border-t border-neutral-200/70 bg-white/60 backdrop-blur-xl">
+        <div
+          className="
+      mx-auto max-w-7xl
+
+      px-4 sm:px-6
+
+      py-5 sm:py-6
+
+      flex flex-col md:flex-row
+      items-center justify-between
+
+      gap-3
+
+      text-xs sm:text-sm text-neutral-500
+    "
+        >
+          <p className="text-center md:text-left">
+            © {new Date().getFullYear()} pawan.dev — all rights reserved
+          </p>
+
+          <p className="flex items-center gap-2">
+            Built with <Heart className="h-4 w-4 text-red-500" /> clean UI &
+            modern design
+          </p>
+        </div>
       </div>
     </footer>
   );
